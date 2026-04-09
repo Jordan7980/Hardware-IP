@@ -58,3 +58,82 @@ Where:
 - **h[k]**: filter coefficients (taps)
 - **y[n]**: output sample
 - **N**: number of taps
+
+#### 1.3.1 Software Algorithm (pseudocode)
+
+```C++
+for n in range(num_samples):
+    acc = 0
+       for k in range(TAPS):
+        acc += h[k] * x[n-k]
+    y[n] = acc
+```
+
+#### 1.3.2 Hardware-Relevant Operations
+- Multiply (DSP slices)
+- Accumulate (adder tree)
+- Shift/register updates (delay line)
+
+These operations are highly structured and repetitive, making them ideal for pipelining and parallel execution 
+in hardware.
+
+---
+
+## 2. Architecture
+
+### 2.1 The major sub-modules
+
+#### 2.1.1 AXI4-Lite Control Module
+Handles configuration, control signals, and status reporting.
+
+#### 2.1.2 Input Stream Interface
+Receives incoming samples via AXI4-Stream.
+
+#### 2.1.3 Coefficient Memory
+Stores filter coefficients in BRAM AXI4-Lite interface for runtime loading by the PS
+
+#### 2.1.4 Delay Line (Shift Register Array)
+Maintains past input samples x[n−k].
+
+#### 2.1.5 Compute Engine (MAC + Adder Tree)
+- Performs parallel multiplications
+- Uses a pipelined adder tree for accumulation
+
+#### 2.1.6 Output Stream Interface
+Sends filtered samples back through AXI4-Stream.
+
+---
+
+### 2.2 How the sub-modules communicate
+
+**Control Path:**
+- PS → AXI4-Lite → Control Module → all submodules
+
+**Data Path:**
+- Input Stream → Delay Line → Compute Engine → Output Stream
+
+**Internal Dataflow:**
+- Delay line feeds stored samples to multipliers
+- Coefficient memory provides tap values
+- Multiply results flow into a pipelined adder tree
+- Final sum is output as y[n]
+
+**Timing Strategy:**
+- Fully pipelined design with target Initiation Interval (II) = 1
+- After pipeline fill, one output is produced per clock cycle
+
+Optional FIFO buffers may be used to improve timing and throughput.
+
+### 2.3 Why modularization matters
+The design is decomposed into modular blocks to improve clarity, scalability, and testability:
+
+- **Easier debugging:** each module (e.g., delay line, MAC unit) can be verified independently
+- **Incremental development:**
+    - First validate data movement (AXI interfaces)
+    - Then implement compute engine
+    - Finally integrate full pipeline
+- **Scalability:** number of taps or parallel units can be increased without redesigning the entire system
+- **Reusability:** modules like the MAC engine and streaming interface can be reused in other DSP IPs
+- **Performance tuning:** allows targeted optimization (e.g., pipelining only the compute engine)
+
+This structured approach supports efficient development and aligns with best practices in hardware system design.
