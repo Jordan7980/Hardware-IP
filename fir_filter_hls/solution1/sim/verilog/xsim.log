@@ -1,0 +1,40 @@
+#-----------------------------------------------------------
+# xsim v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Fri Apr 24 16:07:08 2026
+# Process ID: 11620
+# Current directory: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog
+# Command line: xsim.exe -mode tcl -source {xsim.dir/fir_filter/xsim_script.tcl}
+# Log file: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/xsim.log
+# Journal file: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog\xsim.jou
+# Running On        :Jayshawn
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :26200
+# Processor Detail  :13th Gen Intel(R) Core(TM) i7-13700H
+# CPU Frequency     :2918 MHz
+# CPU Physical cores:14
+# CPU Logical cores :20
+# Host memory       :16995 MB
+# Swap memory       :6174 MB
+# Total Virtual     :23169 MB
+# Available Virtual :3935 MB
+#-----------------------------------------------------------
+source xsim.dir/fir_filter/xsim_script.tcl
+# xsim {fir_filter} -autoloadwcfg -tclbatch {fir_filter.tcl}
+Time resolution is 1 ps
+source fir_filter.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 1 [0.00%] @ "125000"
+// RTL Simulation : 1 / 1 [100.00%] @ "2725000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 2785 ns : File "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/fir_filter.autotb.v" Line 572
+## quit
+INFO: [Common 17-206] Exiting xsim at Fri Apr 24 16:07:11 2026...

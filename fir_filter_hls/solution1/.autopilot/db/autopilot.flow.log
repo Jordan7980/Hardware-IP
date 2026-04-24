@@ -1,0 +1,786 @@
+INFO-FLOW: Workspace C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1 opened at Fri Apr 24 16:06:20 -0400 2026
+Execute       send_msg_by_id INFO @200-1505@%s%s  vivado 
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Execute     set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+Execute       create_platform xc7z020clg400-1 -board  
+DBG:HLSDevice: Trying to load device library: C:\Xilinx\Vitis_HLS\2024.1\lib\win64.o\xv_hlsvwrap.dll
+DBG:HLSDevice: first parts/arch.xml in RDI_DATADIR: C:\Xilinx\Vivado\2024.1/data/parts/arch.xml
+DBG:HLSDevice: init success
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+Command       create_platform done; 0.626 sec.
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/common/xilinx.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/plb46.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/axi4.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/saxilite.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/util.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/xfft.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/xfir.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/DSP48/dsp48.gen 
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       config_compile -quiet -complex-mul-dsp=0 
+Command     set_part done; 0.724 sec.
+Execute     create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+Execute       ap_set_clock -name default -period 10 -unit ns -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     csim_design 
+INFO: [HLS 200-1510] Running: csim_design 
+INFO-FLOW: Running SLX 'csim' proc: ::SLX::run_csim
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch CLANG as the compiler.
+Execute       send_msg_by_id INFO @200-2036@%s debug 
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/tps/tcl/tcllib1.11.1/yaml/huddle.tcl 
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/tps/tcl/tcllib1.11.1/yaml/json2huddle.tcl 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/tps/tcl/tcllib1.11.1/try/try.tcl 
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       source run_sim.tcl 
+Command       ap_source done; 0.597 sec.
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+Command     csim_design done; 4.838 sec.
+INFO: [HLS 200-2161] Finished Command csim_design Elapsed time: 00:00:04; Allocated memory: 1.141 MB.
+Execute     csynth_design 
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO-FLOW: Running SLX 'csynth' proc: ::SLX::run_csynth
+Execute       elaborate -effort=medium -skip_syncheck=0 -keep_printf=0 -skip_cdt=0 -skip_transform=0 -ng=0 -g=0 -opt_fp=0 -from_csynth_design=1 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.114 seconds; current allocated memory: 139.992 MB.
+Execute         set_directive_top fir_filter -name=fir_filter 
+INFO: [HLS 200-10] Analyzing design file 'src/fir_filter.cpp' ... 
+INFO-FLOW: Compiling one TU...
+INFO-FLOW: Handling src/fir_filter.cpp as C++
+Execute         ap_part_info -name xc7z020-clg400-1 -data info 
+INFO-FLOW: Running: GCC PP 39
+INFO-FLOW: Source preprocessing
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2024.1/win64/tools/clang-3.9-csynth/bin/clang src/fir_filter.cpp -foptimization-record-file=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info --sysroot C:/Xilinx/Vitis_HLS/2024.1/tps/mingw/8.3.0/win64.o/nt -fhls -fno-exceptions -insert-hls-directive=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/all.directive.json -E -Isrc -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -Wno-error=dump-hls-pragmas -hls-clock-period=10 -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-mingw32 -fno-threadsafe-statics -fno-use-cxa-atexit -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I C:/Xilinx/Vitis_HLS/2024.1/common/technology/autopilot -I C:/Xilinx/Vitis_HLS/2024.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -I /usr/include/x86_64-linux-gnu -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp {-hls-platform-db-name=C:\Xilinx\Vitis_HLS\2024.1\common/technology\xilinx/common/platform.db} -hls-platform-name=zynq_slow -device-resource-info=BRAM_280.000000_DSP_220.000000_FF_106400.000000_LUT_53200.000000_SLICE_13300.000000_URAM_0.000000 -device-name-info=xc7z020clg400-1 > C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.cpp.clang.out.log 2> C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.cpp.clang.err.log
+INFO-FLOW: Done: GCC PP 39 time: 0.4 seconds per iteration
+INFO-FLOW: Source syntax check for synthesis
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2024.1/win64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fsyntax-only -fhls -target fpga64-xilinx-linux-gnu C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp {-hls-platform-db-name=C:\Xilinx\Vitis_HLS\2024.1\common/technology\xilinx/common/platform.db} -hls-platform-name=zynq_slow -device-resource-info=BRAM_280.000000_DSP_220.000000_FF_106400.000000_LUT_53200.000000_SLICE_13300.000000_URAM_0.000000 -device-name-info=xc7z020clg400-1 > C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/clang.out.log 2> C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/clang.err.log
+Execute         clang_tidy xilinx-systemc-detector -desc systemc-detector C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp std=gnu++14 -target fpga  -directive=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/.systemc_flag 
+INFO-FLOW: exec C:/Xilinx/Vitis_HLS/2024.1/win64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-systemc-detector -import-directive=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/.systemc_flag -fix-errors C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0
+Command         clang_tidy done; 0.346 sec.
+INFO-FLOW: Running: clang-tidy CDT preprocess 39
+Execute         clang_tidy xilinx-directive2pragma -desc directive2pragma C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp std=gnu++14 -target fpga  -directive=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/all.directive.json 
+INFO-FLOW: exec C:/Xilinx/Vitis_HLS/2024.1/win64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-directive2pragma -import-directive=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/all.directive.json -fix-errors C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0
+Command         clang_tidy done; 0.576 sec.
+INFO-FLOW: Done: clang-tidy CDT preprocess 39 time: 0.6 seconds per iteration
+INFO-FLOW: Calling xilinx-label-all-loops ... 
+INFO-FLOW: Calling xilinx-aggregate-on-hls-vector ... 
+Execute         clang_tidy -errorcheck -desc loop-label xilinx-label-all-loops,xilinx-aggregate-on-hls-vector,,xilinx-warn-mayneed-no-ctor-attribute C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp std=gnu++14 -target fpga  
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2024.1/win64/tools/clang-3.9-csynth/bin/clang-tidy -export-fixes=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp.clang-tidy.loop-label.diag.yml -header-filter=.* --checks=-*,xilinx-label-all-loops,xilinx-aggregate-on-hls-vector,,xilinx-warn-mayneed-no-ctor-attribute -fix-errors C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0 > C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp.clang-tidy.loop-label.out.log 2> C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp.clang-tidy.loop-label.err.log
+Execute           source C:/Xilinx/Vitis_HLS/2024.1/tps/tcl/tcllib1.11.1/yaml/yaml.tcl 
+Command         clang_tidy done; 0.684 sec.
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2024.1/win64/tools/clang-3.9-csynth/bin/xilinx-dataflow-lawyer -export-fixes=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp.xilinx-dataflow-lawyer.diag.yml C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp -- -std=gnu++14 -target fpga -fhls -ferror-limit=0 -fstrict-dataflow > C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp.xilinx-dataflow-lawyer.out.log 2> C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp.xilinx-dataflow-lawyer.err.log
+Execute         ap_part_info -name xc7z020-clg400-1 -data info 
+INFO-FLOW: compiling source code to llvm bc
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2024.1/win64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp.clang.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fno-limit-debug-info -fhls -flto -fno-exceptions -Wno-error=c++11-narrowing -hls-emit-hint-scope C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp -Isrc -fno-math-errno -c -emit-llvm -mllvm -disable-llvm-optzns -Werror=implicit-function-declaration -Werror=implicit-hls-streams -Werror=return-type -Wpragmas -Wunused-parameter -Wdump-hls-pragmas -Wno-error=dump-hls-pragmas -hls-clock-period=10 -fno-threadsafe-statics -fno-use-cxa-atexit -std=gnu++14 -target fpga64-xilinx-linux-gnu -D__VITIS_HLS__ -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I C:/Xilinx/Vitis_HLS/2024.1/common/technology/autopilot -I C:/Xilinx/Vitis_HLS/2024.1/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -g -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.bc {-hls-platform-db-name=C:\Xilinx\Vitis_HLS\2024.1\common/technology\xilinx/common/platform.db} -hls-platform-name=zynq_slow -device-resource-info=BRAM_280.000000_DSP_220.000000_FF_106400.000000_LUT_53200.000000_SLICE_13300.000000_URAM_0.000000 -device-name-info=xc7z020clg400-1 > C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp.clang.out.log 2> C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.pp.0.cpp.clang.err.log
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 3.599 seconds; current allocated memory: 142.594 MB.
+INFO-FLOW: Linking Debug ...
+INFO-FLOW: Linking dut bc code.
+Execute         run_link_or_opt -out C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.0.bc -args  "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.g.bc"  
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2024.1/win64/tools/clang-3.9-csynth/bin/llvm-link C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.g.bc -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.0.bc > C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.0.bc.llvm-link.out.log 2> C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.0.bc.llvm-link.err.log
+INFO-FLOW: 
+Execute         run_link_or_opt -opt -out C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.1.lower.bc -args C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.0.bc -reflow-lower-math-intrinsics 
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2024.1/win64/tools/clang-3.9-csynth/bin/opt -pass-remarks-missed=reflow|pasta|unroll -pass-remarks=reflow|pasta|unroll|inline -pass-remarks-output=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.1.lower.bc.opt.diag.yml C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.0.bc -reflow-lower-math-intrinsics -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.1.lower.bc > C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.1.lower.bc.opt.out.log 2> C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.1.lower.bc.opt.err.log
+INFO-FLOW: 
+INFO-FLOW: Running: gen_design_size_report post-opt
+INFO-FLOW: Done: gen_design_size_report post-opt time: 0 seconds per iteration
+INFO-FLOW: Linking math bc lib
+Execute         run_link_or_opt -out C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.2.m1.bc -args C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.1.lower.bc -only-needed C:/Xilinx/Vitis_HLS/2024.1/win64/lib/libhlsm_39.bc C:/Xilinx/Vitis_HLS/2024.1/win64/lib/libhlsmc++_39.bc 
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2024.1/win64/tools/clang-3.9-csynth/bin/llvm-link C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.1.lower.bc -only-needed C:/Xilinx/Vitis_HLS/2024.1/win64/lib/libhlsm_39.bc C:/Xilinx/Vitis_HLS/2024.1/win64/lib/libhlsmc++_39.bc -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.2.m1.bc > C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.2.m1.bc.llvm-link.out.log 2> C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.2.m1.bc.llvm-link.err.log
+INFO-FLOW: 
+Command         run_link_or_opt done; 1.417 sec.
+Execute         run_link_or_opt -opt -out C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.3.fpc.bc -args C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.2.m1.bc -reflow-globaldce -hls-top-function-name=fir_filter -reflow-float-conversion 
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2024.1/win64/tools/clang-3.9-csynth/bin/opt -pass-remarks-missed=reflow|pasta|unroll -pass-remarks=reflow|pasta|unroll|inline -pass-remarks-output=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.3.fpc.bc.opt.diag.yml C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.2.m1.bc -reflow-globaldce -hls-top-function-name=fir_filter -reflow-float-conversion -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.3.fpc.bc > C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.3.fpc.bc.opt.out.log 2> C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.3.fpc.bc.opt.err.log
+INFO-FLOW: 
+INFO-FLOW: Running: gen_design_size_report post-opt
+INFO-FLOW: Done: gen_design_size_report post-opt time: 0 seconds per iteration
+Command         run_link_or_opt done; 0.606 sec.
+Execute         run_link_or_opt -out C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.4.m2.bc -args C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.3.fpc.bc -only-needed C:/Xilinx/Vitis_HLS/2024.1/win64/lib/libfloatconversion_39.bc 
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2024.1/win64/tools/clang-3.9-csynth/bin/llvm-link C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.3.fpc.bc -only-needed C:/Xilinx/Vitis_HLS/2024.1/win64/lib/libfloatconversion_39.bc -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.4.m2.bc > C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.4.m2.bc.llvm-link.out.log 2> C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.4.m2.bc.llvm-link.err.log
+INFO-FLOW: 
+Execute         run_link_or_opt -opt -out C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.5.gdce.bc -args C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.4.m2.bc -reflow-globaldce -hls-top-function-name=fir_filter 
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2024.1/win64/tools/clang-3.9-csynth/bin/opt -pass-remarks-missed=reflow|pasta|unroll -pass-remarks=reflow|pasta|unroll|inline -pass-remarks-output=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.5.gdce.bc.opt.diag.yml C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.4.m2.bc -reflow-globaldce -hls-top-function-name=fir_filter -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.5.gdce.bc > C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.5.gdce.bc.opt.out.log 2> C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.5.gdce.bc.opt.err.log
+INFO-FLOW: 
+INFO-FLOW: Running: gen_design_size_report post-opt
+INFO-FLOW: Done: gen_design_size_report post-opt time: 0 seconds per iteration
+Execute         send_msg_by_id INFO @200-777@%s Vivado 
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+Execute         is_m_axi_addr64 
+INFO-FLOW: Doing LTO.
+INFO-FLOW: run_clang (background poll_ms 5000) exec: C:/Xilinx/Vitis_HLS/2024.1/win64/tools/clang-3.9-csynth/bin/clang -foptimization-record-file=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.0.bc.clang.reflow.diag.yml -mllvm -pass-remarks-missed=reflow|pasta|unroll -mllvm -pass-remarks=reflow|pasta|unroll|inline -fhls -mllvm -hls-top-function-name=fir_filter -mllvm -hls-db-dir -mllvm C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db -emit-llvm -c -target fpga64-xilinx-none -mllvm -xcl-xmlinfo=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/kernel.internal.xml -mllvm -top-io-mapping-info=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/top-io-fe.xml -mllvm -hls-bitcode-version=3.1 -mllvm -reflow-enable-slave-interface-default-setting=true -mllvm -gen-kernel-xml=false -mllvm -default-maxi-offset=slave -mllvm -maxi-latency=0 -mllvm -hls-maxi-data-size-in-bits=8 -mllvm -hls-maxi-max-data-size-in-bits=1024 -mllvm -hls-max-widen-size-in-bits=0 -mllvm -xcl-kernel-max-mem-ports=0 -mllvm -maxi-read-trans=16 -mllvm -maxi-write-trans=16 -mllvm -maxi-read-burst-len=16 -mllvm -maxi-write-burst-len=16 -mllvm -reflow-enable-saxi-64bits=0 -mllvm -reflow-basic-block-instr-threshold=200000 -mllvm -reflow-auto-pipeline-threshold=64 -mllvm -reflow-enable-maxi-auto-id-channel=0 -mllvm -enable-fp-thr=0 -mllvm -reflow-bdd-simplify-threshold=1048576 -mllvm -reflow-fanout-threshold=16 -mllvm -reflow-complete-threshold=4 -mllvm -reflow-array-promotion-threshold=64 -mllvm -assume-maxi-align=1 -mllvm -reflow-enable-dataflow-strict-mode-checking=1 -ftime-report -mllvm -time-passes -mllvm -reflow-auto-array-partition-mode=default -mllvm -reflow-enable-auto-small-array-partition=true -mllvm -reflow-enable-auto-array-partition-for-flatten=true -mllvm -reflow-enable-auto-parallel-performance-driven=true -mllvm -reflow-enable-partition-for-automation=true -mllvm -reflow-aggregate-bitwidth-threshold=4096 -mllvm -reflow-reserved-saxilite-registers=0 -mllvm -enable-reflow-auto-loop-pipeline -mllvm -reflow-max-unroll-threshold=409600 -mllvm -auto-unroll-tripcount-threshold=0 -mllvm -reflow-assume-no-address-wrap=true -mllvm -reflow-enable-occurrence-inference=true -mllvm -reflow-emit-hint-scope=true -mllvm -reflow-enable-codegen-with-if=true -mllvm -hls -mllvm -disable-inlined-alloca-merging=true -mllvm -default-clock-period=10 -mllvm -use_read_first_ram_in_loop=1 -mllvm -default-clock-uncertainty=2.7 -x ir C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.5.gdce.bc -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.lto.bc {-hls-platform-db-name=C:\Xilinx\Vitis_HLS\2024.1\common/technology\xilinx/common/platform.db} -hls-platform-name=zynq_slow -device-resource-info=BRAM_280.000000_DSP_220.000000_FF_106400.000000_LUT_53200.000000_SLICE_13300.000000_URAM_0.000000 -device-name-info=xc7z020clg400-1 2> C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.ld.0.bc.clang.reflow.err.log bg_poll_cmd: ::AP::poll_clang_39_closed_source
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 646 Compile/Link C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 646 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 668 Unroll/Inline (step 1) C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 668 instructions in the design after the 'Unroll/Inline (step 1)' phase of compilation. See the Design Size Report for more details: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 517 Unroll/Inline (step 2) C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 517 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 518 Unroll/Inline (step 3) C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 518 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 518 Unroll/Inline (step 4) C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 518 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 419 Array/Struct (step 1) C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 419 instructions in the design after the 'Array/Struct (step 1)' phase of compilation. See the Design Size Report for more details: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 419 Array/Struct (step 2) C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 419 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 419 Array/Struct (step 3) C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 419 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 419 Array/Struct (step 4) C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 419 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 448 Array/Struct (step 5) C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 448 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 448 Performance (step 1) C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 448 instructions in the design after the 'Performance (step 1)' phase of compilation. See the Design Size Report for more details: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 446 Performance (step 2) C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 446 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 415 Performance (step 3) C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 415 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 415 Performance (step 4) C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 415 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 471 HW Transforms (step 1) C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 471 instructions in the design after the 'HW Transforms (step 1)' phase of compilation. See the Design Size Report for more details: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+Execute         send_msg_by_id INFO @200-1995@%s%s%s 470 HW Transforms (step 2) C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt 
+INFO: [HLS 200-1995] There were 470 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 214-291] Loop 'shift_loop' is marked as complete unroll implied by the pipeline pragma (src/fir_filter.cpp:51:9)
+INFO: [HLS 214-291] Loop 'mac_loop' is marked as complete unroll implied by the pipeline pragma (src/fir_filter.cpp:60:9)
+INFO: [HLS 214-186] Unrolling loop 'shift_loop' (src/fir_filter.cpp:51:9) in function 'fir_filter' completely with a factor of 31 (src/fir_filter.cpp:9:0)
+INFO: [HLS 214-186] Unrolling loop 'mac_loop' (src/fir_filter.cpp:60:9) in function 'fir_filter' completely with a factor of 32 (src/fir_filter.cpp:9:0)
+INFO: [HLS 214-186] Unrolling loop 'init_delay_line' (src/fir_filter.cpp:24:5) in function 'fir_filter' completely with a factor of 32 (src/fir_filter.cpp:9:0)
+INFO: [HLS 214-248] Applying array_partition to 'coeffs': Complete partitioning on dimension 1. (src/fir_filter.cpp:9:0)
+INFO-FLOW: DBG:PUTS: copy_raw_kernel_xml ap_link_39: kernel.xml not generated: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/kernel.internal.xml
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 7.848 seconds; current allocated memory: 144.293 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.006 seconds; current allocated memory: 144.297 MB.
+Execute         opt_and_import_c a -opt_level=2 -skip_syncheck=0 -ng=0 -keep_printf=0 
+Execute           cleanup_all_models 
+INFO: [HLS 200-10] Starting code transformations ...
+INFO-FLOW: Running Standard Transforms...
+Execute           transform -hls -share-std-xform -demangle-name -inline-byval-memcpy -always-inline -promote-dbg-pointer -interface-preproc -mem2reg -scalarrepl -mem2reg -keep-read-access -instcombine -dce -promote-dbg-pointer -bitop-raise -loop-simplify -indvarspre -indvars -loop-simplify -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -basicaa -simplifycfg -mem2reg -globalopt -global-constprop -deadargelim -instcombine -simplifycfg -scalarrepl -instcombine -reassociate -licm -simplifycfg -loop-simplify -indvars -instcombine -simplifycfg -mem2reg -loop-simplify -indvars -instcombine -gvn -gvn -instcombine -adce -break-crit-edges -simplifycfg -loop-delete -global-array-opt -dce -dse -adce -find-syn-modules -top fir_filter -deadargelim -mem2reg -instcombine -dce -presyn-prepare -interface-preproc -syn-check -check-rec-only -find-region -simplifycfg -func-extr -function-inline -globaldce -mem2reg -instcombine -dce -gvn -globaldce -adce -adse -constprop -instcombine -bit-constprop -instcombine -dce -simplifycfg -bitop-raise -simplifycfg -dce -loop-delete -reassociate -globalopt -global-privatize -mem2reg -dce -global-constprop -pointer-simplify -constprop -dce -promote-dbg-pointer -norm-name C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.0.bc -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.1.bc -f -phase std-opt 
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.095 seconds; current allocated memory: 149.809 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO-FLOW: Checking Synthesizability 1/2..
+Execute           transform -hls -syn-check -check-rec-only -scalarrepl -norm-name -dce -mem2reg -instcombine -directive-preproc -mem2reg -dse -dce -dce -pag -array-normalize -instcombine -dce -array-seg-normalize -instcombine -dce -data-pack -instcombine -dce -inst-simplify -array-flatten -instcombine -dce -array-burst -dce -deadargelim -promote-global-argument -simplifycfg -mem2reg -globaldce -dce -deadargelim -dce -instcombine -function-inline -globaldce -dce -doublePtrSimplify -doublePtrElim -dce -doublePtrSimplify -promote-dbg-pointer -dce -scalarrepl -dse -adse -instcombine -ptrLegalization -simplifycfg -dce -instcombine -pointer-simplify -ptrArgReplace -dce -instcombine -resolve-double-ptr -scalarrepl -norm-name -dce -mem2reg -instcombine -ptrLegalization -simplifycfg -deadargelim -instcombine -dce -inst-simplify -directive-preproc -mem2reg -dse -dce -globaldce C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.1.bc -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.2.prechk.bc -f 
+INFO-FLOW: Checking Synthesizability 2/2..
+Execute           transform -syn-check C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.2.prechk.bc -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.2.bc -f -phase syn-check 
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.078 seconds; current allocated memory: 151.879 MB.
+INFO-FLOW: Compiler optimizing ...
+INFO-FLOW: Share syncheck's 1.bc for syn flow: copy C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.g.1.bc to C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.o.1.bc
+INFO-FLOW: Presyn 1...
+Execute           transform -hls -tmp C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db -interface-port-rename -directive-preproc -mem2reg -dse -dce -scalarrepl -norm-name -deadargelim -mem2reg -instcombine -dce -simplifycfg -dce -resource-proc -clib-intrinsic-prepare -dce -func-buffer -dce -pag -array-normalize -func-legal -instcombine -gvn -constprop -dce -simplifycfg -mem2reg -globaldce -resolve-double-ptr -dce -deadargelim -dce -instcombine -ptrArgReplace -mem2reg -dce -array-seg-normalize -deadargelim -instcombine -dce -directive-preproc -mem2reg -dse -dce -pointer-simplify -dce -port-alignment -dce -interface-preproc -data-pack -instcombine -dce -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -loop-simplify -indvars -instcombine -gvn -loop-simplify -mem2reg -dce -find-region -instcombine -inst-simplify -interface-preproc -cfgopt -instcombine -indvars -loop-simplify -loop-bound -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -clean-region -attach-range -gvn -inst-simplify -constprop -simplifycfg -dce -pointer-simplify -dce -globalopt -constprop -dce -array-promote -constprop -dce -ptrArgReplace -mem2reg -simplifycfg -dce -instcombine -dce -array-transform-check -array-reshape -instcombine -simplifycfg -dce -ptrArgReplace -deadargelim -mem2reg -instcombine -simplifycfg -dce -indvars -loop-simplify -loop-bound -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -duplicate-dataflow-processes -globaldce -instcombine -array-partition -prepare-dynamic-array-partition -instcombine -simplifycfg -dce -ptrArgReplace -global-constprop -deadargelim -mem2reg -func-legal -dce -global-constprop -deadargelim -mem2reg -simplifycfg -dce -merge-param -deadargelim -globalopt -constprop -dce -array-promote -constprop -dce -ptrArgReplace -mem2reg -simplifycfg -dce -mem-intrinsic-preproc -dce -global-internalize -global-privatize -mem2reg -globaldce -lcssa -loop-simplify -phi-select-elim -promote-global-argument -ptrArgReplace -mem2reg -dce -globalopt -mergereturn -simplify-global-access -mem2reg -dce -pointer-simplify -dce -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -functionattrs -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -dce -norm-name -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -accesses-merge -function-inline -complex-op-raise -inst-simplify -globaldce -func-legal -dce -loop-bound -arraycheck -bitwidthmin2 -bitwidthmin2 -on-by-dataflow -loop-delete -instcombine -simplifycfg -globaldce -dce -gvn -deadargelim -dce -loop-simplify -clean-region -simplifycfg -propagate-stable-arguments -loop-stream -instcombine -simplifycfg -dce -globaldce -duplicate-dataflow-processes -stream-intrinsic-preproc -dce -check-ap-stream -loop-simplify -eliminate-keepreads -extract-dataflow-in-loop -loop-simplify -dce -gvn -deadargelim -dse -duplicate-dataflow-processes -check-dataflow-syntax -legalize-stream-variable -globaldce -legalize-global -extract-subproc -dce -dead-channel-elimination -canonicalize-gep -globaldce -dce -gvn -hls-dead-arg-elim -deadargelim -directive-preproc -canonicalize-dataflow -dce -globaldce -scalar-preprocessing -scalar-propagation2 -scalar-stream -deadargelim -globaldce -mem2reg -check-dataflow-channels -function-stream -dce -globaldce -prop-fifo-spec -internal-stream-gen -canonicalize-gep -globaldce -dce -gvn -deadargelim -mergereturn -indvars -loop-simplify -instcombine -array-stream -array-seg-normalize -array-partition -clean-array-spec -func-legal -instcombine -simplifycfg -dce -bundle-memfifo-ops -deadargelim -directive-preproc -mem2reg -dse -dce -group-axi-access -licm -simplifycfg -dce -loop-delete -hls-display -norm-name C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.o.1.bc -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.o.1.tmp.bc -f 
+Command           transform done; 0.132 sec.
+INFO-FLOW: Presyn 2...
+Execute           transform -hls -keep-callgraph -scalarrepl -mem2reg -port-alignment -attach-range -dce -pipe-mux-gen -indvars -loop-bound -inst-simplify -instcombine -dce -merge-array-access -mem2reg -dce -clean-region -mergereturn -if-conv -instcombine -dce -constprop -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -scalarrepl -mem2reg -global-constprop -deadargelim -deadargelim -instcombine -dce -simplifycfg -ptrArgReplace -mem2reg -function-inline -globaldce -mem2reg -instcombine -dce -expr-balance -instcombine -dce -bitwidthmin2 -bitwidthmin2 -interface-preproc -directive-preproc -inst-rectify -instcombine -dce -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -functionattrs -constprop -instcombine -bit-constprop -simplify-global-access -globalopt -globaldce -inst-simplify -instcombine -elimdeaddata -dce -loop-delete -simplifycfg -loop-simplify -barrier -norm-name C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.o.1.tmp.bc -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.o.2.bc -f -phase presyn 
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/fir_filter.cpp:45:9) to (src/fir_filter.cpp:44:5) in function 'fir_filter'... converting 63 basic blocks.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.189 seconds; current allocated memory: 176.391 MB.
+Execute           transform -hls -auto-function-inline -globaldce -ptrArgReplace -mem2reg -dce -reset-lda -loop-simplify -indvars -aggr-aa -licm -loop-dep -loop-bound -licm -loop-simplify -loop-sink-hoist -flattenloopnest -array-flatten -gvn -instcombine -dce -array-map -dce -func-legal -gvn -adce -instcombine -cfgopt -simplifycfg-lite -loop-simplify -array-burst -promote-global-argument -dce -array-seg-normalize -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -gvn -gvn -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -dse -adse -adce -licm -inst-simplify -dce -globaldce -instcombine -array-stream -eliminate-keepreads -instcombine -dce -deadargelim -doublePtrSimplify -doublePtrElim -dce -doublePtrSimplify -promote-dbg-pointer -dce -scalarrepl -mem2reg -norm-name -mem2reg -instcombine -dse -adse -adce -ptrLegalization -dce -array-flatten -dce -instcombine -check-doubleptr -loop-rot -constprop -inst-simplify -cfgopt -simplifycfg-lite -loop-simplify -indvars -pointer-simplify -dce -loop-bound -loop-simplify -loop-preproc -constprop -global-constprop -gvn -mem2reg -instcombine -dce -loop-bound -loop-merge -dce -deadargelim -dce -canonicalize-dataflow -dce -deadargelim -globaldce -mem2reg -bram-byte-enable -inst-simplify -inst-rectify -instcombine -adce -deadargelim -load-elim -read-loop-dep -loop-simplify -loop-extract-inner -directive-preproc -bitwidthmin2 -bitwidthmin2 -read-loop-dep -interface-preproc -directive-preproc -interface-gen -bram-byte-enable-spec-prop -mul2addshift -deadargelim -inst-simplify -dce -mem2reg -instcombine -gvn -dce -adse -loop-bound -instcombine -cfgopt -simplifycfg-lite -loop-simplify -clean-region -io-protocol -find-region -mem2reg -bitop-raise -complex-op-raise -inst-simplify -inst-rectify -instcombine -adce -deadargelim -float-op-raise -loop-simplify -phi-opt -bitop-raise -cfgopt -simplifycfg-lite -strip-dead-prototypes -interface-lower -bitop-lower -intrinsic-lower -auto-function-inline -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -inst-simplify -simplifycfg-lite -loop-simplify -mergereturn -inst-simplify -inst-rectify -globaldce -dce -load-elim -bitop-lower -float-op-raise -fma-raise -loop-rewind -pointer-simplify -dce -cfgopt -dce -loop-bound -loop-dep -read-loop-dep -dce -dyn-mem-reuse -dce -recurrence-min -dce -share-scalar-alloca -deadargelim -dce -check-stream -norm-name -legalize -inst-clarity -bitwidth -dce -validate-dataflow -dump-loop-dep-to-ir -check-all-ssdm -dump-complexity-metric C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.o.2.bc -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.o.3.bc -f -phase build-ssdm 
+Execute             auto_get_db
+INFO-FLOW: Building ssdm...
+Execute           transform -hls -cdfg-build C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.o.3.bc -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/a.o.3.bc -f -phase build-ssdm 
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.127 seconds; current allocated memory: 179.266 MB.
+INFO-FLOW: Finish building internal data model.
+Command         opt_and_import_c done; 0.5 sec.
+Command       elaborate done; 11.997 sec.
+Execute       ap_eval exec zip -j C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/dut.hcp $dbDir/a.o.3.bc $dbDir/${topname}.rtl_wrap.cfg.tcl $dbDir/apatb_${topname}.cpp $dbDir/apatb_${topname}_util.cpp $dbDir/apatb_${topname}_ir.ll $dbDir/mapper_${topname}.cpp $dbDir/top-io-fe.xml $dbDir/kernel.internal.xml $workdir/../hls.app 
+Command       ap_eval done; 0.185 sec.
+Execute       autosyn -from_csynth_design=1 
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO-FLOW: Synthesizing C/C++ design ...
+INFO: [HLS 200-10] Synthesizing 'fir_filter' ...
+Execute         ap_set_top_model fir_filter 
+Execute         get_model_list fir_filter -filter all-wo-channel -topdown 
+Execute         preproc_iomode -model fir_filter 
+Execute         preproc_iomode -model fir_filter_Pipeline_sample_loop 
+Execute         get_model_list fir_filter -filter all-wo-channel 
+INFO-FLOW: Model list for configure: fir_filter_Pipeline_sample_loop fir_filter
+INFO-FLOW: Configuring Module : fir_filter_Pipeline_sample_loop ...
+Execute         set_default_model fir_filter_Pipeline_sample_loop 
+Execute         apply_spec_resource_limit fir_filter_Pipeline_sample_loop 
+INFO-FLOW: Configuring Module : fir_filter ...
+Execute         set_default_model fir_filter 
+Execute         apply_spec_resource_limit fir_filter 
+INFO-FLOW: Model list for preprocess: fir_filter_Pipeline_sample_loop fir_filter
+INFO-FLOW: Preprocessing Module: fir_filter_Pipeline_sample_loop ...
+Execute         set_default_model fir_filter_Pipeline_sample_loop 
+Execute         cdfg_preprocess -model fir_filter_Pipeline_sample_loop 
+Execute         rtl_gen_preprocess fir_filter_Pipeline_sample_loop 
+INFO-FLOW: Preprocessing Module: fir_filter ...
+Execute         set_default_model fir_filter 
+Execute         cdfg_preprocess -model fir_filter 
+Execute         rtl_gen_preprocess fir_filter 
+INFO-FLOW: Model list for synthesis: fir_filter_Pipeline_sample_loop fir_filter
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'fir_filter_Pipeline_sample_loop' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+Execute         set_default_model fir_filter_Pipeline_sample_loop 
+Execute         schedule -model fir_filter_Pipeline_sample_loop 
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=acc_61) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_59) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_57) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_55) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_53) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_51) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_49) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_47) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_45) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_43) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_41) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_39) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_37) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_35) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_33) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_31) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_29) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_27) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_25) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_23) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_21) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_19) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_17) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_15) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_13) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_11) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_9) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_7) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_5) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_3) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_1) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'sample_loop'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 35, loop 'sample_loop'
+INFO: [SCHED 204-11] Finished scheduling.
+Command         schedule done; 0.826 sec.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 1.12 seconds; current allocated memory: 186.191 MB.
+Execute         syn_report -verbosereport -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter_Pipeline_sample_loop.verbose.sched.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         db_write -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter_Pipeline_sample_loop.sched.adb -f 
+INFO-FLOW: Finish scheduling fir_filter_Pipeline_sample_loop.
+Execute         set_default_model fir_filter_Pipeline_sample_loop 
+Execute         bind -model fir_filter_Pipeline_sample_loop 
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.148 seconds; current allocated memory: 187.773 MB.
+Execute         syn_report -verbosereport -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter_Pipeline_sample_loop.verbose.bind.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         db_write -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter_Pipeline_sample_loop.bind.adb -f 
+INFO-FLOW: Finish binding fir_filter_Pipeline_sample_loop.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'fir_filter' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+Execute         set_default_model fir_filter 
+Execute         schedule -model fir_filter 
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.181 seconds; current allocated memory: 188.395 MB.
+Execute         syn_report -verbosereport -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.verbose.sched.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         db_write -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.sched.adb -f 
+INFO-FLOW: Finish scheduling fir_filter.
+Execute         set_default_model fir_filter 
+Execute         bind -model fir_filter 
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+Command         bind done; 0.101 sec.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.134 seconds; current allocated memory: 189.223 MB.
+Execute         syn_report -verbosereport -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.verbose.bind.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         db_write -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.bind.adb -f 
+INFO-FLOW: Finish binding fir_filter.
+Execute         get_model_list fir_filter -filter all-wo-channel 
+INFO-FLOW: Preprocessing for RTLGen ...
+Execute         rtl_gen_preprocess fir_filter_Pipeline_sample_loop 
+Execute         rtl_gen_preprocess fir_filter 
+INFO-FLOW: Model list for RTL generation: fir_filter_Pipeline_sample_loop fir_filter
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'fir_filter_Pipeline_sample_loop' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+Execute         create_rtl_model fir_filter_Pipeline_sample_loop -top_prefix fir_filter_ -sub_prefix fir_filter_ -mg_file C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter_Pipeline_sample_loop.compgen.tcl 
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'fir_filter_Pipeline_sample_loop' pipeline 'sample_loop' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_16s_32ns_32_4_1': 30 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_16s_32s_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_16s_32_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'fir_filter_Pipeline_sample_loop'.
+Command         create_rtl_model done; 0.191 sec.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.283 seconds; current allocated memory: 198.070 MB.
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.rtl_wrap.cfg.tcl 
+Execute         gen_rtl fir_filter_Pipeline_sample_loop -style xilinx -f -lang vhdl -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/vhdl/fir_filter_fir_filter_Pipeline_sample_loop 
+Execute         gen_rtl fir_filter_Pipeline_sample_loop -style xilinx -f -lang vlog -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/verilog/fir_filter_fir_filter_Pipeline_sample_loop 
+Execute         syn_report -csynth -model fir_filter_Pipeline_sample_loop -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/fir_filter_Pipeline_sample_loop_csynth.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         syn_report -rtlxml -model fir_filter_Pipeline_sample_loop -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/fir_filter_Pipeline_sample_loop_csynth.xml 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         syn_report -verbosereport -model fir_filter_Pipeline_sample_loop -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter_Pipeline_sample_loop.verbose.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         db_write -model fir_filter_Pipeline_sample_loop -f -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter_Pipeline_sample_loop.adb 
+Execute         db_write -model fir_filter_Pipeline_sample_loop -bindview -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/design.bindinfo.xml 
+Execute         gen_tb_info fir_filter_Pipeline_sample_loop -p C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter_Pipeline_sample_loop 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'fir_filter' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+Execute         create_rtl_model fir_filter -top_prefix  -sub_prefix fir_filter_ -mg_file C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.compgen.tcl 
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/in_stream_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/in_stream_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/in_stream_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/in_stream_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/out_stream_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/out_stream_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/out_stream_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/out_stream_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_0' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_1' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_2' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_3' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_4' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_5' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_6' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_7' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_8' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_9' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_10' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_11' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_12' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_13' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_14' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_15' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_16' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_17' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_18' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_19' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_20' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_21' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_22' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_23' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_24' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_25' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_26' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_27' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_28' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_29' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_30' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_31' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/num_taps' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/num_samples' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'fir_filter' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'coeffs_0', 'coeffs_1', 'coeffs_2', 'coeffs_3', 'coeffs_4', 'coeffs_5', 'coeffs_6', 'coeffs_7', 'coeffs_8', 'coeffs_9', 'coeffs_10', 'coeffs_11', 'coeffs_12', 'coeffs_13', 'coeffs_14', 'coeffs_15', 'coeffs_16', 'coeffs_17', 'coeffs_18', 'coeffs_19', 'coeffs_20', 'coeffs_21', 'coeffs_22', 'coeffs_23', 'coeffs_24', 'coeffs_25', 'coeffs_26', 'coeffs_27', 'coeffs_28', 'coeffs_29', 'coeffs_30', 'coeffs_31', 'num_taps', 'num_samples' and 'return' to AXI-Lite port CTRL.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'fir_filter'.
+Command         create_rtl_model done; 1.079 sec.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 1.525 seconds; current allocated memory: 205.695 MB.
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.rtl_wrap.cfg.tcl 
+Execute         gen_rtl fir_filter -istop -style xilinx -f -lang vhdl -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/vhdl/fir_filter 
+Execute         gen_rtl fir_filter -istop -style xilinx -f -lang vlog -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/verilog/fir_filter 
+Execute         syn_report -csynth -model fir_filter -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/fir_filter_csynth.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         syn_report -rtlxml -model fir_filter -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/fir_filter_csynth.xml 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         syn_report -verbosereport -model fir_filter -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.verbose.rpt 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         db_write -model fir_filter -f -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.adb 
+Execute         db_write -model fir_filter -bindview -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/design.bindinfo.xml 
+Execute         gen_tb_info fir_filter -p C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter 
+Execute         export_constraint_db -f -tool general -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.constraint.tcl 
+Execute         syn_report -designview -model fir_filter -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.design.xml 
+Execute         syn_report -csynthDesign -model fir_filter -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth.rpt -MHOut C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/kernel_module_hierarchy.tcl 
+Execute           list_part -family xc7z020-clg400-1 
+Execute             ap_family_info -name xc7z020-clg400-1 -data names 
+Execute             ap_part_info -quiet -name xc7z020-clg400-1 -data family 
+Execute         syn_report -wcfg -model fir_filter -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter_dataflow_ana.wcfg 
+Execute         syn_report -protoinst -model fir_filter -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.protoinst 
+Execute         sc_get_clocks fir_filter 
+Execute         sc_get_portdomain fir_filter 
+INFO-FLOW: Model list for RTL component generation: fir_filter_Pipeline_sample_loop fir_filter
+INFO-FLOW: Handling components in module [fir_filter_Pipeline_sample_loop] ... 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter_Pipeline_sample_loop.compgen.tcl 
+INFO-FLOW: Found component fir_filter_mul_16s_16s_32_1_1.
+INFO-FLOW: Append model fir_filter_mul_16s_16s_32_1_1
+INFO-FLOW: Found component fir_filter_mac_muladd_16s_16s_32s_32_4_1.
+INFO-FLOW: Append model fir_filter_mac_muladd_16s_16s_32s_32_4_1
+INFO-FLOW: Found component fir_filter_mac_muladd_16s_16s_32ns_32_4_1.
+INFO-FLOW: Append model fir_filter_mac_muladd_16s_16s_32ns_32_4_1
+INFO-FLOW: Found component fir_filter_flow_control_loop_pipe_sequential_init.
+INFO-FLOW: Append model fir_filter_flow_control_loop_pipe_sequential_init
+INFO-FLOW: Handling components in module [fir_filter] ... 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.compgen.tcl 
+INFO-FLOW: Found component fir_filter_CTRL_s_axi.
+INFO-FLOW: Append model fir_filter_CTRL_s_axi
+INFO-FLOW: Found component fir_filter_regslice_both.
+INFO-FLOW: Append model fir_filter_regslice_both
+INFO-FLOW: Found component fir_filter_regslice_both.
+INFO-FLOW: Append model fir_filter_regslice_both
+INFO-FLOW: Found component fir_filter_regslice_both.
+INFO-FLOW: Append model fir_filter_regslice_both
+INFO-FLOW: Found component fir_filter_regslice_both.
+INFO-FLOW: Append model fir_filter_regslice_both
+INFO-FLOW: Found component fir_filter_regslice_both.
+INFO-FLOW: Append model fir_filter_regslice_both
+INFO-FLOW: Found component fir_filter_regslice_both.
+INFO-FLOW: Append model fir_filter_regslice_both
+INFO-FLOW: Found component fir_filter_regslice_both.
+INFO-FLOW: Append model fir_filter_regslice_both
+INFO-FLOW: Found component fir_filter_regslice_both.
+INFO-FLOW: Append model fir_filter_regslice_both
+INFO-FLOW: Append model fir_filter_Pipeline_sample_loop
+INFO-FLOW: Append model fir_filter
+INFO-FLOW: Generating RTL model list ...
+INFO-FLOW: All models in this session: fir_filter_mul_16s_16s_32_1_1 fir_filter_mac_muladd_16s_16s_32s_32_4_1 fir_filter_mac_muladd_16s_16s_32ns_32_4_1 fir_filter_flow_control_loop_pipe_sequential_init fir_filter_CTRL_s_axi fir_filter_regslice_both fir_filter_regslice_both fir_filter_regslice_both fir_filter_regslice_both fir_filter_regslice_both fir_filter_regslice_both fir_filter_regslice_both fir_filter_regslice_both fir_filter_Pipeline_sample_loop fir_filter
+INFO-FLOW: Generating C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/autopilot.rtl.models.txt file...
+INFO-FLOW: To file: write model fir_filter_mul_16s_16s_32_1_1
+INFO-FLOW: To file: write model fir_filter_mac_muladd_16s_16s_32s_32_4_1
+INFO-FLOW: To file: write model fir_filter_mac_muladd_16s_16s_32ns_32_4_1
+INFO-FLOW: To file: write model fir_filter_flow_control_loop_pipe_sequential_init
+INFO-FLOW: To file: write model fir_filter_CTRL_s_axi
+INFO-FLOW: To file: write model fir_filter_regslice_both
+INFO-FLOW: To file: write model fir_filter_regslice_both
+INFO-FLOW: To file: write model fir_filter_regslice_both
+INFO-FLOW: To file: write model fir_filter_regslice_both
+INFO-FLOW: To file: write model fir_filter_regslice_both
+INFO-FLOW: To file: write model fir_filter_regslice_both
+INFO-FLOW: To file: write model fir_filter_regslice_both
+INFO-FLOW: To file: write model fir_filter_regslice_both
+INFO-FLOW: To file: write model fir_filter_Pipeline_sample_loop
+INFO-FLOW: To file: write model fir_filter
+INFO-FLOW: Generating C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/autopilot.rtl.models.tcl file...
+INFO-FLOW: Finished generating RTL model list.
+
+
+INFO-FLOW: RTL Generation done.
+INFO-FLOW: CAS Generation done.
+INFO-FLOW: CBC Generation done.
+INFO-FLOW: DBG:PROC: ::AESL_AUTOMG::auto_generate_csynth_design
+INFO-FLOW: DBG:PUTS: read_platform_lib C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/common.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/APCoreGen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/op.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/op_simcore.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/interface.gen 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/common/xilinx.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/plb46.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/axi4.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute             source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/saxilite.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/util.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/xfft.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/xfir.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/DSP48/dsp48.gen 
+INFO-FLOW: DBG:PUTS:   using AESL_AUTOCG::g_clock_period=10.000 (was NA)
+INFO-FLOW: DBG:PROC: ::AESL_AUTOMG::generate_ip_cores gen_sim_model='1' gen_fp_models='0' gen_for_export='0' dstSCDir='' dstVhdlDir='C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/vhdl' dstVlogDir='C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/vlog' tclDir='C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db' modelList='fir_filter_mul_16s_16s_32_1_1
+fir_filter_mac_muladd_16s_16s_32s_32_4_1
+fir_filter_mac_muladd_16s_16s_32ns_32_4_1
+fir_filter_flow_control_loop_pipe_sequential_init
+fir_filter_CTRL_s_axi
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_Pipeline_sample_loop
+fir_filter
+' expOnly='0'
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute         ap_part_info -name xc7z020-clg400-1 -data names -quiet 
+Execute         ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter_Pipeline_sample_loop.compgen.tcl 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.compgen.tcl 
+Execute           source ./CTRL.slave.tcl 
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.536 seconds; current allocated memory: 210.875 MB.
+INFO-FLOW: DBG:PROC: ::HLSREPORTS::create_csynth_xml bind_info_var='bind_info' RtlSubPrefix='fir_filter_' outfile=''
+INFO-FLOW: Running: create_csynth_xml read xml data
+INFO-FLOW: Done: create_csynth_xml read xml data time: 0 seconds per iteration
+INFO-FLOW: Running: create_csynth_xml bind info
+INFO-FLOW: Done: create_csynth_xml bind info time: 0 seconds per iteration
+INFO-FLOW: Running: create_csynth_xml config info
+INFO-FLOW: Done: create_csynth_xml config info time: 0.3 seconds per iteration
+INFO-FLOW: Running: create_csynth_xml write xml
+INFO-FLOW: Done: create_csynth_xml write xml time: 0 seconds per iteration
+INFO-FLOW: DBG:PUTS:      create_csynth_xml wrote csynth_xml=C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/syn/report/csynth.xml
+INFO-FLOW: DBG:PROC: ::AP::DESIGN_DATA::generate_json generate_bd_files='0' generate_xo_files='0' modelList='fir_filter_mul_16s_16s_32_1_1
+fir_filter_mac_muladd_16s_16s_32s_32_4_1
+fir_filter_mac_muladd_16s_16s_32ns_32_4_1
+fir_filter_flow_control_loop_pipe_sequential_init
+fir_filter_CTRL_s_axi
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_Pipeline_sample_loop
+fir_filter
+' rtl_lang='both' bootstrap_tcl='false' outdir='' outfilename=''
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/top-io-be.tcl 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.compgen.dataonly.tcl 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.compgen.dataonly.tcl 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.rtl_wrap.cfg.tcl 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.compgen.dataonly.tcl 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter_Pipeline_sample_loop.tbgen.tcl 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute         ap_part_info -name xc7z020-clg400-1 -data names -quiet 
+Execute         ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.constraint.tcl 
+Execute         sc_get_clocks fir_filter 
+Execute         source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:PROC: ::HLSREPORTS::add_csynth_report_sections bind_info_dict='adapter_nodes {{BINDTYPE adapter ID {} IMPL {} LATENCY {} OPTYPE {} PRAGMA {} RTLNAME CTRL_s_axi_U SOURCE {} VARIABLE {} LOOP {} BUNDLEDNAME CTRL DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE s_axilite STORAGESIZE {} STORAGEUSAGE interface DISPNAME {bind_adapter }}} cache_nodes {} report_dict {TOPINST fir_filter MODULE2INSTS {fir_filter fir_filter fir_filter_Pipeline_sample_loop grp_fir_filter_Pipeline_sample_loop_fu_498} INST2MODULE {fir_filter fir_filter grp_fir_filter_Pipeline_sample_loop_fu_498 fir_filter_Pipeline_sample_loop} INSTDATA {fir_filter {DEPTH 1 CHILDREN grp_fir_filter_Pipeline_sample_loop_fu_498} grp_fir_filter_Pipeline_sample_loop_fu_498 {DEPTH 2 CHILDREN {}}} MODULEDATA {fir_filter_Pipeline_sample_loop {BINDINFO {{BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE seteq PRAGMA {} RTLNAME icmp_ln44_fu_1047_p2 SOURCE src/fir_filter.cpp:44 VARIABLE icmp_ln44 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op seteq} VISIBLE false} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME n_1_fu_1052_p2 SOURCE src/fir_filter.cpp:44 VARIABLE n_1 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE mul PRAGMA {} RTLNAME mul_16s_16s_32_1_1_U1 SOURCE src/fir_filter.cpp:63 VARIABLE acc LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32s_32_4_1_U2 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32s_32_4_1_U2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_1 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1555_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_2 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U3 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_1 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U3 SOURCE src/fir_filter.cpp:63 VARIABLE acc_3 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1563_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_4 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U4 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_2 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U4 SOURCE src/fir_filter.cpp:63 VARIABLE acc_5 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1571_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_6 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U5 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_3 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U5 SOURCE src/fir_filter.cpp:63 VARIABLE acc_7 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1579_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_8 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U6 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_4 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U6 SOURCE src/fir_filter.cpp:63 VARIABLE acc_9 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1587_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_10 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U7 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_5 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U7 SOURCE src/fir_filter.cpp:63 VARIABLE acc_11 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1595_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_12 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U8 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_6 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U8 SOURCE src/fir_filter.cpp:63 VARIABLE acc_13 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1603_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_14 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U9 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_7 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U9 SOURCE src/fir_filter.cpp:63 VARIABLE acc_15 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1611_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_16 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U10 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_8 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U10 SOURCE src/fir_filter.cpp:63 VARIABLE acc_17 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1619_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_18 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U11 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_9 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U11 SOURCE src/fir_filter.cpp:63 VARIABLE acc_19 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1627_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_20 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U12 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_10 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U12 SOURCE src/fir_filter.cpp:63 VARIABLE acc_21 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1635_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_22 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U13 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_11 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U13 SOURCE src/fir_filter.cpp:63 VARIABLE acc_23 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1643_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_24 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U14 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_12 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U14 SOURCE src/fir_filter.cpp:63 VARIABLE acc_25 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1651_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_26 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U15 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_13 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U15 SOURCE src/fir_filter.cpp:63 VARIABLE acc_27 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1659_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_28 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U16 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_14 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U16 SOURCE src/fir_filter.cpp:63 VARIABLE acc_29 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1667_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_30 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U17 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_15 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U17 SOURCE src/fir_filter.cpp:63 VARIABLE acc_31 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1675_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_32 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U18 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_16 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U18 SOURCE src/fir_filter.cpp:63 VARIABLE acc_33 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1683_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_34 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U19 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_17 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U19 SOURCE src/fir_filter.cpp:63 VARIABLE acc_35 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1691_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_36 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U20 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_18 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U20 SOURCE src/fir_filter.cpp:63 VARIABLE acc_37 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1699_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_38 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U21 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_19 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U21 SOURCE src/fir_filter.cpp:63 VARIABLE acc_39 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1707_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_40 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U22 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_20 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U22 SOURCE src/fir_filter.cpp:63 VARIABLE acc_41 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1715_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_42 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U23 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_21 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U23 SOURCE src/fir_filter.cpp:63 VARIABLE acc_43 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1723_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_44 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U24 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_22 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U24 SOURCE src/fir_filter.cpp:63 VARIABLE acc_45 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1731_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_46 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U25 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_23 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U25 SOURCE src/fir_filter.cpp:63 VARIABLE acc_47 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1739_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_48 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U26 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_24 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U26 SOURCE src/fir_filter.cpp:63 VARIABLE acc_49 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1747_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_50 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U27 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_25 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U27 SOURCE src/fir_filter.cpp:63 VARIABLE acc_51 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1755_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_52 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U28 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_26 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U28 SOURCE src/fir_filter.cpp:63 VARIABLE acc_53 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1763_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_54 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U29 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_27 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U29 SOURCE src/fir_filter.cpp:63 VARIABLE acc_55 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1771_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_56 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U30 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_28 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U30 SOURCE src/fir_filter.cpp:63 VARIABLE acc_57 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1779_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_58 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U31 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_29 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U31 SOURCE src/fir_filter.cpp:63 VARIABLE acc_59 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME grp_fu_1787_p2 SOURCE src/fir_filter.cpp:63 VARIABLE acc_60 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE mul PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U32 SOURCE src/fir_filter.cpp:63 VARIABLE mul_ln63_30 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op mul} VISIBLE true} {BINDTYPE op ID {} IMPL dsp_slice LATENCY 3 OPTYPE add PRAGMA {} RTLNAME mac_muladd_16s_16s_32ns_32_4_1_U32 SOURCE src/fir_filter.cpp:63 VARIABLE acc_61 LOOP sample_loop BUNDLEDNAME {} DSP 1 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME out_stream_TDATA SOURCE src/fir_filter.cpp:68 VARIABLE acc_63 LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE seteq PRAGMA {} RTLNAME out_word_last_fu_1070_p2 SOURCE src/fir_filter.cpp:71 VARIABLE out_word_last LOOP sample_loop BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op seteq} VISIBLE false}} AREA {DSP 32 BRAM 0 URAM 0}} fir_filter {BINDINFO {{BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setlt PRAGMA {} RTLNAME icmp_ln30_fu_591_p2 SOURCE src/fir_filter.cpp:30 VARIABLE icmp_ln30 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setlt} VISIBLE false} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME select_ln30_fu_597_p3 SOURCE src/fir_filter.cpp:30 VARIABLE select_ln30 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME icmp_ln33_fu_609_p2 SOURCE src/fir_filter.cpp:33 VARIABLE icmp_ln33 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME select_ln33_fu_675_p3 SOURCE src/fir_filter.cpp:33 VARIABLE select_ln33 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME select_ln36_fu_623_p3 SOURCE src/fir_filter.cpp:36 VARIABLE select_ln36 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME icmp_ln39_fu_635_p2 SOURCE src/fir_filter.cpp:39 VARIABLE icmp_ln39 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL fabric LATENCY 0 OPTYPE add PRAGMA {} RTLNAME num_samples_addr_0_op_fu_641_p2 SOURCE src/fir_filter.cpp:8 VARIABLE num_samples_addr_0_op LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op add} VISIBLE true} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME sub50_fu_647_p3 SOURCE src/fir_filter.cpp:39 VARIABLE sub50 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setne PRAGMA {} RTLNAME icmp_fu_691_p2 SOURCE src/fir_filter.cpp:33 VARIABLE icmp LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setne} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_2_fu_698_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_2 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setne PRAGMA {} RTLNAME icmp4_fu_715_p2 SOURCE src/fir_filter.cpp:33 VARIABLE icmp4 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setne} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_4_fu_722_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_4 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_5_fu_729_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_5 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_6_fu_736_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_6 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setne PRAGMA {} RTLNAME icmp7_fu_753_p2 SOURCE src/fir_filter.cpp:33 VARIABLE icmp7 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setne} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_8_fu_760_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_8 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_9_fu_767_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_9 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_10_fu_774_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_10 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_11_fu_781_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_11 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_12_fu_788_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_12 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_13_fu_795_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_13 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_14_fu_802_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_14 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setne PRAGMA {} RTLNAME icmp10_fu_819_p2 SOURCE src/fir_filter.cpp:33 VARIABLE icmp10 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setne} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_16_fu_826_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_16 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_17_fu_833_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_17 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_18_fu_840_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_18 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_19_fu_847_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_19 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_20_fu_854_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_20 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_21_fu_861_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_21 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_22_fu_868_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_22 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_23_fu_875_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_23 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_24_fu_882_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_24 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_25_fu_889_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_25 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_26_fu_896_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_26 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_27_fu_903_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_27 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_28_fu_910_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_28 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_29_fu_917_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_29 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME cmp31_30_fu_924_p2 SOURCE src/fir_filter.cpp:33 VARIABLE cmp31_30 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME empty_fu_655_p2 SOURCE src/fir_filter.cpp:3 VARIABLE empty LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE xor PRAGMA {} RTLNAME xor_ln44_fu_661_p2 SOURCE src/fir_filter.cpp:44 VARIABLE xor_ln44 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op xor} VISIBLE false} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME select_ln44_fu_667_p3 SOURCE src/fir_filter.cpp:44 VARIABLE select_ln44 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE setgt PRAGMA {} RTLNAME empty_49_fu_940_p2 SOURCE src/fir_filter.cpp:44 VARIABLE empty_49 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op setgt} VISIBLE false} {BINDTYPE op ID {} IMPL auto LATENCY 0 OPTYPE xor PRAGMA {} RTLNAME xor_ln44_1_fu_945_p2 SOURCE src/fir_filter.cpp:44 VARIABLE xor_ln44_1 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op xor} VISIBLE false} {BINDTYPE op ID {} IMPL auto_sel LATENCY 0 OPTYPE select PRAGMA {} RTLNAME select_ln44_1_fu_950_p3 SOURCE src/fir_filter.cpp:44 VARIABLE select_ln44_1 LOOP {} BUNDLEDNAME {} DSP 0 BRAM 0 URAM 0 STORAGESUBTYPE {} DISPNAME {bind_op select} VISIBLE false}} AREA {DSP 32 BRAM 0 URAM 0}}}}'
+INFO-FLOW: DBG:PUTS:      update_csynth_reports json2rpt_hw_sw_interfaces
+INFO-FLOW: Running: gen_csynth_sec_pragma
+INFO-FLOW: Done: gen_csynth_sec_pragma time: 0 seconds per iteration
+INFO-FLOW: DBG:PUTS:      update_csynth_reports wrote xml
+INFO-FLOW: DBG:PUTS:      update_csynth_reports appended to csynth rpt file
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 2 seconds. CPU system time: 1 seconds. Elapsed time: 2.061 seconds; current allocated memory: 217.613 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for fir_filter.
+INFO: [VLOG 209-307] Generating Verilog RTL for fir_filter.
+Execute         syn_report -model fir_filter -printsummary 
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 146.90 MHz
+Command       autosyn done; 5.978 sec.
+Command     csynth_design done; 18.261 sec.
+INFO: [HLS 200-2161] Finished Command csynth_design Elapsed time: 00:00:18; Allocated memory: 77.922 MB.
+Execute     cosim_design 
+INFO: [HLS 200-1510] Running: cosim_design 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:PUTS: read_platform_lib C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/common.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/APCoreGen.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/op.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/op_simcore.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/interface.gen 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/common/xilinx.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/plb46.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/axi4.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/saxilite.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/util.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/xfft.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/xfir.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/DSP48/dsp48.gen 
+Execute       ap_part_info -name xc7z020-clg400-1 -data names -quiet 
+Execute       ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.rtl_wrap.cfg.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2024.1/vcxx/libexec/clang -fno-builtin-isinf -fno-builtin-isnan -E -I../../src -Wno-unknown-pragmas -Wno-unknown-pragmas -DGCC_COMPATIBLE_APINT -DAESL_TB -D__HLS_COSIM__ -D__VITIS_HLS__ -D__USE_XOPEN2K8 -I C:/Xilinx/Vitis_HLS/2024.1/include -I include C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/tb/fir_filter_tb.cpp -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/./sim/autowrap/testbench/fir_filter_tb.cpp_pre.cpp -std=gnu++14 -D__DSP48E1__ --sysroot=C:/Xilinx/Vitis_HLS/2024.1/tps/mingw/10.0.0/win64.o/nt > C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter_tb.cpp.clang.autosim-tb.out.log 2> C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter_tb.cpp.clang.autosim-tb.err.log
+INFO-FLOW: TB processing: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/tb/fir_filter_tb.cpp C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/./sim/autowrap/testbench/fir_filter_tb.cpp_pre.cpp
+Execute       clang_tidy xilinx-tb-process -desc tb-process C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/./sim/autowrap/testbench/fir_filter_tb.cpp_pre.cpp.tb.cpp std=gnu++14 
+INFO-FLOW: exec C:/Xilinx/Vitis_HLS/2024.1/win64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-tb-process -fix-errors C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/./sim/autowrap/testbench/fir_filter_tb.cpp_pre.cpp.tb.cpp -- -std=gnu++14 -fhls -ferror-limit=0
+Command       clang_tidy done; 1.273 sec.
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+INFO-FLOW: run_clang exec: C:/Xilinx/Vitis_HLS/2024.1/vcxx/libexec/clang -fno-builtin-isinf -fno-builtin-isnan -E -I../.././src -DGCC_COMPATIBLE_APINT -DAESL_TB -D__HLS_COSIM__ -D__VITIS_HLS__ -D__USE_XOPEN2K8 -I C:/Xilinx/Vitis_HLS/2024.1/include -I include C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/src/fir_filter.cpp -o C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/./sim/autowrap/testbench/fir_filter.cpp_pre.cpp -std=gnu++14 -D__DSP48E1__ --sysroot=C:/Xilinx/Vitis_HLS/2024.1/tps/mingw/10.0.0/win64.o/nt > C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.cpp.clang.autosim-tb.out.log 2> C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.cpp.clang.autosim-tb.err.log
+INFO-FLOW: TB processing: C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/src/fir_filter.cpp C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/./sim/autowrap/testbench/fir_filter.cpp_pre.cpp
+Execute       clang_tidy xilinx-tb-process -desc tb-process C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/./sim/autowrap/testbench/fir_filter.cpp_pre.cpp.tb.cpp std=gnu++14 
+INFO-FLOW: exec C:/Xilinx/Vitis_HLS/2024.1/win64/tools/clang-3.9-csynth/bin/clang-tidy -header-filter=.* --checks=-*,xilinx-tb-process -fix-errors C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/./sim/autowrap/testbench/fir_filter.cpp_pre.cpp.tb.cpp -- -std=gnu++14 -fhls -ferror-limit=0
+Command       clang_tidy done; 1.15 sec.
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.rtl_wrap.cfg.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.rtl_wrap.cfg.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.rtl_wrap.cfg.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       ap_part_info -name xc7z020-clg400-1 -data info 
+Execute       source .run_sim.tcl 
+INFO: [COSIM 212-302] Starting C TB testing ... 
+Command       ap_source done; 0.952 sec.
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+Execute       source ../tv/cdatafile/ref.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source ../tv/cdatafile/ref.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.DependenceCheck.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+Execute       source .run_sim.tcl 
+Execute         source check_sim.tcl 
+Execute         source dataflow_monitor_API.tcl 
+Execute         source .sim.status.tcl 
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+INFO: [COSIM 212-316] Starting C post checking ...
+Command       ap_source done; 13.783 sec.
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [COSIM 212-211] II is measurable only when transaction number is greater than 1 in RTL simulation. Otherwise, they will be marked as all NA. If user wants to calculate them, please make sure there are at least 2 transactions in RTL simulation.
+Command     cosim_design done; 28.042 sec.
+INFO: [HLS 200-2161] Finished Command cosim_design Elapsed time: 00:00:28; Allocated memory: 11.074 MB.
+Execute     export_design -format ip_catalog 
+INFO: [HLS 200-1510] Running: export_design -format ip_catalog 
+Execute       config_export -format=ip_catalog 
+INFO-FLOW: DBG:PUTS: export_design_wrap: -format ip_catalog -rtl verilog
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:PUTS:   auto_impl: pack: -export -rtl verilog
+INFO-FLOW: DBG:PROC: ::AESL_AUTOIMPL::auto_impl args='-export -rtl verilog'
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+INFO-FLOW: DBG:PUTS: automg_wrap -export -pcore_version 1.00.a -rtl vlog -tool Vivado -impltomg_flag
+INFO-FLOW: DBG:PROC: ::AESL_AUTOMG::auto_generate args='-export -pcore_version 1.00.a -rtl vlog -tool Vivado -impltomg_flag'
+INFO-FLOW: DBG:PUTS:     auto_generate -export -pcore_version 1.00.a -rtl vlog -tool Vivado -impltomg_flag
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:PUTS: read_platform_lib C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/common.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/APCoreGen.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/op.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/op_simcore.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/interface.gen 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/common/xilinx.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/plb46.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/axi4.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/saxilite.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/util.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/xfft.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/xfir.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/DSP48/dsp48.gen 
+INFO-FLOW: DBG:PUTS:       initCTypeInfo top_module=fir_filter xml_exists=0
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.rtl_wrap.cfg.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.rtl_wrap.cfg.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.rtl_wrap.cfg.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+INFO-FLOW: DBG:PUTS:       cosim_export_main adding deadlock detection to fir_filter
+INFO-FLOW: DBG:PUTS:       generate_datafile_ip_script ip_types={vitis sysgen} #gSsdmPorts=0
+INFO-FLOW: DBG:PUTS: Skipping loadAnalyze_DB, #g_database=42
+INFO-FLOW: DBG:PUTS:       generate_json generate_bd_files=0 generate_xo_files=false #modelList=15 #gSsdmPorts=0
+INFO-FLOW: DBG:PROC: ::AP::DESIGN_DATA::generate_json generate_bd_files='0' generate_xo_files='false' modelList='fir_filter_mul_16s_16s_32_1_1
+fir_filter_mac_muladd_16s_16s_32s_32_4_1
+fir_filter_mac_muladd_16s_16s_32ns_32_4_1
+fir_filter_flow_control_loop_pipe_sequential_init
+fir_filter_CTRL_s_axi
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_regslice_both
+fir_filter_Pipeline_sample_loop
+fir_filter
+' rtl_lang='vlog' bootstrap_tcl='false' outdir='' outfilename=''
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/top-io-be.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.compgen.dataonly.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.compgen.dataonly.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.rtl_wrap.cfg.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.compgen.dataonly.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter_Pipeline_sample_loop.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute       ap_part_info -name xc7z020-clg400-1 -data names -quiet 
+Execute       ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.constraint.tcl 
+Execute       sc_get_clocks fir_filter 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:PUTS:       generate_syn_sh
+Execute       ap_part_info -name xc7z020-clg400-1 -data names -quiet 
+Execute       ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+INFO-FLOW: DBG:PUTS:       generate_imp_constraints
+Execute       ap_part_info -name xc7z020-clg400-1 -data names -quiet 
+Execute       ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.constraint.tcl 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/fir_filter.tbgen.tcl 
+INFO-FLOW: DBG:PUTS:       delete-temp-dirs (skipped for debug)
+Execute       ap_part_info -name xc7z020-clg400-1 -data names -quiet 
+Execute       ap_part_info -name xc7z020-clg400-1 -data info -quiet 
+INFO-FLOW: DBG:PUTS: read_platform_lib C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/common.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/APCoreGen.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/op.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/op_simcore.gen 
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/common/technology/generic/autopilot/interface.gen 
+Execute       source C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute       source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/common/xilinx.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/plb46.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/axi4.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute           source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/saxilite.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/dds_compiler.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/util.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/xfft.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/ip/xfir.gen 
+Execute         source C:/Xilinx/Vitis_HLS/2024.1/common/technology/xilinx/DSP48/dsp48.gen 
+INFO-FLOW: DBG:PUTS:     IP package: exec C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/impl/ip/pack.bat
+INFO-FLOW: DBG:PUTS:     IP package: success C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/impl/ip/pack.bat
+Execute       send_msg_by_id INFO @200-802@%s fir_filter_hls/solution1/impl/export.zip 
+INFO: [HLS 200-802] Generated output file fir_filter_hls/solution1/impl/export.zip
+Command     export_design done; 15.222 sec.
+INFO: [HLS 200-2161] Finished Command export_design Elapsed time: 00:00:15; Allocated memory: 0.000 MB.
+Execute     cleanup_all 

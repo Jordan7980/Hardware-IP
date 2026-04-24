@@ -1,0 +1,343 @@
+
+
+================================================================
+== Synthesis Summary Report of 'fir_filter'
+================================================================
++ General Information: 
+    * Date:           Fri Apr 24 16:06:42 2026
+    * Version:        2024.1 (Build 5069499 on May 21 2024)
+    * Project:        fir_filter_hls
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg400-1
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +------------------------------------+------+------+---------+-----------+----------+---------+------+----------+------+----------+-----------+-----------+-----+
+    |               Modules              | Issue|      | Latency |  Latency  | Iteration|         | Trip |          |      |          |           |           |     |
+    |               & Loops              | Type | Slack| (cycles)|    (ns)   |  Latency | Interval| Count| Pipelined| BRAM |    DSP   |     FF    |    LUT    | URAM|
+    +------------------------------------+------+------+---------+-----------+----------+---------+------+----------+------+----------+-----------+-----------+-----+
+    |+ fir_filter                        |     -|  0.49|     1061|  1.061e+04|         -|     1062|     -|        no|     -|  32 (14%)|  4748 (4%)|  3572 (6%)|    -|
+    | + fir_filter_Pipeline_sample_loop  |     -|  1.72|     1058|  1.058e+04|         -|     1058|     -|        no|     -|  32 (14%)|  3302 (3%)|  1520 (2%)|    -|
+    |  o sample_loop                     |     -|  7.30|     1056|  1.056e+04|        34|        1|  1024|       yes|     -|         -|          -|          -|    -|
+    +------------------------------------+------+------+---------+-----------+----------+---------+------+----------+------+----------+-----------+-----------+-----+
+
+
+================================================================
+== HW Interfaces
+================================================================
+* S_AXILITE Interfaces
++------------+------------+---------------+--------+----------+
+| Interface  | Data Width | Address Width | Offset | Register |
++------------+------------+---------------+--------+----------+
+| s_axi_CTRL | 32         | 9             | 16     | 0        |
++------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++------------+-------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface  | Register    | Offset | Width | Access | Description                      | Bit Fields                                                           |
++------------+-------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_CTRL | CTRL        | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_CTRL | GIER        | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_CTRL | IP_IER      | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_CTRL | IP_ISR      | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_CTRL | coeffs_0    | 0x10   | 32    | W      | Data signal of coeffs_0          |                                                                      |
+| s_axi_CTRL | coeffs_1    | 0x18   | 32    | W      | Data signal of coeffs_1          |                                                                      |
+| s_axi_CTRL | coeffs_2    | 0x20   | 32    | W      | Data signal of coeffs_2          |                                                                      |
+| s_axi_CTRL | coeffs_3    | 0x28   | 32    | W      | Data signal of coeffs_3          |                                                                      |
+| s_axi_CTRL | coeffs_4    | 0x30   | 32    | W      | Data signal of coeffs_4          |                                                                      |
+| s_axi_CTRL | coeffs_5    | 0x38   | 32    | W      | Data signal of coeffs_5          |                                                                      |
+| s_axi_CTRL | coeffs_6    | 0x40   | 32    | W      | Data signal of coeffs_6          |                                                                      |
+| s_axi_CTRL | coeffs_7    | 0x48   | 32    | W      | Data signal of coeffs_7          |                                                                      |
+| s_axi_CTRL | coeffs_8    | 0x50   | 32    | W      | Data signal of coeffs_8          |                                                                      |
+| s_axi_CTRL | coeffs_9    | 0x58   | 32    | W      | Data signal of coeffs_9          |                                                                      |
+| s_axi_CTRL | coeffs_10   | 0x60   | 32    | W      | Data signal of coeffs_10         |                                                                      |
+| s_axi_CTRL | coeffs_11   | 0x68   | 32    | W      | Data signal of coeffs_11         |                                                                      |
+| s_axi_CTRL | coeffs_12   | 0x70   | 32    | W      | Data signal of coeffs_12         |                                                                      |
+| s_axi_CTRL | coeffs_13   | 0x78   | 32    | W      | Data signal of coeffs_13         |                                                                      |
+| s_axi_CTRL | coeffs_14   | 0x80   | 32    | W      | Data signal of coeffs_14         |                                                                      |
+| s_axi_CTRL | coeffs_15   | 0x88   | 32    | W      | Data signal of coeffs_15         |                                                                      |
+| s_axi_CTRL | coeffs_16   | 0x90   | 32    | W      | Data signal of coeffs_16         |                                                                      |
+| s_axi_CTRL | coeffs_17   | 0x98   | 32    | W      | Data signal of coeffs_17         |                                                                      |
+| s_axi_CTRL | coeffs_18   | 0xa0   | 32    | W      | Data signal of coeffs_18         |                                                                      |
+| s_axi_CTRL | coeffs_19   | 0xa8   | 32    | W      | Data signal of coeffs_19         |                                                                      |
+| s_axi_CTRL | coeffs_20   | 0xb0   | 32    | W      | Data signal of coeffs_20         |                                                                      |
+| s_axi_CTRL | coeffs_21   | 0xb8   | 32    | W      | Data signal of coeffs_21         |                                                                      |
+| s_axi_CTRL | coeffs_22   | 0xc0   | 32    | W      | Data signal of coeffs_22         |                                                                      |
+| s_axi_CTRL | coeffs_23   | 0xc8   | 32    | W      | Data signal of coeffs_23         |                                                                      |
+| s_axi_CTRL | coeffs_24   | 0xd0   | 32    | W      | Data signal of coeffs_24         |                                                                      |
+| s_axi_CTRL | coeffs_25   | 0xd8   | 32    | W      | Data signal of coeffs_25         |                                                                      |
+| s_axi_CTRL | coeffs_26   | 0xe0   | 32    | W      | Data signal of coeffs_26         |                                                                      |
+| s_axi_CTRL | coeffs_27   | 0xe8   | 32    | W      | Data signal of coeffs_27         |                                                                      |
+| s_axi_CTRL | coeffs_28   | 0xf0   | 32    | W      | Data signal of coeffs_28         |                                                                      |
+| s_axi_CTRL | coeffs_29   | 0xf8   | 32    | W      | Data signal of coeffs_29         |                                                                      |
+| s_axi_CTRL | coeffs_30   | 0x100  | 32    | W      | Data signal of coeffs_30         |                                                                      |
+| s_axi_CTRL | coeffs_31   | 0x108  | 32    | W      | Data signal of coeffs_31         |                                                                      |
+| s_axi_CTRL | num_taps    | 0x110  | 32    | W      | Data signal of num_taps          |                                                                      |
+| s_axi_CTRL | num_samples | 0x118  | 32    | W      | Data signal of num_samples       |                                                                      |
++------------+-------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* AXIS
++------------+-----------+---------------+-------+-------+-------+--------+-------+--------+
+| Interface  | Direction | Register Mode | TDATA | TKEEP | TLAST | TREADY | TSTRB | TVALID |
++------------+-----------+---------------+-------+-------+-------+--------+-------+--------+
+| in_stream  | in        | both          | 32    | 4     | 1     | 1      | 4     | 1      |
+| out_stream | out       | both          | 32    | 4     | 1     | 1      | 4     | 1      |
++------------+-----------+---------------+-------+-------+-------+--------+-------+--------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++-------------+-----------+---------------------------------------------------------+
+| Argument    | Direction | Datatype                                                |
++-------------+-----------+---------------------------------------------------------+
+| in_stream   | in        | stream<hls::axis<ap_uint<32>, 0, 0, 0, '8', false>, 0>& |
+| out_stream  | out       | stream<hls::axis<ap_uint<32>, 0, 0, 0, '8', false>, 0>& |
+| coeffs      | in        | ap_int<16>*                                             |
+| num_taps    | in        | int                                                     |
+| num_samples | in        | int                                                     |
++-------------+-----------+---------------------------------------------------------+
+
+* SW-to-HW Mapping
++-------------+--------------+-----------+----------------------------------------+
+| Argument    | HW Interface | HW Type   | HW Info                                |
++-------------+--------------+-----------+----------------------------------------+
+| in_stream   | in_stream    | interface |                                        |
+| out_stream  | out_stream   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| coeffs      | s_axi_CTRL   | interface |                                        |
+| num_taps    | s_axi_CTRL   | register  | name=num_taps offset=0x110 range=32    |
+| num_samples | s_axi_CTRL   | register  | name=num_samples offset=0x118 range=32 |
++-------------+--------------+-----------+----------------------------------------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++---------------------------------------+-----+--------+-----------------------+--------+-----------+---------+
+| Name                                  | DSP | Pragma | Variable              | Op     | Impl      | Latency |
++---------------------------------------+-----+--------+-----------------------+--------+-----------+---------+
+| + fir_filter                          | 32  |        |                       |        |           |         |
+|   icmp_ln30_fu_591_p2                 |     |        | icmp_ln30             | setlt  | auto      | 0       |
+|   select_ln30_fu_597_p3               |     |        | select_ln30           | select | auto_sel  | 0       |
+|   icmp_ln33_fu_609_p2                 |     |        | icmp_ln33             | setgt  | auto      | 0       |
+|   select_ln33_fu_675_p3               |     |        | select_ln33           | select | auto_sel  | 0       |
+|   select_ln36_fu_623_p3               |     |        | select_ln36           | select | auto_sel  | 0       |
+|   icmp_ln39_fu_635_p2                 |     |        | icmp_ln39             | setgt  | auto      | 0       |
+|   num_samples_addr_0_op_fu_641_p2     |     |        | num_samples_addr_0_op | add    | fabric    | 0       |
+|   sub50_fu_647_p3                     |     |        | sub50                 | select | auto_sel  | 0       |
+|   icmp_fu_691_p2                      |     |        | icmp                  | setne  | auto      | 0       |
+|   cmp31_2_fu_698_p2                   |     |        | cmp31_2               | setgt  | auto      | 0       |
+|   icmp4_fu_715_p2                     |     |        | icmp4                 | setne  | auto      | 0       |
+|   cmp31_4_fu_722_p2                   |     |        | cmp31_4               | setgt  | auto      | 0       |
+|   cmp31_5_fu_729_p2                   |     |        | cmp31_5               | setgt  | auto      | 0       |
+|   cmp31_6_fu_736_p2                   |     |        | cmp31_6               | setgt  | auto      | 0       |
+|   icmp7_fu_753_p2                     |     |        | icmp7                 | setne  | auto      | 0       |
+|   cmp31_8_fu_760_p2                   |     |        | cmp31_8               | setgt  | auto      | 0       |
+|   cmp31_9_fu_767_p2                   |     |        | cmp31_9               | setgt  | auto      | 0       |
+|   cmp31_10_fu_774_p2                  |     |        | cmp31_10              | setgt  | auto      | 0       |
+|   cmp31_11_fu_781_p2                  |     |        | cmp31_11              | setgt  | auto      | 0       |
+|   cmp31_12_fu_788_p2                  |     |        | cmp31_12              | setgt  | auto      | 0       |
+|   cmp31_13_fu_795_p2                  |     |        | cmp31_13              | setgt  | auto      | 0       |
+|   cmp31_14_fu_802_p2                  |     |        | cmp31_14              | setgt  | auto      | 0       |
+|   icmp10_fu_819_p2                    |     |        | icmp10                | setne  | auto      | 0       |
+|   cmp31_16_fu_826_p2                  |     |        | cmp31_16              | setgt  | auto      | 0       |
+|   cmp31_17_fu_833_p2                  |     |        | cmp31_17              | setgt  | auto      | 0       |
+|   cmp31_18_fu_840_p2                  |     |        | cmp31_18              | setgt  | auto      | 0       |
+|   cmp31_19_fu_847_p2                  |     |        | cmp31_19              | setgt  | auto      | 0       |
+|   cmp31_20_fu_854_p2                  |     |        | cmp31_20              | setgt  | auto      | 0       |
+|   cmp31_21_fu_861_p2                  |     |        | cmp31_21              | setgt  | auto      | 0       |
+|   cmp31_22_fu_868_p2                  |     |        | cmp31_22              | setgt  | auto      | 0       |
+|   cmp31_23_fu_875_p2                  |     |        | cmp31_23              | setgt  | auto      | 0       |
+|   cmp31_24_fu_882_p2                  |     |        | cmp31_24              | setgt  | auto      | 0       |
+|   cmp31_25_fu_889_p2                  |     |        | cmp31_25              | setgt  | auto      | 0       |
+|   cmp31_26_fu_896_p2                  |     |        | cmp31_26              | setgt  | auto      | 0       |
+|   cmp31_27_fu_903_p2                  |     |        | cmp31_27              | setgt  | auto      | 0       |
+|   cmp31_28_fu_910_p2                  |     |        | cmp31_28              | setgt  | auto      | 0       |
+|   cmp31_29_fu_917_p2                  |     |        | cmp31_29              | setgt  | auto      | 0       |
+|   cmp31_30_fu_924_p2                  |     |        | cmp31_30              | setgt  | auto      | 0       |
+|   empty_fu_655_p2                     |     |        | empty                 | setgt  | auto      | 0       |
+|   xor_ln44_fu_661_p2                  |     |        | xor_ln44              | xor    | auto      | 0       |
+|   select_ln44_fu_667_p3               |     |        | select_ln44           | select | auto_sel  | 0       |
+|   empty_49_fu_940_p2                  |     |        | empty_49              | setgt  | auto      | 0       |
+|   xor_ln44_1_fu_945_p2                |     |        | xor_ln44_1            | xor    | auto      | 0       |
+|   select_ln44_1_fu_950_p3             |     |        | select_ln44_1         | select | auto_sel  | 0       |
+|  + fir_filter_Pipeline_sample_loop    | 32  |        |                       |        |           |         |
+|    icmp_ln44_fu_1047_p2               |     |        | icmp_ln44             | seteq  | auto      | 0       |
+|    n_1_fu_1052_p2                     |     |        | n_1                   | add    | fabric    | 0       |
+|    mul_16s_16s_32_1_1_U1              | 1   |        | acc                   | mul    | auto      | 0       |
+|    mac_muladd_16s_16s_32s_32_4_1_U2   | 1   |        | mul_ln63              | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32s_32_4_1_U2   | 1   |        | acc_1                 | add    | dsp_slice | 3       |
+|    grp_fu_1555_p2                     |     |        | acc_2                 | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U3  | 1   |        | mul_ln63_1            | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U3  | 1   |        | acc_3                 | add    | dsp_slice | 3       |
+|    grp_fu_1563_p2                     |     |        | acc_4                 | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U4  | 1   |        | mul_ln63_2            | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U4  | 1   |        | acc_5                 | add    | dsp_slice | 3       |
+|    grp_fu_1571_p2                     |     |        | acc_6                 | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U5  | 1   |        | mul_ln63_3            | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U5  | 1   |        | acc_7                 | add    | dsp_slice | 3       |
+|    grp_fu_1579_p2                     |     |        | acc_8                 | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U6  | 1   |        | mul_ln63_4            | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U6  | 1   |        | acc_9                 | add    | dsp_slice | 3       |
+|    grp_fu_1587_p2                     |     |        | acc_10                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U7  | 1   |        | mul_ln63_5            | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U7  | 1   |        | acc_11                | add    | dsp_slice | 3       |
+|    grp_fu_1595_p2                     |     |        | acc_12                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U8  | 1   |        | mul_ln63_6            | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U8  | 1   |        | acc_13                | add    | dsp_slice | 3       |
+|    grp_fu_1603_p2                     |     |        | acc_14                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U9  | 1   |        | mul_ln63_7            | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U9  | 1   |        | acc_15                | add    | dsp_slice | 3       |
+|    grp_fu_1611_p2                     |     |        | acc_16                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U10 | 1   |        | mul_ln63_8            | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U10 | 1   |        | acc_17                | add    | dsp_slice | 3       |
+|    grp_fu_1619_p2                     |     |        | acc_18                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U11 | 1   |        | mul_ln63_9            | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U11 | 1   |        | acc_19                | add    | dsp_slice | 3       |
+|    grp_fu_1627_p2                     |     |        | acc_20                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U12 | 1   |        | mul_ln63_10           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U12 | 1   |        | acc_21                | add    | dsp_slice | 3       |
+|    grp_fu_1635_p2                     |     |        | acc_22                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U13 | 1   |        | mul_ln63_11           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U13 | 1   |        | acc_23                | add    | dsp_slice | 3       |
+|    grp_fu_1643_p2                     |     |        | acc_24                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U14 | 1   |        | mul_ln63_12           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U14 | 1   |        | acc_25                | add    | dsp_slice | 3       |
+|    grp_fu_1651_p2                     |     |        | acc_26                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U15 | 1   |        | mul_ln63_13           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U15 | 1   |        | acc_27                | add    | dsp_slice | 3       |
+|    grp_fu_1659_p2                     |     |        | acc_28                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U16 | 1   |        | mul_ln63_14           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U16 | 1   |        | acc_29                | add    | dsp_slice | 3       |
+|    grp_fu_1667_p2                     |     |        | acc_30                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U17 | 1   |        | mul_ln63_15           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U17 | 1   |        | acc_31                | add    | dsp_slice | 3       |
+|    grp_fu_1675_p2                     |     |        | acc_32                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U18 | 1   |        | mul_ln63_16           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U18 | 1   |        | acc_33                | add    | dsp_slice | 3       |
+|    grp_fu_1683_p2                     |     |        | acc_34                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U19 | 1   |        | mul_ln63_17           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U19 | 1   |        | acc_35                | add    | dsp_slice | 3       |
+|    grp_fu_1691_p2                     |     |        | acc_36                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U20 | 1   |        | mul_ln63_18           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U20 | 1   |        | acc_37                | add    | dsp_slice | 3       |
+|    grp_fu_1699_p2                     |     |        | acc_38                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U21 | 1   |        | mul_ln63_19           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U21 | 1   |        | acc_39                | add    | dsp_slice | 3       |
+|    grp_fu_1707_p2                     |     |        | acc_40                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U22 | 1   |        | mul_ln63_20           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U22 | 1   |        | acc_41                | add    | dsp_slice | 3       |
+|    grp_fu_1715_p2                     |     |        | acc_42                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U23 | 1   |        | mul_ln63_21           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U23 | 1   |        | acc_43                | add    | dsp_slice | 3       |
+|    grp_fu_1723_p2                     |     |        | acc_44                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U24 | 1   |        | mul_ln63_22           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U24 | 1   |        | acc_45                | add    | dsp_slice | 3       |
+|    grp_fu_1731_p2                     |     |        | acc_46                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U25 | 1   |        | mul_ln63_23           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U25 | 1   |        | acc_47                | add    | dsp_slice | 3       |
+|    grp_fu_1739_p2                     |     |        | acc_48                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U26 | 1   |        | mul_ln63_24           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U26 | 1   |        | acc_49                | add    | dsp_slice | 3       |
+|    grp_fu_1747_p2                     |     |        | acc_50                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U27 | 1   |        | mul_ln63_25           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U27 | 1   |        | acc_51                | add    | dsp_slice | 3       |
+|    grp_fu_1755_p2                     |     |        | acc_52                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U28 | 1   |        | mul_ln63_26           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U28 | 1   |        | acc_53                | add    | dsp_slice | 3       |
+|    grp_fu_1763_p2                     |     |        | acc_54                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U29 | 1   |        | mul_ln63_27           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U29 | 1   |        | acc_55                | add    | dsp_slice | 3       |
+|    grp_fu_1771_p2                     |     |        | acc_56                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U30 | 1   |        | mul_ln63_28           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U30 | 1   |        | acc_57                | add    | dsp_slice | 3       |
+|    grp_fu_1779_p2                     |     |        | acc_58                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U31 | 1   |        | mul_ln63_29           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U31 | 1   |        | acc_59                | add    | dsp_slice | 3       |
+|    grp_fu_1787_p2                     |     |        | acc_60                | select | auto_sel  | 0       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U32 | 1   |        | mul_ln63_30           | mul    | dsp_slice | 3       |
+|    mac_muladd_16s_16s_32ns_32_4_1_U32 | 1   |        | acc_61                | add    | dsp_slice | 3       |
+|    out_stream_TDATA                   |     |        | acc_63                | select | auto_sel  | 0       |
+|    out_word_last_fu_1070_p2           |     |        | out_word_last         | seteq  | auto      | 0       |
++---------------------------------------+-----+--------+-----------------------+--------+-----------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| Name           | Usage     | Type      | BRAM | URAM | Pragma | Variable | Impl | Latency | Bitwidth, Depth, |
+|                |           |           |      |      |        |          |      |         | Banks            |
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+| + fir_filter   |           |           | 0    | 0    |        |          |      |         |                  |
+|   CTRL_s_axi_U | interface | s_axilite |      |      |        |          |      |         |                  |
++----------------+-----------+-----------+------+------+--------+----------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Valid Pragma Syntax
++-----------------+----------------------------------------+--------------------------------------------------+
+| Type            | Options                                | Location                                         |
++-----------------+----------------------------------------+--------------------------------------------------+
+| interface       | axis port=in_stream                    | src/fir_filter.cpp:10 in fir_filter, in_stream   |
+| interface       | axis port=out_stream                   | src/fir_filter.cpp:11 in fir_filter, out_stream  |
+| interface       | s_axilite port=coeffs bundle=CTRL      | src/fir_filter.cpp:13 in fir_filter, coeffs      |
+| interface       | s_axilite port=num_taps bundle=CTRL    | src/fir_filter.cpp:14 in fir_filter, num_taps    |
+| interface       | s_axilite port=num_samples bundle=CTRL | src/fir_filter.cpp:15 in fir_filter, num_samples |
+| interface       | s_axilite port=return bundle=CTRL      | src/fir_filter.cpp:16 in fir_filter, return      |
+| array_partition | variable=delay_line complete dim=1     | src/fir_filter.cpp:19 in fir_filter, delay_line  |
+| array_partition | variable=coeffs complete dim=1         | src/fir_filter.cpp:20 in fir_filter, coeffs      |
+| unroll          |                                        | src/fir_filter.cpp:25 in fir_filter              |
+| pipeline        | II=1                                   | src/fir_filter.cpp:45 in fir_filter              |
+| unroll          |                                        | src/fir_filter.cpp:52 in fir_filter              |
+| unroll          |                                        | src/fir_filter.cpp:61 in fir_filter              |
++-----------------+----------------------------------------+--------------------------------------------------+
+
+

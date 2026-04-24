@@ -1,0 +1,111 @@
+PASS: FIR filter output matches golden model.
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 32
+
+C:\Users\jaysh\OneDrive\Desktop\applied_hardware_project\Hardware-IP\fir_filter_hls\solution1\sim\verilog>set PATH= 
+
+C:\Users\jaysh\OneDrive\Desktop\applied_hardware_project\Hardware-IP\fir_filter_hls\solution1\sim\verilog>call C:/Xilinx/Vivado/2024.1/bin/xelab xil_defaultlib.apatb_fir_filter_top glbl -Oenable_linking_all_libraries  -prj fir_filter.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm  -L floating_point_v7_0_23 -L floating_point_v7_1_18 --lib "ieee_proposed=./ieee_proposed" -s fir_filter  
+Vivado Simulator v2024.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe xil_defaultlib.apatb_fir_filter_top glbl -Oenable_linking_all_libraries -prj fir_filter.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_0_23 -L floating_point_v7_1_18 --lib ieee_proposed=./ieee_proposed -s fir_filter 
+Multi-threading is on. Using 18 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/AESL_axi_slave_CTRL.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_slave_CTRL
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/AESL_axi_s_in_stream.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_in_stream
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/AESL_axi_s_out_stream.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_out_stream
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/AESL_deadlock_idx0_monitor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_idx0_monitor
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/AESL_deadlock_idx1_monitor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_idx1_monitor
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/AESL_deadlock_kernel_monitor_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_kernel_monitor_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/AESL_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/fir_filter.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_fir_filter_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/fir_filter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fir_filter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/fir_filter_CTRL_s_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fir_filter_CTRL_s_axi
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/fir_filter_fir_filter_Pipeline_sample_loop.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fir_filter_fir_filter_Pipeline_sample_loop
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/fir_filter_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fir_filter_flow_control_loop_pipe_sequential_init
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/fir_filter_mac_muladd_16s_16s_32ns_32_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fir_filter_mac_muladd_16s_16s_32ns_32_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module fir_filter_mac_muladd_16s_16s_32ns_32_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/fir_filter_mac_muladd_16s_16s_32s_32_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fir_filter_mac_muladd_16s_16s_32s_32_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module fir_filter_mac_muladd_16s_16s_32s_32_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/fir_filter_mul_16s_16s_32_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fir_filter_mul_16s_16s_32_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/fir_filter_regslice_both.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fir_filter_regslice_both
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.fir_filter_mul_16s_16s_32_1_1(NU...
+Compiling module xil_defaultlib.fir_filter_mac_muladd_16s_16s_32...
+Compiling module xil_defaultlib.fir_filter_mac_muladd_16s_16s_32...
+Compiling module xil_defaultlib.fir_filter_mac_muladd_16s_16s_32...
+Compiling module xil_defaultlib.fir_filter_mac_muladd_16s_16s_32...
+Compiling module xil_defaultlib.fir_filter_flow_control_loop_pip...
+Compiling module xil_defaultlib.fir_filter_fir_filter_Pipeline_s...
+Compiling module xil_defaultlib.fir_filter_CTRL_s_axi
+Compiling module xil_defaultlib.fir_filter_regslice_both(DataWid...
+Compiling module xil_defaultlib.fir_filter_regslice_both(DataWid...
+Compiling module xil_defaultlib.fir_filter_regslice_both(DataWid...
+Compiling module xil_defaultlib.fir_filter
+Compiling module xil_defaultlib.fifo(DEPTH=32,WIDTH=32)
+Compiling module xil_defaultlib.fifo(DEPTH=32,WIDTH=4)
+Compiling module xil_defaultlib.fifo(DEPTH=32,WIDTH=1)
+Compiling module xil_defaultlib.AESL_axi_s_in_stream
+Compiling module xil_defaultlib.AESL_axi_s_out_stream
+Compiling module xil_defaultlib.AESL_axi_slave_CTRL
+Compiling module xil_defaultlib.AESL_deadlock_idx1_monitor
+Compiling module xil_defaultlib.AESL_deadlock_idx0_monitor
+Compiling module xil_defaultlib.AESL_deadlock_kernel_monitor_top...
+Compiling module xil_defaultlib.nodf_module_intf_default
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=1)
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_fir_filter_top
+Compiling module work.glbl
+Built simulation snapshot fir_filter
+
+****** xsim v2024.1 (64-bit)
+  **** SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Fri Apr 24 16:07:08 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/fir_filter/xsim_script.tcl
+# xsim {fir_filter} -autoloadwcfg -tclbatch {fir_filter.tcl}
+Time resolution is 1 ps
+source fir_filter.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 1 [0.00%] @ "125000"
+// RTL Simulation : 1 / 1 [100.00%] @ "2725000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 2785 ns : File "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/fir_filter_hls/solution1/sim/verilog/fir_filter.autotb.v" Line 572
+## quit
+INFO: [Common 17-206] Exiting xsim at Fri Apr 24 16:07:11 2026...
+PASS: FIR filter output matches golden model.
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 32

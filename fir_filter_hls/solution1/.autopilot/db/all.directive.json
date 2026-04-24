@@ -1,0 +1,23 @@
+[
+  {
+    "functionLabel": "",
+    "functionName": "fir_filter",
+    "id": 0,
+    "ifcond": "",
+    "insert_position": "",
+    "label": "",
+    "pragma": {
+      "name": "TOP",
+      "option": [
+        {
+          "name": "name",
+          "value": "fir_filter"
+        }
+      ]
+    },
+    "slx": false,
+    "sourceFile": "C:/Users/jaysh/OneDrive/Desktop/applied_hardware_project/Hardware-IP/run_hls.tcl",
+    "sourceLine": 21,
+    "success": true
+  }
+]
