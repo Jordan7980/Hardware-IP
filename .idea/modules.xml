@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Hardware-IP.iml" filepath="$PROJECT_DIR$/.idea/Hardware-IP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/FIR filter.iml" filepath="$PROJECT_DIR$/.idea/FIR filter.iml" />
     </modules>
   </component>
 </project>
