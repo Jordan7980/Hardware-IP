@@ -1,0 +1,86 @@
+--- !Passed
+Pass:            reflow-infer-unroll
+Name:            ImplicitUnroll
+DebugLoc:        { File: src/fir_filter.cpp, Line: 51, Column: 9 }
+Function:        _Z10fir_filterRN3hls6streamINS_4axisI7ap_uintILi32EELm0ELm0ELm0ELh56ELb0EEELi0EEES6_P6ap_intILi16EEii
+Args:            
+  - String:          'Loop '''
+  - LoopName:        shift_loop
+  - String:          ''' is marked as complete unroll implied by the pipeline pragma'
+...
+--- !Passed
+Pass:            reflow-infer-unroll
+Name:            ImplicitUnroll
+DebugLoc:        { File: src/fir_filter.cpp, Line: 60, Column: 9 }
+Function:        _Z10fir_filterRN3hls6streamINS_4axisI7ap_uintILi32EELm0ELm0ELm0ELh56ELb0EEELi0EEES6_P6ap_intILi16EEii
+Args:            
+  - String:          'Loop '''
+  - LoopName:        mac_loop
+  - String:          ''' is marked as complete unroll implied by the pipeline pragma'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: src/fir_filter.cpp, Line: 9, Column: 0 }
+Function:        _Z10fir_filterRN3hls6streamINS_4axisI7ap_uintILi32EELm0ELm0ELm0ELh56ELb0EEELi0EEES6_P6ap_intILi16EEii
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        shift_loop
+  - String:          ''' ('
+  - LoopLoc:         'src/fir_filter.cpp:51:9'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          fir_filter
+  - String:          ''' completely with a factor of '
+  - Factor:          '31'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: src/fir_filter.cpp, Line: 9, Column: 0 }
+Function:        _Z10fir_filterRN3hls6streamINS_4axisI7ap_uintILi32EELm0ELm0ELm0ELh56ELb0EEELi0EEES6_P6ap_intILi16EEii
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        mac_loop
+  - String:          ''' ('
+  - LoopLoc:         'src/fir_filter.cpp:60:9'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          fir_filter
+  - String:          ''' completely with a factor of '
+  - Factor:          '32'
+...
+--- !Passed
+Pass:            reflow-pragma-loop-unroll
+Name:            PragmaFullyUnroll
+DebugLoc:        { File: src/fir_filter.cpp, Line: 9, Column: 0 }
+Function:        _Z10fir_filterRN3hls6streamINS_4axisI7ap_uintILi32EELm0ELm0ELm0ELh56ELb0EEELi0EEES6_P6ap_intILi16EEii
+Args:            
+  - String:          'Unrolling loop '''
+  - LoopName:        init_delay_line
+  - String:          ''' ('
+  - LoopLoc:         'src/fir_filter.cpp:24:5'
+  - String:          ') '
+  - String:          'in function '''
+  - String:          fir_filter
+  - String:          ''' completely with a factor of '
+  - Factor:          '32'
+...
+--- !Passed
+Pass:            reflow-array-partition
+Name:            ArrayXform
+DebugLoc:        { File: src/fir_filter.cpp, Line: 9, Column: 0 }
+Function:        _Z10fir_filterRN3hls6streamINS_4axisI7ap_uintILi32EELm0ELm0ELm0ELh56ELb0EEELi0EEES6_P6ap_intILi16EEii
+Args:            
+  - String:          'Applying '
+  - String:          array_partition
+  - String:          ' to '''
+  - UOName:          coeffs
+  - String:          ''':'
+  - String:          ' '
+  - Mode:            Complete
+  - String:          ' partitioning'
+  - String:          ' on dimension '
+  - Dim:             '1'
+  - String:          .
+...

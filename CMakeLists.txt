@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 4.0)
-project(FIR_filter)
+project(FIR_Filter)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
-add_executable(FIR_filter main.cpp)
+add_executable(FIR_Filter fir_ref_tb.cpp fir_ref.cpp)
