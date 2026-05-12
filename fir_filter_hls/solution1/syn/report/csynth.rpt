@@ -4,7 +4,7 @@
 == Synthesis Summary Report of 'fir_filter'
 ================================================================
 + General Information: 
-    * Date:           Mon Apr 27 15:00:45 2026
+    * Date:           Tue May 12 00:40:51 2026
     * Version:        2024.1 (Build 5069499 on May 21 2024)
     * Project:        fir_filter_hls
     * Solution:       solution1 (Vivado IP Flow Target)

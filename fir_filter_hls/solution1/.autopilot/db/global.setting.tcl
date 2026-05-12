@@ -53,7 +53,7 @@ set TBTops {verilog {} bc {} sc {} vhdl {} c {} cas {}}
 set TBInstNames {verilog {} bc {} sc {} vhdl {} c {} cas {}}
 set XDCFiles {}
 set ExtraGlobalOptions {"area_timing" 1 "clock_gate" 1 "impl_flow" map "power_gate" 0}
-set TBTVFileNotFound {}
+set TBTVFileNotFound {../../tb/fir_ref.h ../../tb/fir_ref.cpp}
 set AppFile ../hls.app
 set ApsFile solution1.aps
 set AvePath ../../.

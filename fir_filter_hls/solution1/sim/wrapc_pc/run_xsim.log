@@ -86,7 +86,7 @@ Built simulation snapshot fir_filter
   **** SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
   **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
   **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-  **** Start of session at: Mon Apr 27 15:01:28 2026
+  **** Start of session at: Mon May 11 22:05:21 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 
@@ -106,6 +106,6 @@ source fir_filter.tcl
 ////////////////////////////////////////////////////////////////////////////////////
 $finish called at time : 2785 ns : File "C:/Users/forbe/CLionProjects/FIR_filter/fir_filter_hls/solution1/sim/verilog/fir_filter.autotb.v" Line 572
 ## quit
-INFO: [Common 17-206] Exiting xsim at Mon Apr 27 15:01:33 2026...
+INFO: [Common 17-206] Exiting xsim at Mon May 11 22:05:27 2026...
 PASS: FIR filter output matches golden model.
 INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 32

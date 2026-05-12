@@ -3,8 +3,8 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Mon Apr 27 15:01:40 2026
-# Process ID: 2472
+# Start of session at: Mon May 11 22:05:36 2026
+# Process ID: 13292
 # Current directory: C:/Users/forbe/CLionProjects/FIR_filter/fir_filter_hls/solution1/impl/ip
 # Command line: vivado.exe -notrace -mode batch -source run_ippack.tcl
 # Log file: C:/Users/forbe/CLionProjects/FIR_filter/fir_filter_hls/solution1/impl/ip/vivado.log
@@ -17,9 +17,9 @@
 # CPU Physical cores:8
 # CPU Logical cores :16
 # Host memory       :16127 MB
-# Swap memory       :21474 MB
-# Total Virtual     :37602 MB
-# Available Virtual :7922 MB
+# Swap memory       :22548 MB
+# Total Virtual     :38676 MB
+# Available Virtual :14116 MB
 #-----------------------------------------------------------
 source run_ippack.tcl -notrace
 INFO: calling package_hls_ip ip_types=vitis sysgen json_file=C:/Users/forbe/CLionProjects/FIR_filter/fir_filter_hls/solution1/solution1_data.json outdir=C:/Users/forbe/CLionProjects/FIR_filter/fir_filter_hls/solution1/impl/ip srcdir=C:/Users/forbe/CLionProjects/FIR_filter/fir_filter_hls/solution1 sort_interfaces_ports=false
@@ -27,7 +27,7 @@ INFO: Copied 1 ipmisc file(s) to C:/Users/forbe/CLionProjects/FIR_filter/fir_fil
 INFO: Copied 11 verilog file(s) to C:/Users/forbe/CLionProjects/FIR_filter/fir_filter_hls/solution1/impl/ip/hdl/verilog
 INFO: Copied 8 vhdl file(s) to C:/Users/forbe/CLionProjects/FIR_filter/fir_filter_hls/solution1/impl/ip/hdl/vhdl
 INFO: Copied 10 swdriver file(s) to C:/Users/forbe/CLionProjects/FIR_filter/fir_filter_hls/solution1/impl/ip/drivers
-ipx::create_core: Time (s): cpu = 00:00:11 ; elapsed = 00:00:30 . Memory (MB): peak = 524.688 ; gain = 195.336
+ipx::create_core: Time (s): cpu = 00:00:11 ; elapsed = 00:00:19 . Memory (MB): peak = 522.738 ; gain = 193.848
 INFO: Import ports from HDL: C:/Users/forbe/CLionProjects/FIR_filter/fir_filter_hls/solution1/impl/ip/hdl/vhdl/fir_filter.vhd (fir_filter)
 INFO: Add axi4lite interface s_axi_CTRL
 INFO: Add clock interface ap_clk
@@ -43,4 +43,4 @@ INFO: Calling post_process_sysgen to specialize IP
 Generating sysgen info xml from json file
 INFO: Created IP C:/Users/forbe/CLionProjects/FIR_filter/fir_filter_hls/solution1/impl/ip/component.xml
 INFO: Created IP archive C:/Users/forbe/CLionProjects/FIR_filter/fir_filter_hls/solution1/impl/ip/xilinx_com_hls_fir_filter_1_0.zip
-INFO: [Common 17-206] Exiting Vivado at Mon Apr 27 15:02:23 2026...
+INFO: [Common 17-206] Exiting Vivado at Mon May 11 22:06:13 2026...
