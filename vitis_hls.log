@@ -1,0 +1,1253 @@
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2024.1 (64-bit)
+  **** SW Build 5069499 on May 21 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Tue May 12 01:02:33 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source C:/Xilinx/Vitis_HLS/2024.1/scripts/vitis_hls/hls.tcl -notrace
+INFO: [HLS 200-10] For user 'forbe' on host 'nyu-laptop' (Windows NT_amd64 version 10.0) on Tue May 12 01:02:36 -0400 2026
+INFO: [HLS 200-10] In directory 'C:/Users/forbe/CLionProjects/FIR_Filter'
+WARNING: [HLS 200-2053] The vitis_hls executable is deprecated. Consider using vitis-run --mode hls --tcl
+Sourcing Tcl script 'run_hls.tcl'
+INFO: [HLS 200-1510] Running: open_project fir_filter_hls 
+INFO: [HLS 200-10] Opening project 'C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls'.
+INFO: [HLS 200-1510] Running: set_top fir_filter 
+INFO: [HLS 200-1510] Running: add_files src/fir_filter.cpp -cflags -Isrc 
+INFO: [HLS 200-10] Adding design file 'src/fir_filter.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files src/fir_filter.hpp 
+INFO: [HLS 200-10] Adding design file 'src/fir_filter.hpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb tb/fir_filter_tb.cpp -cflags -Isrc 
+INFO: [HLS 200-10] Adding test bench file 'tb/fir_filter_tb.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vivado 
+INFO: [HLS 200-10] Opening solution 'C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg400-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2024.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+INFO: [HLS 200-1464] Running solution command: config_export -format=ip_catalog
+INFO: [HLS 200-1510] Running: set_part xc7z020clg400-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: csim_design 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch CLANG as the compiler.
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+   Compiling ../../../../tb/fir_filter_tb.cpp in debug mode
+   Generating csim.exe
+In file included from ../../../../tb/fir_filter_tb.cpp:91:
+In file included from ../../../../src/fir_filter.hpp:4:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/ap_int.h:10:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/etc/ap_common.h:658:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/etc/ap_private.h:68:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/hls_half.h:26:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/etc/hls_half_fpo.h:19:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/hls_fpo.h:140:
+In file included from C:/Xilinx/Vitis_HLS/2024.1/include/floating_point_v7_1_bitacc_cmodel.h:150:
+C:/Xilinx/Vitis_HLS/2024.1/include/gmp.h:58:9: warning: '__GMP_LIBGMP_DLL' macro redefined [-Wmacro-redefined]
+#define __GMP_LIBGMP_DLL  0
+        ^
+C:/Xilinx/Vitis_HLS/2024.1/include/floating_point_v7_1_bitacc_cmodel.h:142:9: note: previous definition is here
+#define __GMP_LIBGMP_DLL 1
+        ^
+1 warning generated.
+========================================
+  FIR Filter - HLS vs Golden Behavior
+  32 taps, low-pass, cutoff ~0.1*Fs
+========================================
+
+=== Test 1: Impulse Response ===
+  n=0 | hls=-0.000518815 | golden=-0.000507 | err=1.18146e-05 PASS
+  n=1 | hls=0.00061037 | golden=0.000606 | err=4.37017e-06 PASS
+  n=2 | hls=0.00222785 | golden=0.002235 | err=7.14883e-06 PASS
+  n=3 | hls=0.00412 | golden=0.004132 | err=1.2001e-05 PASS
+  n=4 | hls=0.00500504 | golden=0.00499 | err=1.50357e-05 PASS
+  n=5 | hls=0.00277718 | golden=0.002776 | err=1.18441e-06 PASS
+  n=6 | hls=-0.00393689 | golden=-0.003933 | err=3.88781e-06 PASS
+  n=7 | hls=-0.0142216 | golden=-0.014234 | err=1.23745e-05 PASS
+  n=8 | hls=-0.0238655 | golden=-0.02388 | err=1.45249e-05 PASS
+  n=9 | hls=-0.0259407 | golden=-0.025932 | err=8.73394e-06 PASS
+  n=10 | hls=-0.0132756 | golden=-0.013265 | err=1.05519e-05 PASS
+  n=11 | hls=0.0179449 | golden=0.017938 | err=6.88434e-06 PASS
+  n=12 | hls=0.0653401 | golden=0.065338 | err=2.12342e-06 PASS
+  n=13 | hls=0.119816 | golden=0.119829 | err=1.33291e-05 PASS
+  n=14 | hls=0.167852 | golden=0.167867 | err=1.51992e-05 PASS
+  n=15 | hls=0.196051 | golden=0.196041 | err=9.89437e-06 PASS
+  n=16 | hls=0.196051 | golden=0.196041 | err=9.89437e-06 PASS
+  n=17 | hls=0.167852 | golden=0.167867 | err=1.51992e-05 PASS
+  n=18 | hls=0.119816 | golden=0.119829 | err=1.33291e-05 PASS
+  n=19 | hls=0.0653401 | golden=0.065338 | err=2.12342e-06 PASS
+  n=20 | hls=0.0179449 | golden=0.017938 | err=6.88434e-06 PASS
+  n=21 | hls=-0.0132756 | golden=-0.013265 | err=1.05519e-05 PASS
+  n=22 | hls=-0.0259407 | golden=-0.025932 | err=8.73394e-06 PASS
+  n=23 | hls=-0.0238655 | golden=-0.02388 | err=1.45249e-05 PASS
+  n=24 | hls=-0.0142216 | golden=-0.014234 | err=1.23745e-05 PASS
+  n=25 | hls=-0.00393689 | golden=-0.003933 | err=3.88781e-06 PASS
+  n=26 | hls=0.00277718 | golden=0.002776 | err=1.18441e-06 PASS
+  n=27 | hls=0.00500504 | golden=0.00499 | err=1.50357e-05 PASS
+  n=28 | hls=0.00412 | golden=0.004132 | err=1.2001e-05 PASS
+  n=29 | hls=0.00222785 | golden=0.002235 | err=7.14883e-06 PASS
+  n=30 | hls=0.00061037 | golden=0.000606 | err=4.37017e-06 PASS
+  n=31 | hls=-0.000518815 | golden=-0.000507 | err=1.18146e-05 PASS
+  n=32 | hls=0 | golden=0 | err=0 PASS
+  n=33 | hls=0 | golden=0 | err=0 PASS
+  n=34 | hls=0 | golden=0 | err=0 PASS
+  n=35 | hls=0 | golden=0 | err=0 PASS
+  n=36 | hls=0 | golden=0 | err=0 PASS
+  n=37 | hls=0 | golden=0 | err=0 PASS
+  n=38 | hls=0 | golden=0 | err=0 PASS
+  n=39 | hls=0 | golden=0 | err=0 PASS
+  n=40 | hls=0 | golden=0 | err=0 PASS
+  n=41 | hls=0 | golden=0 | err=0 PASS
+  n=42 | hls=0 | golden=0 | err=0 PASS
+  n=43 | hls=0 | golden=0 | err=0 PASS
+  n=44 | hls=0 | golden=0 | err=0 PASS
+  n=45 | hls=0 | golden=0 | err=0 PASS
+  n=46 | hls=0 | golden=0 | err=0 PASS
+  n=47 | hls=0 | golden=0 | err=0 PASS
+  n=48 | hls=0 | golden=0 | err=0 PASS
+  n=49 | hls=0 | golden=0 | err=0 PASS
+  n=50 | hls=0 | golden=0 | err=0 PASS
+  n=51 | hls=0 | golden=0 | err=0 PASS
+  n=52 | hls=0 | golden=0 | err=0 PASS
+  n=53 | hls=0 | golden=0 | err=0 PASS
+  n=54 | hls=0 | golden=0 | err=0 PASS
+  n=55 | hls=0 | golden=0 | err=0 PASS
+  n=56 | hls=0 | golden=0 | err=0 PASS
+  n=57 | hls=0 | golden=0 | err=0 PASS
+  n=58 | hls=0 | golden=0 | err=0 PASS
+  n=59 | hls=0 | golden=0 | err=0 PASS
+  n=60 | hls=0 | golden=0 | err=0 PASS
+  n=61 | hls=0 | golden=0 | err=0 PASS
+  n=62 | hls=0 | golden=0 | err=0 PASS
+  n=63 | hls=0 | golden=0 | err=0 PASS
+  Impulse Response: PASSED
+
+=== Test 2: Passband Sine (freq = 0.05 * Fs) ===
+  n=28 | x=0.587785 | hls=-0.701349 | golden=-0.701381 | err=3.22461e-05
+  n=29 | x=0.309017 | hls=-0.884658 | golden=-0.884704 | err=4.6432e-05
+  n=30 | x=-2.38498e-08 | hls=-0.980682 | golden=-0.980736 | err=5.41806e-05
+  n=31 | x=-0.309017 | hls=-0.980522 | golden=-0.980579 | err=5.76973e-05
+  n=32 | x=-0.587785 | hls=-0.884541 | golden=-0.884593 | err=5.19156e-05
+  n=33 | x=-0.809017 | hls=-0.701976 | golden=-0.702017 | err=4.11272e-05
+  n=34 | x=-0.951057 | hls=-0.450696 | golden=-0.450723 | err=2.63453e-05
+  n=35 | x=-1 | hls=-0.155299 | golden=-0.155308 | err=8.9556e-06
+  n=36 | x=-0.951056 | hls=0.155299 | golden=0.155309 | err=9.28342e-06
+  n=37 | x=-0.809017 | hls=0.450696 | golden=0.450723 | err=2.66135e-05
+  n=38 | x=-0.587785 | hls=0.701976 | golden=0.702017 | err=4.14252e-05
+  n=39 | x=-0.309017 | hls=0.884541 | golden=0.884593 | err=5.19753e-05
+  n=40 | x=3.49691e-07 | hls=0.980522 | golden=0.980579 | err=5.78165e-05
+  n=41 | x=0.309017 | hls=0.980522 | golden=0.980579 | err=5.76973e-05
+  n=42 | x=0.587786 | hls=0.884541 | golden=0.884593 | err=5.20349e-05
+  n=43 | x=0.809017 | hls=0.701976 | golden=0.702017 | err=4.1306e-05
+  n=44 | x=0.951056 | hls=0.450696 | golden=0.450723 | err=2.64645e-05
+  n=45 | x=1 | hls=0.155299 | golden=0.155308 | err=9.0301e-06
+  n=46 | x=0.951056 | hls=-0.155299 | golden=-0.155309 | err=9.23872e-06
+  n=47 | x=0.809017 | hls=-0.450696 | golden=-0.450723 | err=2.66135e-05
+  n=48 | x=0.587785 | hls=-0.701976 | golden=-0.702018 | err=4.14848e-05
+  n=49 | x=0.309016 | hls=-0.884541 | golden=-0.884594 | err=5.22137e-05
+  n=50 | x=-6.75532e-07 | hls=-0.980522 | golden=-0.980579 | err=5.78761e-05
+  n=51 | x=-0.309018 | hls=-0.980522 | golden=-0.980579 | err=5.77569e-05
+  n=52 | x=-0.587786 | hls=-0.884541 | golden=-0.884593 | err=5.20349e-05
+  n=53 | x=-0.809018 | hls=-0.701976 | golden=-0.702017 | err=4.11272e-05
+  n=54 | x=-0.951057 | hls=-0.450696 | golden=-0.450723 | err=2.61962e-05
+  n=55 | x=-1 | hls=-0.155299 | golden=-0.155308 | err=8.83639e-06
+  n=56 | x=-0.951057 | hls=0.155299 | golden=0.155309 | err=9.47714e-06
+  n=57 | x=-0.809017 | hls=0.450696 | golden=0.450723 | err=2.69115e-05
+  n=58 | x=-0.587785 | hls=0.701976 | golden=0.702018 | err=4.1604e-05
+  n=59 | x=-0.309017 | hls=0.884541 | golden=0.884594 | err=5.22733e-05
+  n=60 | x=4.76995e-08 | hls=0.980522 | golden=0.98058 | err=5.80549e-05
+  n=61 | x=0.309017 | hls=0.980522 | golden=0.980579 | err=5.77569e-05
+  n=62 | x=0.587785 | hls=0.884541 | golden=0.884593 | err=5.19156e-05
+  n=63 | x=0.809017 | hls=0.701976 | golden=0.702017 | err=4.09484e-05
+  n=64 | x=0.951057 | hls=0.450696 | golden=0.450722 | err=2.60472e-05
+  n=65 | x=1 | hls=0.155299 | golden=0.155308 | err=8.52346e-06
+  n=66 | x=0.951056 | hls=-0.155299 | golden=-0.155309 | err=9.76026e-06
+  n=67 | x=0.809016 | hls=-0.450696 | golden=-0.450724 | err=2.71499e-05
+  n=68 | x=0.587784 | hls=-0.701976 | golden=-0.702018 | err=4.17829e-05
+  n=69 | x=0.309016 | hls=-0.884541 | golden=-0.884594 | err=5.25713e-05
+  n=70 | x=-1.32722e-06 | hls=-0.980522 | golden=-0.98058 | err=5.81145e-05
+  n=71 | x=-0.309018 | hls=-0.980522 | golden=-0.98058 | err=5.79953e-05
+  n=72 | x=-0.587787 | hls=-0.884541 | golden=-0.884594 | err=5.22733e-05
+  n=73 | x=-0.809017 | hls=-0.701976 | golden=-0.702017 | err=4.14252e-05
+  n=74 | x=-0.951056 | hls=-0.450696 | golden=-0.450723 | err=2.65837e-05
+  n=75 | x=-1 | hls=-0.155299 | golden=-0.155308 | err=9.05991e-06
+  n=76 | x=-0.951056 | hls=0.155299 | golden=0.155309 | err=9.28342e-06
+  n=77 | x=-0.809017 | hls=0.450696 | golden=0.450723 | err=2.67625e-05
+  n=78 | x=-0.587785 | hls=0.701976 | golden=0.702018 | err=4.15444e-05
+  n=79 | x=-0.309016 | hls=0.884541 | golden=0.884594 | err=5.22137e-05
+  n=80 | x=6.99382e-07 | hls=0.980522 | golden=0.980579 | err=5.78165e-05
+  n=81 | x=0.309018 | hls=0.980522 | golden=0.980579 | err=5.75185e-05
+  n=82 | x=0.587786 | hls=0.884541 | golden=0.884593 | err=5.16176e-05
+  n=83 | x=0.809018 | hls=0.701976 | golden=0.702017 | err=4.05312e-05
+  n=84 | x=0.951057 | hls=0.450696 | golden=0.450722 | err=2.5481e-05
+  n=85 | x=1 | hls=0.155299 | golden=0.155307 | err=8.03173e-06
+  n=86 | x=0.951056 | hls=-0.155299 | golden=-0.15531 | err=1.0252e-05
+  n=87 | x=0.809016 | hls=-0.450696 | golden=-0.450724 | err=2.75373e-05
+  n=88 | x=0.587785 | hls=-0.701976 | golden=-0.702018 | err=4.20213e-05
+  n=89 | x=0.309017 | hls=-0.884541 | golden=-0.884594 | err=5.25117e-05
+  n=90 | x=-7.15493e-08 | hls=-0.980522 | golden=-0.980579 | err=5.78761e-05
+  n=91 | x=-0.309017 | hls=-0.980522 | golden=-0.980579 | err=5.77569e-05
+  n=92 | x=-0.587786 | hls=-0.884541 | golden=-0.884593 | err=5.17964e-05
+  n=93 | x=-0.809017 | hls=-0.701976 | golden=-0.702017 | err=4.07696e-05
+  n=94 | x=-0.951057 | hls=-0.450696 | golden=-0.450722 | err=2.58982e-05
+  n=95 | x=-1 | hls=-0.155299 | golden=-0.155308 | err=8.46386e-06
+  n=96 | x=-0.951056 | hls=0.155299 | golden=0.155309 | err=9.84967e-06
+  n=97 | x=-0.809016 | hls=0.450696 | golden=0.450724 | err=2.72095e-05
+  n=98 | x=-0.587784 | hls=0.701976 | golden=0.702018 | err=4.17829e-05
+  n=99 | x=-0.309016 | hls=0.884541 | golden=0.884594 | err=5.23925e-05
+  n=100 | x=1.35106e-06 | hls=0.980522 | golden=0.980579 | err=5.78761e-05
+  n=101 | x=0.309018 | hls=0.980522 | golden=0.980579 | err=5.78165e-05
+  n=102 | x=0.587787 | hls=0.884541 | golden=0.884593 | err=5.19753e-05
+  n=103 | x=0.809018 | hls=0.701976 | golden=0.702017 | err=4.11272e-05
+  n=104 | x=0.951057 | hls=0.450696 | golden=0.450723 | err=2.62856e-05
+  n=105 | x=1 | hls=0.155299 | golden=0.155308 | err=8.88109e-06
+  n=106 | x=0.951056 | hls=-0.155299 | golden=-0.155309 | err=9.35793e-06
+  n=107 | x=0.809016 | hls=-0.450696 | golden=-0.450723 | err=2.67625e-05
+  n=108 | x=0.587783 | hls=-0.701976 | golden=-0.702018 | err=4.15444e-05
+  n=109 | x=0.309015 | hls=-0.884541 | golden=-0.884594 | err=5.22137e-05
+  n=110 | x=-2.63058e-06 | hls=-0.980522 | golden=-0.980579 | err=5.77569e-05
+  n=111 | x=-0.30902 | hls=-0.980522 | golden=-0.980579 | err=5.75185e-05
+  n=112 | x=-0.587785 | hls=-0.884542 | golden=-0.884593 | err=5.1558e-05
+  n=113 | x=-0.809017 | hls=-0.701976 | golden=-0.702017 | err=4.04119e-05
+  n=114 | x=-0.951056 | hls=-0.450696 | golden=-0.450722 | err=2.5332e-05
+  n=115 | x=-1 | hls=-0.155299 | golden=-0.155307 | err=7.94232e-06
+  n=116 | x=-0.951057 | hls=0.1553 | golden=0.15531 | err=1.01179e-05
+  n=117 | x=-0.809017 | hls=0.450697 | golden=0.450724 | err=2.72095e-05
+  n=118 | x=-0.587785 | hls=0.701977 | golden=0.702018 | err=4.1604e-05
+  n=119 | x=-0.309017 | hls=0.884542 | golden=0.884594 | err=5.23329e-05
+  n=120 | x=9.5399e-08 | hls=0.980521 | golden=0.980579 | err=5.84126e-05
+  n=121 | x=0.309017 | hls=0.98052 | golden=0.980579 | err=5.9247e-05
+  n=122 | x=0.587786 | hls=0.884538 | golden=0.884592 | err=5.44786e-05
+  n=123 | x=0.809017 | hls=0.701971 | golden=0.702016 | err=4.47631e-05
+  n=124 | x=0.951057 | hls=0.45069 | golden=0.450721 | err=3.05772e-05
+  n=125 | x=1 | hls=0.155293 | golden=0.155307 | err=1.32471e-05
+  n=126 | x=0.951056 | hls=-0.155305 | golden=-0.15531 | err=5.61774e-06
+  n=127 | x=0.809016 | hls=-0.4507 | golden=-0.450724 | err=2.40505e-05
+  Max output amplitude (settled): 0.980522
+  Max HLS vs golden error: 5.9247e-05
+  Passband Sine: PASSED
+
+=== Test 3: Stopband Sine (freq = 0.40 * Fs) ===
+  n=28 | x=0.951056 | hls=0.000235591 | golden=0.000255444 | err=1.98526e-05
+  n=29 | x=-0.587785 | hls=0.000558708 | golden=0.000557887 | err=8.20844e-07
+  n=30 | x=1.90798e-07 | hls=0.000169913 | golden=0.000156746 | err=1.31676e-05
+  n=31 | x=0.587784 | hls=-0.000474866 | golden=-0.000454053 | err=2.08131e-05
+  n=32 | x=-0.951056 | hls=0.000293478 | golden=0.000281134 | err=1.23438e-05
+  n=33 | x=0.951058 | hls=0 | golden=2.28494e-07 | err=2.28494e-07
+  n=34 | x=-0.587789 | hls=-0.000293478 | golden=-0.000280701 | err=1.27767e-05
+  n=35 | x=5.30886e-06 | hls=0.000474866 | golden=0.000454406 | err=2.04601e-05
+  n=36 | x=0.58778 | hls=-0.000474866 | golden=-0.000454466 | err=2.04002e-05
+  n=37 | x=-0.951057 | hls=0.000293478 | golden=0.000280649 | err=1.28287e-05
+  n=38 | x=0.951057 | hls=0 | golden=-2.31434e-07 | err=2.31434e-07
+  n=39 | x=-0.587787 | hls=-0.000293478 | golden=-0.000281057 | err=1.24208e-05
+  n=40 | x=2.79753e-06 | hls=0.000474866 | golden=0.000454176 | err=2.06899e-05
+  n=41 | x=0.587782 | hls=-0.000474866 | golden=-0.000454504 | err=2.03621e-05
+  n=42 | x=-0.951055 | hls=0.000293478 | golden=0.000280773 | err=1.2705e-05
+  n=43 | x=0.951058 | hls=0 | golden=2.89001e-08 | err=2.89001e-08
+  n=44 | x=-0.587785 | hls=-0.000293478 | golden=-0.000280713 | err=1.27649e-05
+  n=45 | x=2.86197e-07 | hls=0.000474866 | golden=0.000454523 | err=2.03431e-05
+  n=46 | x=0.587784 | hls=-0.000474866 | golden=-0.00045426 | err=2.06055e-05
+  n=47 | x=-0.951056 | hls=0.000293478 | golden=0.000280921 | err=1.25563e-05
+  n=48 | x=0.951058 | hls=0 | golden=-1.49303e-08 | err=1.49303e-08
+  n=49 | x=-0.587789 | hls=-0.000293478 | golden=-0.000281005 | err=1.24729e-05
+  n=50 | x=5.40426e-06 | hls=0.000474866 | golden=0.000454043 | err=2.08231e-05
+  n=51 | x=0.58778 | hls=-0.000474866 | golden=-0.000454873 | err=1.99926e-05
+  n=52 | x=-0.951054 | hls=0.000293478 | golden=0.000280263 | err=1.32143e-05
+  n=53 | x=0.951059 | hls=0 | golden=-5.18747e-07 | err=5.18747e-07
+  n=54 | x=-0.587793 | hls=-0.000293478 | golden=-0.000281201 | err=1.22765e-05
+  n=55 | x=1.05223e-05 | hls=0.000474866 | golden=0.000454246 | err=2.06198e-05
+  n=56 | x=0.587788 | hls=-0.000474866 | golden=-0.000454271 | err=2.0595e-05
+  n=57 | x=-0.951057 | hls=0.000293478 | golden=0.000281199 | err=1.22787e-05
+  n=58 | x=0.951056 | hls=0 | golden=5.44242e-07 | err=5.44242e-07
+  n=59 | x=-0.587785 | hls=-0.000293478 | golden=-0.000280245 | err=1.32326e-05
+  n=60 | x=3.81596e-07 | hls=0.000474866 | golden=0.000454902 | err=1.99636e-05
+  n=61 | x=0.587784 | hls=-0.000474866 | golden=-0.000454034 | err=2.08313e-05
+  n=62 | x=-0.951056 | hls=0.000293478 | golden=0.000280953 | err=1.25243e-05
+  n=63 | x=0.951058 | hls=0 | golden=-1.11904e-07 | err=1.11904e-07
+  n=64 | x=-0.587789 | hls=-0.000293478 | golden=-0.000281089 | err=1.23886e-05
+  n=65 | x=5.49966e-06 | hls=0.000474866 | golden=0.000454131 | err=2.07344e-05
+  n=66 | x=0.58778 | hls=-0.000474866 | golden=-0.000454487 | err=2.03787e-05
+  n=67 | x=-0.951054 | hls=0.000293478 | golden=0.000281077 | err=1.24009e-05
+  n=68 | x=0.951059 | hls=0 | golden=6.70057e-07 | err=6.70057e-07
+  n=69 | x=-0.587793 | hls=-0.000293478 | golden=-0.000279705 | err=1.37725e-05
+  n=70 | x=1.06177e-05 | hls=0.000474866 | golden=0.000455854 | err=1.90118e-05
+  n=71 | x=0.587776 | hls=-0.000474866 | golden=-0.000452814 | err=2.20513e-05
+  n=72 | x=-0.951053 | hls=0.000293478 | golden=0.000282303 | err=1.11744e-05
+  n=73 | x=0.951056 | hls=0 | golden=1.16034e-06 | err=1.16034e-06
+  n=74 | x=-0.587785 | hls=-0.000293478 | golden=-0.000280125 | err=1.33522e-05
+  n=75 | x=4.76995e-07 | hls=0.000474866 | golden=0.000454707 | err=2.01591e-05
+  n=76 | x=0.587784 | hls=-0.000474866 | golden=-0.000454397 | err=2.04687e-05
+  n=77 | x=-0.951056 | hls=0.000293478 | golden=0.000280649 | err=1.2829e-05
+  n=78 | x=0.951058 | hls=0 | golden=-1.86177e-07 | err=1.86177e-07
+  n=79 | x=-0.587789 | hls=-0.000293478 | golden=-0.000280951 | err=1.25264e-05
+  n=80 | x=5.59506e-06 | hls=0.000474866 | golden=0.000454341 | err=2.05242e-05
+  n=81 | x=0.58778 | hls=-0.000474866 | golden=-0.000454364 | err=2.05013e-05
+  n=82 | x=-0.951054 | hls=0.000293478 | golden=0.000280878 | err=1.25997e-05
+  n=83 | x=0.951059 | hls=0 | golden=5.61704e-09 | err=5.61704e-09
+  n=84 | x=-0.587793 | hls=-0.000293478 | golden=-0.000280853 | err=1.2625e-05
+  n=85 | x=1.07131e-05 | hls=0.000474866 | golden=0.000454334 | err=2.05321e-05
+  n=86 | x=0.587776 | hls=-0.000474866 | golden=-0.000454453 | err=2.04124e-05
+  n=87 | x=-0.951053 | hls=0.000293478 | golden=0.000280774 | err=1.27034e-05
+  n=88 | x=0.951056 | hls=0 | golden=-1.75205e-08 | err=1.75205e-08
+  n=89 | x=-0.587785 | hls=-0.000293478 | golden=-0.000280814 | err=1.26635e-05
+  n=90 | x=5.72394e-07 | hls=0.000474866 | golden=0.000454451 | err=2.04143e-05
+  n=91 | x=0.587784 | hls=-0.000474866 | golden=-0.000454314 | err=2.05517e-05
+  n=92 | x=-0.951056 | hls=0.000293478 | golden=0.000280893 | err=1.25848e-05
+  n=93 | x=0.951058 | hls=0 | golden=5.4366e-08 | err=5.4366e-08
+  n=94 | x=-0.587789 | hls=-0.000293478 | golden=-0.000280789 | err=1.26885e-05
+  n=95 | x=5.69046e-06 | hls=0.000474866 | golden=0.000454403 | err=2.04626e-05
+  n=96 | x=0.58778 | hls=-0.000474866 | golden=-0.000454404 | err=2.04619e-05
+  n=97 | x=-0.951054 | hls=0.000293478 | golden=0.000280804 | err=1.26734e-05
+  n=98 | x=0.951059 | hls=0 | golden=-4.85452e-08 | err=4.85452e-08
+  n=99 | x=-0.587793 | hls=-0.000293478 | golden=-0.000280882 | err=1.25957e-05
+  n=100 | x=1.08085e-05 | hls=0.000474866 | golden=0.000454324 | err=2.05419e-05
+  n=101 | x=0.587776 | hls=-0.000474866 | golden=-0.000454445 | err=2.04209e-05
+  n=102 | x=-0.951053 | hls=0.000293478 | golden=0.000280802 | err=1.26758e-05
+  n=103 | x=0.951061 | hls=0 | golden=-3.63798e-09 | err=3.63798e-09
+  n=104 | x=-0.587797 | hls=-0.000293478 | golden=-0.000280786 | err=1.2692e-05
+  n=105 | x=1.59266e-05 | hls=0.00047485 | golden=0.000454456 | err=2.03937e-05
+  n=106 | x=0.587772 | hls=-0.000474847 | golden=-0.000454319 | err=2.05277e-05
+  n=107 | x=-0.951051 | hls=0.000293546 | golden=0.000280871 | err=1.26744e-05
+  n=108 | x=0.951062 | hls=1.25736e-07 | golden=2.61934e-08 | err=9.95428e-08
+  n=109 | x=-0.587801 | hls=-0.000293325 | golden=-0.000280815 | err=1.25104e-05
+  n=110 | x=2.10446e-05 | hls=0.000474935 | golden=0.000454372 | err=2.05622e-05
+  n=111 | x=0.587767 | hls=-0.000474951 | golden=-0.00045441 | err=2.05412e-05
+  n=112 | x=-0.951059 | hls=0.000293093 | golden=0.000280828 | err=1.22648e-05
+  n=113 | x=0.951055 | hls=-6.70593e-07 | golden=-3.66708e-09 | err=6.66926e-07
+  n=114 | x=-0.587781 | hls=-0.000294242 | golden=-0.000280863 | err=1.33793e-05
+  n=115 | x=-4.35487e-06 | hls=0.000474393 | golden=0.000454367 | err=2.0026e-05
+  n=116 | x=0.587788 | hls=-0.000474523 | golden=-0.000454426 | err=2.00969e-05
+  n=117 | x=-0.951057 | hls=0.000295158 | golden=0.000280821 | err=1.43372e-05
+  n=118 | x=0.951056 | hls=3.36228e-06 | golden=6.2515e-08 | err=3.29976e-06
+  n=119 | x=-0.587785 | hls=-0.000288418 | golden=-0.000280656 | err=7.7626e-06
+  n=120 | x=7.63192e-07 | hls=0.000481235 | golden=0.000454647 | err=2.6588e-05
+  n=121 | x=0.587784 | hls=-0.00046793 | golden=-0.000454126 | err=1.38034e-05
+  n=122 | x=-0.951056 | hls=0.000300047 | golden=0.000280928 | err=1.91186e-05
+  n=123 | x=0.951058 | hls=5.31911e-06 | golden=-2.53349e-07 | err=5.57246e-06
+  n=124 | x=-0.587789 | hls=-0.000290018 | golden=-0.00028158 | err=8.43764e-06
+  n=125 | x=5.88126e-06 | hls=0.000476274 | golden=0.000453103 | err=2.3171e-05
+  n=126 | x=0.58778 | hls=-0.000475271 | golden=-0.000456117 | err=1.91539e-05
+  n=127 | x=-0.951054 | hls=0.000291825 | golden=0.0002789 | err=1.2925e-05
+  Max output amplitude (settled): 0.000481235
+  Max HLS vs golden error: 2.6588e-05
+  Stopband Sine: PASSED
+
+========================================
+  SUMMARY
+  Impulse Response : PASS
+  Passband Sine    : PASS
+  Stopband Sine    : PASS
+  Overall          : ALL PASS
+========================================
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 128
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-2161] Finished Command csim_design Elapsed time: 00:00:08; Allocated memory: 0.402 MB.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.308 seconds; current allocated memory: 192.672 MB.
+INFO: [HLS 200-10] Analyzing design file 'src/fir_filter.cpp' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 12.086 seconds; current allocated memory: 194.863 MB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-1995] There were 646 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 668 instructions in the design after the 'Unroll/Inline (step 1)' phase of compilation. See the Design Size Report for more details: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 517 instructions in the design after the 'Unroll/Inline (step 2)' phase of compilation. See the Design Size Report for more details: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 518 instructions in the design after the 'Unroll/Inline (step 3)' phase of compilation. See the Design Size Report for more details: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 518 instructions in the design after the 'Unroll/Inline (step 4)' phase of compilation. See the Design Size Report for more details: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 419 instructions in the design after the 'Array/Struct (step 1)' phase of compilation. See the Design Size Report for more details: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 419 instructions in the design after the 'Array/Struct (step 2)' phase of compilation. See the Design Size Report for more details: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 419 instructions in the design after the 'Array/Struct (step 3)' phase of compilation. See the Design Size Report for more details: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 419 instructions in the design after the 'Array/Struct (step 4)' phase of compilation. See the Design Size Report for more details: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 448 instructions in the design after the 'Array/Struct (step 5)' phase of compilation. See the Design Size Report for more details: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 448 instructions in the design after the 'Performance (step 1)' phase of compilation. See the Design Size Report for more details: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 446 instructions in the design after the 'Performance (step 2)' phase of compilation. See the Design Size Report for more details: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 415 instructions in the design after the 'Performance (step 3)' phase of compilation. See the Design Size Report for more details: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 415 instructions in the design after the 'Performance (step 4)' phase of compilation. See the Design Size Report for more details: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 471 instructions in the design after the 'HW Transforms (step 1)' phase of compilation. See the Design Size Report for more details: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 470 instructions in the design after the 'HW Transforms (step 2)' phase of compilation. See the Design Size Report for more details: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/syn/report/csynth_design_size.rpt
+INFO: [HLS 214-291] Loop 'shift_loop' is marked as complete unroll implied by the pipeline pragma (src/fir_filter.cpp:51:9)
+INFO: [HLS 214-291] Loop 'mac_loop' is marked as complete unroll implied by the pipeline pragma (src/fir_filter.cpp:60:9)
+INFO: [HLS 214-186] Unrolling loop 'shift_loop' (src/fir_filter.cpp:51:9) in function 'fir_filter' completely with a factor of 31 (src/fir_filter.cpp:9:0)
+INFO: [HLS 214-186] Unrolling loop 'mac_loop' (src/fir_filter.cpp:60:9) in function 'fir_filter' completely with a factor of 32 (src/fir_filter.cpp:9:0)
+INFO: [HLS 214-186] Unrolling loop 'init_delay_line' (src/fir_filter.cpp:24:5) in function 'fir_filter' completely with a factor of 32 (src/fir_filter.cpp:9:0)
+INFO: [HLS 214-248] Applying array_partition to 'coeffs': Complete partitioning on dimension 1. (src/fir_filter.cpp:9:0)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 13.414 seconds; current allocated memory: 196.125 MB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.011 seconds; current allocated memory: 196.125 MB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.192 seconds; current allocated memory: 201.457 MB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.129 seconds; current allocated memory: 203.879 MB.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (src/fir_filter.cpp:45:9) to (src/fir_filter.cpp:44:5) in function 'fir_filter'... converting 63 basic blocks.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.649 seconds; current allocated memory: 228.234 MB.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.307 seconds; current allocated memory: 231.363 MB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'fir_filter' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'fir_filter_Pipeline_sample_loop' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [HLS 200-486] Changing DSP latency (root=acc_61) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_59) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_57) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_55) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_53) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_51) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_49) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_47) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_45) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_43) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_41) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_39) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_37) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_35) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_33) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_31) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_29) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_27) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_25) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_23) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_21) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_19) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_17) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_15) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_13) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_11) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_9) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_7) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_5) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_3) to 3 in order to utilize available DSP registers.
+INFO: [HLS 200-486] Changing DSP latency (root=acc_1) to 3 in order to utilize available DSP registers.
+INFO: [SCHED 204-61] Pipelining loop 'sample_loop'.
+INFO: [HLS 200-1470] Pipelining result : Target II = 1, Final II = 1, Depth = 35, loop 'sample_loop'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.899 seconds; current allocated memory: 237.754 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 1 seconds. Elapsed time: 0.445 seconds; current allocated memory: 239.258 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'fir_filter' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 1 seconds. CPU system time: 0 seconds. Elapsed time: 0.421 seconds; current allocated memory: 240.145 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.188 seconds; current allocated memory: 241.180 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'fir_filter_Pipeline_sample_loop' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-1030] Apply Unified Pipeline Control on module 'fir_filter_Pipeline_sample_loop' pipeline 'sample_loop' pipeline type 'loop pipeline'
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_16s_32ns_32_4_1': 30 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mac_muladd_16s_16s_32s_32_4_1': 1 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'mul_16s_16s_32_1_1': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'fir_filter_Pipeline_sample_loop'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 1.1 seconds; current allocated memory: 250.223 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'fir_filter' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/in_stream_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/in_stream_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/in_stream_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/in_stream_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/out_stream_V_data_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/out_stream_V_keep_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/out_stream_V_strb_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/out_stream_V_last_V' to 'axis' (register, both mode).
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_0' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_1' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_2' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_3' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_4' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_5' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_6' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_7' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_8' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_9' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_10' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_11' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_12' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_13' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_14' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_15' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_16' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_17' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_18' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_19' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_20' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_21' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_22' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_23' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_24' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_25' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_26' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_27' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_28' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_29' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_30' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/coeffs_31' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/num_taps' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'fir_filter/num_samples' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'fir_filter' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'coeffs_0', 'coeffs_1', 'coeffs_2', 'coeffs_3', 'coeffs_4', 'coeffs_5', 'coeffs_6', 'coeffs_7', 'coeffs_8', 'coeffs_9', 'coeffs_10', 'coeffs_11', 'coeffs_12', 'coeffs_13', 'coeffs_14', 'coeffs_15', 'coeffs_16', 'coeffs_17', 'coeffs_18', 'coeffs_19', 'coeffs_20', 'coeffs_21', 'coeffs_22', 'coeffs_23', 'coeffs_24', 'coeffs_25', 'coeffs_26', 'coeffs_27', 'coeffs_28', 'coeffs_29', 'coeffs_30', 'coeffs_31', 'num_taps', 'num_samples' and 'return' to AXI-Lite port CTRL.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'fir_filter'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 2.223 seconds; current allocated memory: 257.746 MB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 1 seconds. CPU system time: 1 seconds. Elapsed time: 1.732 seconds; current allocated memory: 262.789 MB.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 4 seconds. CPU system time: 1 seconds. Elapsed time: 6.57 seconds; current allocated memory: 270.051 MB.
+INFO: [VHDL 208-304] Generating VHDL RTL for fir_filter.
+INFO: [VLOG 209-307] Generating Verilog RTL for fir_filter.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 146.90 MHz
+INFO: [HLS 200-2161] Finished Command csynth_design Elapsed time: 00:00:40; Allocated memory: 77.586 MB.
+INFO: [HLS 200-1510] Running: cosim_design 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "C:/Xilinx/Vitis_HLS/2024.1/vcxx/libexec/clang++"
+   Compiling fir_filter.cpp_pre.cpp.tb.cpp
+   Compiling fir_filter_tb.cpp_pre.cpp.tb.cpp
+   Compiling apatb_fir_filter.cpp
+   Compiling apatb_fir_filter_util.cpp
+   Compiling apatb_fir_filter_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+========================================
+  FIR Filter - HLS vs Golden Behavior
+  32 taps, low-pass, cutoff ~0.1*Fs
+========================================
+
+=== Test 1: Impulse Response ===
+  n=0 | hls=-0.000518815 | golden=-0.000507 | err=1.18146e-05 PASS
+  n=1 | hls=0.00061037 | golden=0.000606 | err=4.37017e-06 PASS
+  n=2 | hls=0.00222785 | golden=0.002235 | err=7.14883e-06 PASS
+  n=3 | hls=0.00412 | golden=0.004132 | err=1.2001e-05 PASS
+  n=4 | hls=0.00500504 | golden=0.00499 | err=1.50357e-05 PASS
+  n=5 | hls=0.00277718 | golden=0.002776 | err=1.18441e-06 PASS
+  n=6 | hls=-0.00393689 | golden=-0.003933 | err=3.88781e-06 PASS
+  n=7 | hls=-0.0142216 | golden=-0.014234 | err=1.23745e-05 PASS
+  n=8 | hls=-0.0238655 | golden=-0.02388 | err=1.45249e-05 PASS
+  n=9 | hls=-0.0259407 | golden=-0.025932 | err=8.73394e-06 PASS
+  n=10 | hls=-0.0132756 | golden=-0.013265 | err=1.05519e-05 PASS
+  n=11 | hls=0.0179449 | golden=0.017938 | err=6.88434e-06 PASS
+  n=12 | hls=0.0653401 | golden=0.065338 | err=2.12342e-06 PASS
+  n=13 | hls=0.119816 | golden=0.119829 | err=1.33291e-05 PASS
+  n=14 | hls=0.167852 | golden=0.167867 | err=1.51992e-05 PASS
+  n=15 | hls=0.196051 | golden=0.196041 | err=9.89437e-06 PASS
+  n=16 | hls=0.196051 | golden=0.196041 | err=9.89437e-06 PASS
+  n=17 | hls=0.167852 | golden=0.167867 | err=1.51992e-05 PASS
+  n=18 | hls=0.119816 | golden=0.119829 | err=1.33291e-05 PASS
+  n=19 | hls=0.0653401 | golden=0.065338 | err=2.12342e-06 PASS
+  n=20 | hls=0.0179449 | golden=0.017938 | err=6.88434e-06 PASS
+  n=21 | hls=-0.0132756 | golden=-0.013265 | err=1.05519e-05 PASS
+  n=22 | hls=-0.0259407 | golden=-0.025932 | err=8.73394e-06 PASS
+  n=23 | hls=-0.0238655 | golden=-0.02388 | err=1.45249e-05 PASS
+  n=24 | hls=-0.0142216 | golden=-0.014234 | err=1.23745e-05 PASS
+  n=25 | hls=-0.00393689 | golden=-0.003933 | err=3.88781e-06 PASS
+  n=26 | hls=0.00277718 | golden=0.002776 | err=1.18441e-06 PASS
+  n=27 | hls=0.00500504 | golden=0.00499 | err=1.50357e-05 PASS
+  n=28 | hls=0.00412 | golden=0.004132 | err=1.2001e-05 PASS
+  n=29 | hls=0.00222785 | golden=0.002235 | err=7.14883e-06 PASS
+  n=30 | hls=0.00061037 | golden=0.000606 | err=4.37017e-06 PASS
+  n=31 | hls=-0.000518815 | golden=-0.000507 | err=1.18146e-05 PASS
+  n=32 | hls=0 | golden=0 | err=0 PASS
+  n=33 | hls=0 | golden=0 | err=0 PASS
+  n=34 | hls=0 | golden=0 | err=0 PASS
+  n=35 | hls=0 | golden=0 | err=0 PASS
+  n=36 | hls=0 | golden=0 | err=0 PASS
+  n=37 | hls=0 | golden=0 | err=0 PASS
+  n=38 | hls=0 | golden=0 | err=0 PASS
+  n=39 | hls=0 | golden=0 | err=0 PASS
+  n=40 | hls=0 | golden=0 | err=0 PASS
+  n=41 | hls=0 | golden=0 | err=0 PASS
+  n=42 | hls=0 | golden=0 | err=0 PASS
+  n=43 | hls=0 | golden=0 | err=0 PASS
+  n=44 | hls=0 | golden=0 | err=0 PASS
+  n=45 | hls=0 | golden=0 | err=0 PASS
+  n=46 | hls=0 | golden=0 | err=0 PASS
+  n=47 | hls=0 | golden=0 | err=0 PASS
+  n=48 | hls=0 | golden=0 | err=0 PASS
+  n=49 | hls=0 | golden=0 | err=0 PASS
+  n=50 | hls=0 | golden=0 | err=0 PASS
+  n=51 | hls=0 | golden=0 | err=0 PASS
+  n=52 | hls=0 | golden=0 | err=0 PASS
+  n=53 | hls=0 | golden=0 | err=0 PASS
+  n=54 | hls=0 | golden=0 | err=0 PASS
+  n=55 | hls=0 | golden=0 | err=0 PASS
+  n=56 | hls=0 | golden=0 | err=0 PASS
+  n=57 | hls=0 | golden=0 | err=0 PASS
+  n=58 | hls=0 | golden=0 | err=0 PASS
+  n=59 | hls=0 | golden=0 | err=0 PASS
+  n=60 | hls=0 | golden=0 | err=0 PASS
+  n=61 | hls=0 | golden=0 | err=0 PASS
+  n=62 | hls=0 | golden=0 | err=0 PASS
+  n=63 | hls=0 | golden=0 | err=0 PASS
+  Impulse Response: PASSED
+
+=== Test 2: Passband Sine (freq = 0.05 * Fs) ===
+  n=28 | x=0.587785 | hls=-0.701349 | golden=-0.701381 | err=3.22461e-05
+  n=29 | x=0.309017 | hls=-0.884658 | golden=-0.884704 | err=4.6432e-05
+  n=30 | x=-2.38498e-08 | hls=-0.980682 | golden=-0.980736 | err=5.41806e-05
+  n=31 | x=-0.309017 | hls=-0.980522 | golden=-0.980579 | err=5.76973e-05
+  n=32 | x=-0.587785 | hls=-0.884541 | golden=-0.884593 | err=5.19156e-05
+  n=33 | x=-0.809017 | hls=-0.701976 | golden=-0.702017 | err=4.11272e-05
+  n=34 | x=-0.951057 | hls=-0.450696 | golden=-0.450723 | err=2.63453e-05
+  n=35 | x=-1 | hls=-0.155299 | golden=-0.155308 | err=8.9556e-06
+  n=36 | x=-0.951056 | hls=0.155299 | golden=0.155309 | err=9.28342e-06
+  n=37 | x=-0.809017 | hls=0.450696 | golden=0.450723 | err=2.66135e-05
+  n=38 | x=-0.587785 | hls=0.701976 | golden=0.702017 | err=4.14252e-05
+  n=39 | x=-0.309017 | hls=0.884541 | golden=0.884593 | err=5.19753e-05
+  n=40 | x=3.49691e-07 | hls=0.980522 | golden=0.980579 | err=5.78165e-05
+  n=41 | x=0.309017 | hls=0.980522 | golden=0.980579 | err=5.76973e-05
+  n=42 | x=0.587786 | hls=0.884541 | golden=0.884593 | err=5.20349e-05
+  n=43 | x=0.809017 | hls=0.701976 | golden=0.702017 | err=4.1306e-05
+  n=44 | x=0.951056 | hls=0.450696 | golden=0.450723 | err=2.64645e-05
+  n=45 | x=1 | hls=0.155299 | golden=0.155308 | err=9.0301e-06
+  n=46 | x=0.951056 | hls=-0.155299 | golden=-0.155309 | err=9.23872e-06
+  n=47 | x=0.809017 | hls=-0.450696 | golden=-0.450723 | err=2.66135e-05
+  n=48 | x=0.587785 | hls=-0.701976 | golden=-0.702018 | err=4.14848e-05
+  n=49 | x=0.309016 | hls=-0.884541 | golden=-0.884594 | err=5.22137e-05
+  n=50 | x=-6.75532e-07 | hls=-0.980522 | golden=-0.980579 | err=5.78761e-05
+  n=51 | x=-0.309018 | hls=-0.980522 | golden=-0.980579 | err=5.77569e-05
+  n=52 | x=-0.587786 | hls=-0.884541 | golden=-0.884593 | err=5.20349e-05
+  n=53 | x=-0.809018 | hls=-0.701976 | golden=-0.702017 | err=4.11272e-05
+  n=54 | x=-0.951057 | hls=-0.450696 | golden=-0.450723 | err=2.61962e-05
+  n=55 | x=-1 | hls=-0.155299 | golden=-0.155308 | err=8.83639e-06
+  n=56 | x=-0.951057 | hls=0.155299 | golden=0.155309 | err=9.47714e-06
+  n=57 | x=-0.809017 | hls=0.450696 | golden=0.450723 | err=2.69115e-05
+  n=58 | x=-0.587785 | hls=0.701976 | golden=0.702018 | err=4.1604e-05
+  n=59 | x=-0.309017 | hls=0.884541 | golden=0.884594 | err=5.22733e-05
+  n=60 | x=4.76995e-08 | hls=0.980522 | golden=0.98058 | err=5.80549e-05
+  n=61 | x=0.309017 | hls=0.980522 | golden=0.980579 | err=5.77569e-05
+  n=62 | x=0.587785 | hls=0.884541 | golden=0.884593 | err=5.19156e-05
+  n=63 | x=0.809017 | hls=0.701976 | golden=0.702017 | err=4.09484e-05
+  n=64 | x=0.951057 | hls=0.450696 | golden=0.450722 | err=2.60472e-05
+  n=65 | x=1 | hls=0.155299 | golden=0.155308 | err=8.52346e-06
+  n=66 | x=0.951056 | hls=-0.155299 | golden=-0.155309 | err=9.76026e-06
+  n=67 | x=0.809016 | hls=-0.450696 | golden=-0.450724 | err=2.71499e-05
+  n=68 | x=0.587784 | hls=-0.701976 | golden=-0.702018 | err=4.17829e-05
+  n=69 | x=0.309016 | hls=-0.884541 | golden=-0.884594 | err=5.25713e-05
+  n=70 | x=-1.32722e-06 | hls=-0.980522 | golden=-0.98058 | err=5.81145e-05
+  n=71 | x=-0.309018 | hls=-0.980522 | golden=-0.98058 | err=5.79953e-05
+  n=72 | x=-0.587787 | hls=-0.884541 | golden=-0.884594 | err=5.22733e-05
+  n=73 | x=-0.809017 | hls=-0.701976 | golden=-0.702017 | err=4.14252e-05
+  n=74 | x=-0.951056 | hls=-0.450696 | golden=-0.450723 | err=2.65837e-05
+  n=75 | x=-1 | hls=-0.155299 | golden=-0.155308 | err=9.05991e-06
+  n=76 | x=-0.951056 | hls=0.155299 | golden=0.155309 | err=9.28342e-06
+  n=77 | x=-0.809017 | hls=0.450696 | golden=0.450723 | err=2.67625e-05
+  n=78 | x=-0.587785 | hls=0.701976 | golden=0.702018 | err=4.15444e-05
+  n=79 | x=-0.309016 | hls=0.884541 | golden=0.884594 | err=5.22137e-05
+  n=80 | x=6.99382e-07 | hls=0.980522 | golden=0.980579 | err=5.78165e-05
+  n=81 | x=0.309018 | hls=0.980522 | golden=0.980579 | err=5.75185e-05
+  n=82 | x=0.587786 | hls=0.884541 | golden=0.884593 | err=5.16176e-05
+  n=83 | x=0.809018 | hls=0.701976 | golden=0.702017 | err=4.05312e-05
+  n=84 | x=0.951057 | hls=0.450696 | golden=0.450722 | err=2.5481e-05
+  n=85 | x=1 | hls=0.155299 | golden=0.155307 | err=8.03173e-06
+  n=86 | x=0.951056 | hls=-0.155299 | golden=-0.15531 | err=1.0252e-05
+  n=87 | x=0.809016 | hls=-0.450696 | golden=-0.450724 | err=2.75373e-05
+  n=88 | x=0.587785 | hls=-0.701976 | golden=-0.702018 | err=4.20213e-05
+  n=89 | x=0.309017 | hls=-0.884541 | golden=-0.884594 | err=5.25117e-05
+  n=90 | x=-7.15493e-08 | hls=-0.980522 | golden=-0.980579 | err=5.78761e-05
+  n=91 | x=-0.309017 | hls=-0.980522 | golden=-0.980579 | err=5.77569e-05
+  n=92 | x=-0.587786 | hls=-0.884541 | golden=-0.884593 | err=5.17964e-05
+  n=93 | x=-0.809017 | hls=-0.701976 | golden=-0.702017 | err=4.07696e-05
+  n=94 | x=-0.951057 | hls=-0.450696 | golden=-0.450722 | err=2.58982e-05
+  n=95 | x=-1 | hls=-0.155299 | golden=-0.155308 | err=8.46386e-06
+  n=96 | x=-0.951056 | hls=0.155299 | golden=0.155309 | err=9.84967e-06
+  n=97 | x=-0.809016 | hls=0.450696 | golden=0.450724 | err=2.72095e-05
+  n=98 | x=-0.587784 | hls=0.701976 | golden=0.702018 | err=4.17829e-05
+  n=99 | x=-0.309016 | hls=0.884541 | golden=0.884594 | err=5.23925e-05
+  n=100 | x=1.35106e-06 | hls=0.980522 | golden=0.980579 | err=5.78761e-05
+  n=101 | x=0.309018 | hls=0.980522 | golden=0.980579 | err=5.78165e-05
+  n=102 | x=0.587787 | hls=0.884541 | golden=0.884593 | err=5.19753e-05
+  n=103 | x=0.809018 | hls=0.701976 | golden=0.702017 | err=4.11272e-05
+  n=104 | x=0.951057 | hls=0.450696 | golden=0.450723 | err=2.62856e-05
+  n=105 | x=1 | hls=0.155299 | golden=0.155308 | err=8.88109e-06
+  n=106 | x=0.951056 | hls=-0.155299 | golden=-0.155309 | err=9.35793e-06
+  n=107 | x=0.809016 | hls=-0.450696 | golden=-0.450723 | err=2.67625e-05
+  n=108 | x=0.587783 | hls=-0.701976 | golden=-0.702018 | err=4.15444e-05
+  n=109 | x=0.309015 | hls=-0.884541 | golden=-0.884594 | err=5.22137e-05
+  n=110 | x=-2.63058e-06 | hls=-0.980522 | golden=-0.980579 | err=5.77569e-05
+  n=111 | x=-0.30902 | hls=-0.980522 | golden=-0.980579 | err=5.75185e-05
+  n=112 | x=-0.587785 | hls=-0.884542 | golden=-0.884593 | err=5.1558e-05
+  n=113 | x=-0.809017 | hls=-0.701976 | golden=-0.702017 | err=4.04119e-05
+  n=114 | x=-0.951056 | hls=-0.450696 | golden=-0.450722 | err=2.5332e-05
+  n=115 | x=-1 | hls=-0.155299 | golden=-0.155307 | err=7.94232e-06
+  n=116 | x=-0.951057 | hls=0.1553 | golden=0.15531 | err=1.01179e-05
+  n=117 | x=-0.809017 | hls=0.450697 | golden=0.450724 | err=2.72095e-05
+  n=118 | x=-0.587785 | hls=0.701977 | golden=0.702018 | err=4.1604e-05
+  n=119 | x=-0.309017 | hls=0.884542 | golden=0.884594 | err=5.23329e-05
+  n=120 | x=9.5399e-08 | hls=0.980521 | golden=0.980579 | err=5.84126e-05
+  n=121 | x=0.309017 | hls=0.98052 | golden=0.980579 | err=5.9247e-05
+  n=122 | x=0.587786 | hls=0.884538 | golden=0.884592 | err=5.44786e-05
+  n=123 | x=0.809017 | hls=0.701971 | golden=0.702016 | err=4.47631e-05
+  n=124 | x=0.951057 | hls=0.45069 | golden=0.450721 | err=3.05772e-05
+  n=125 | x=1 | hls=0.155293 | golden=0.155307 | err=1.32471e-05
+  n=126 | x=0.951056 | hls=-0.155305 | golden=-0.15531 | err=5.61774e-06
+  n=127 | x=0.809016 | hls=-0.4507 | golden=-0.450724 | err=2.40505e-05
+  Max output amplitude (settled): 0.980522
+  Max HLS vs golden error: 5.9247e-05
+  Passband Sine: PASSED
+
+=== Test 3: Stopband Sine (freq = 0.40 * Fs) ===
+  n=28 | x=0.951056 | hls=0.000235591 | golden=0.000255444 | err=1.98526e-05
+  n=29 | x=-0.587785 | hls=0.000558708 | golden=0.000557887 | err=8.20844e-07
+  n=30 | x=1.90798e-07 | hls=0.000169913 | golden=0.000156746 | err=1.31676e-05
+  n=31 | x=0.587784 | hls=-0.000474866 | golden=-0.000454053 | err=2.08131e-05
+  n=32 | x=-0.951056 | hls=0.000293478 | golden=0.000281134 | err=1.23438e-05
+  n=33 | x=0.951058 | hls=0 | golden=2.28494e-07 | err=2.28494e-07
+  n=34 | x=-0.587789 | hls=-0.000293478 | golden=-0.000280701 | err=1.27767e-05
+  n=35 | x=5.30886e-06 | hls=0.000474866 | golden=0.000454406 | err=2.04601e-05
+  n=36 | x=0.58778 | hls=-0.000474866 | golden=-0.000454466 | err=2.04002e-05
+  n=37 | x=-0.951057 | hls=0.000293478 | golden=0.000280649 | err=1.28287e-05
+  n=38 | x=0.951057 | hls=0 | golden=-2.31434e-07 | err=2.31434e-07
+  n=39 | x=-0.587787 | hls=-0.000293478 | golden=-0.000281057 | err=1.24208e-05
+  n=40 | x=2.79753e-06 | hls=0.000474866 | golden=0.000454176 | err=2.06899e-05
+  n=41 | x=0.587782 | hls=-0.000474866 | golden=-0.000454504 | err=2.03621e-05
+  n=42 | x=-0.951055 | hls=0.000293478 | golden=0.000280773 | err=1.2705e-05
+  n=43 | x=0.951058 | hls=0 | golden=2.89001e-08 | err=2.89001e-08
+  n=44 | x=-0.587785 | hls=-0.000293478 | golden=-0.000280713 | err=1.27649e-05
+  n=45 | x=2.86197e-07 | hls=0.000474866 | golden=0.000454523 | err=2.03431e-05
+  n=46 | x=0.587784 | hls=-0.000474866 | golden=-0.00045426 | err=2.06055e-05
+  n=47 | x=-0.951056 | hls=0.000293478 | golden=0.000280921 | err=1.25563e-05
+  n=48 | x=0.951058 | hls=0 | golden=-1.49303e-08 | err=1.49303e-08
+  n=49 | x=-0.587789 | hls=-0.000293478 | golden=-0.000281005 | err=1.24729e-05
+  n=50 | x=5.40426e-06 | hls=0.000474866 | golden=0.000454043 | err=2.08231e-05
+  n=51 | x=0.58778 | hls=-0.000474866 | golden=-0.000454873 | err=1.99926e-05
+  n=52 | x=-0.951054 | hls=0.000293478 | golden=0.000280263 | err=1.32143e-05
+  n=53 | x=0.951059 | hls=0 | golden=-5.18747e-07 | err=5.18747e-07
+  n=54 | x=-0.587793 | hls=-0.000293478 | golden=-0.000281201 | err=1.22765e-05
+  n=55 | x=1.05223e-05 | hls=0.000474866 | golden=0.000454246 | err=2.06198e-05
+  n=56 | x=0.587788 | hls=-0.000474866 | golden=-0.000454271 | err=2.0595e-05
+  n=57 | x=-0.951057 | hls=0.000293478 | golden=0.000281199 | err=1.22787e-05
+  n=58 | x=0.951056 | hls=0 | golden=5.44242e-07 | err=5.44242e-07
+  n=59 | x=-0.587785 | hls=-0.000293478 | golden=-0.000280245 | err=1.32326e-05
+  n=60 | x=3.81596e-07 | hls=0.000474866 | golden=0.000454902 | err=1.99636e-05
+  n=61 | x=0.587784 | hls=-0.000474866 | golden=-0.000454034 | err=2.08313e-05
+  n=62 | x=-0.951056 | hls=0.000293478 | golden=0.000280953 | err=1.25243e-05
+  n=63 | x=0.951058 | hls=0 | golden=-1.11904e-07 | err=1.11904e-07
+  n=64 | x=-0.587789 | hls=-0.000293478 | golden=-0.000281089 | err=1.23886e-05
+  n=65 | x=5.49966e-06 | hls=0.000474866 | golden=0.000454131 | err=2.07344e-05
+  n=66 | x=0.58778 | hls=-0.000474866 | golden=-0.000454487 | err=2.03787e-05
+  n=67 | x=-0.951054 | hls=0.000293478 | golden=0.000281077 | err=1.24009e-05
+  n=68 | x=0.951059 | hls=0 | golden=6.70057e-07 | err=6.70057e-07
+  n=69 | x=-0.587793 | hls=-0.000293478 | golden=-0.000279705 | err=1.37725e-05
+  n=70 | x=1.06177e-05 | hls=0.000474866 | golden=0.000455854 | err=1.90118e-05
+  n=71 | x=0.587776 | hls=-0.000474866 | golden=-0.000452814 | err=2.20513e-05
+  n=72 | x=-0.951053 | hls=0.000293478 | golden=0.000282303 | err=1.11744e-05
+  n=73 | x=0.951056 | hls=0 | golden=1.16034e-06 | err=1.16034e-06
+  n=74 | x=-0.587785 | hls=-0.000293478 | golden=-0.000280125 | err=1.33522e-05
+  n=75 | x=4.76995e-07 | hls=0.000474866 | golden=0.000454707 | err=2.01591e-05
+  n=76 | x=0.587784 | hls=-0.000474866 | golden=-0.000454397 | err=2.04687e-05
+  n=77 | x=-0.951056 | hls=0.000293478 | golden=0.000280649 | err=1.2829e-05
+  n=78 | x=0.951058 | hls=0 | golden=-1.86177e-07 | err=1.86177e-07
+  n=79 | x=-0.587789 | hls=-0.000293478 | golden=-0.000280951 | err=1.25264e-05
+  n=80 | x=5.59506e-06 | hls=0.000474866 | golden=0.000454341 | err=2.05242e-05
+  n=81 | x=0.58778 | hls=-0.000474866 | golden=-0.000454364 | err=2.05013e-05
+  n=82 | x=-0.951054 | hls=0.000293478 | golden=0.000280878 | err=1.25997e-05
+  n=83 | x=0.951059 | hls=0 | golden=5.61704e-09 | err=5.61704e-09
+  n=84 | x=-0.587793 | hls=-0.000293478 | golden=-0.000280853 | err=1.2625e-05
+  n=85 | x=1.07131e-05 | hls=0.000474866 | golden=0.000454334 | err=2.05321e-05
+  n=86 | x=0.587776 | hls=-0.000474866 | golden=-0.000454453 | err=2.04124e-05
+  n=87 | x=-0.951053 | hls=0.000293478 | golden=0.000280774 | err=1.27034e-05
+  n=88 | x=0.951056 | hls=0 | golden=-1.75205e-08 | err=1.75205e-08
+  n=89 | x=-0.587785 | hls=-0.000293478 | golden=-0.000280814 | err=1.26635e-05
+  n=90 | x=5.72394e-07 | hls=0.000474866 | golden=0.000454451 | err=2.04143e-05
+  n=91 | x=0.587784 | hls=-0.000474866 | golden=-0.000454314 | err=2.05517e-05
+  n=92 | x=-0.951056 | hls=0.000293478 | golden=0.000280893 | err=1.25848e-05
+  n=93 | x=0.951058 | hls=0 | golden=5.4366e-08 | err=5.4366e-08
+  n=94 | x=-0.587789 | hls=-0.000293478 | golden=-0.000280789 | err=1.26885e-05
+  n=95 | x=5.69046e-06 | hls=0.000474866 | golden=0.000454403 | err=2.04626e-05
+  n=96 | x=0.58778 | hls=-0.000474866 | golden=-0.000454404 | err=2.04619e-05
+  n=97 | x=-0.951054 | hls=0.000293478 | golden=0.000280804 | err=1.26734e-05
+  n=98 | x=0.951059 | hls=0 | golden=-4.85452e-08 | err=4.85452e-08
+  n=99 | x=-0.587793 | hls=-0.000293478 | golden=-0.000280882 | err=1.25957e-05
+  n=100 | x=1.08085e-05 | hls=0.000474866 | golden=0.000454324 | err=2.05419e-05
+  n=101 | x=0.587776 | hls=-0.000474866 | golden=-0.000454445 | err=2.04209e-05
+  n=102 | x=-0.951053 | hls=0.000293478 | golden=0.000280802 | err=1.26758e-05
+  n=103 | x=0.951061 | hls=0 | golden=-3.63798e-09 | err=3.63798e-09
+  n=104 | x=-0.587797 | hls=-0.000293478 | golden=-0.000280786 | err=1.2692e-05
+  n=105 | x=1.59266e-05 | hls=0.00047485 | golden=0.000454456 | err=2.03937e-05
+  n=106 | x=0.587772 | hls=-0.000474847 | golden=-0.000454319 | err=2.05277e-05
+  n=107 | x=-0.951051 | hls=0.000293546 | golden=0.000280871 | err=1.26744e-05
+  n=108 | x=0.951062 | hls=1.25736e-07 | golden=2.61934e-08 | err=9.95428e-08
+  n=109 | x=-0.587801 | hls=-0.000293325 | golden=-0.000280815 | err=1.25104e-05
+  n=110 | x=2.10446e-05 | hls=0.000474935 | golden=0.000454372 | err=2.05622e-05
+  n=111 | x=0.587767 | hls=-0.000474951 | golden=-0.00045441 | err=2.05412e-05
+  n=112 | x=-0.951059 | hls=0.000293093 | golden=0.000280828 | err=1.22648e-05
+  n=113 | x=0.951055 | hls=-6.70593e-07 | golden=-3.66708e-09 | err=6.66926e-07
+  n=114 | x=-0.587781 | hls=-0.000294242 | golden=-0.000280863 | err=1.33793e-05
+  n=115 | x=-4.35487e-06 | hls=0.000474393 | golden=0.000454367 | err=2.0026e-05
+  n=116 | x=0.587788 | hls=-0.000474523 | golden=-0.000454426 | err=2.00969e-05
+  n=117 | x=-0.951057 | hls=0.000295158 | golden=0.000280821 | err=1.43372e-05
+  n=118 | x=0.951056 | hls=3.36228e-06 | golden=6.2515e-08 | err=3.29976e-06
+  n=119 | x=-0.587785 | hls=-0.000288418 | golden=-0.000280656 | err=7.7626e-06
+  n=120 | x=7.63192e-07 | hls=0.000481235 | golden=0.000454647 | err=2.6588e-05
+  n=121 | x=0.587784 | hls=-0.00046793 | golden=-0.000454126 | err=1.38034e-05
+  n=122 | x=-0.951056 | hls=0.000300047 | golden=0.000280928 | err=1.91186e-05
+  n=123 | x=0.951058 | hls=5.31911e-06 | golden=-2.53349e-07 | err=5.57246e-06
+  n=124 | x=-0.587789 | hls=-0.000290018 | golden=-0.00028158 | err=8.43764e-06
+  n=125 | x=5.88126e-06 | hls=0.000476274 | golden=0.000453103 | err=2.3171e-05
+  n=126 | x=0.58778 | hls=-0.000475271 | golden=-0.000456117 | err=1.91539e-05
+  n=127 | x=-0.951054 | hls=0.000291825 | golden=0.0002789 | err=1.2925e-05
+  Max output amplitude (settled): 0.000481235
+  Max HLS vs golden error: 2.6588e-05
+  Stopband Sine: PASSED
+
+========================================
+  SUMMARY
+  Impulse Response : PASS
+  Passband Sine    : PASS
+  Stopband Sine    : PASS
+  Overall          : ALL PASS
+========================================
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 128
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+
+(env) C:\Users\forbe\CLionProjects\FIR_Filter\fir_filter_hls\solution1\sim\verilog>set PATH= 
+
+(env) C:\Users\forbe\CLionProjects\FIR_Filter\fir_filter_hls\solution1\sim\verilog>call C:/Xilinx/Vivado/2024.1/bin/xelab xil_defaultlib.apatb_fir_filter_top glbl -Oenable_linking_all_libraries  -prj fir_filter.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm  -L floating_point_v7_0_23 -L floating_point_v7_1_18 --lib "ieee_proposed=./ieee_proposed" -s fir_filter  
+Vivado Simulator v2024.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe xil_defaultlib.apatb_fir_filter_top glbl -Oenable_linking_all_libraries -prj fir_filter.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_0_23 -L floating_point_v7_1_18 --lib ieee_proposed=./ieee_proposed -s fir_filter 
+Multi-threading is on. Using 14 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/glbl.v" into library work
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/AESL_axi_slave_CTRL.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_slave_CTRL
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/AESL_axi_s_in_stream.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_in_stream
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/AESL_axi_s_out_stream.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_axi_s_out_stream
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/AESL_deadlock_idx0_monitor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_idx0_monitor
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/AESL_deadlock_idx1_monitor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_idx1_monitor
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/AESL_deadlock_kernel_monitor_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_kernel_monitor_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/AESL_fifo.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fifo
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/fir_filter.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_fir_filter_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/fir_filter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fir_filter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/fir_filter_CTRL_s_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fir_filter_CTRL_s_axi
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/fir_filter_fir_filter_Pipeline_sample_loop.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fir_filter_fir_filter_Pipeline_sample_loop
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/fir_filter_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fir_filter_flow_control_loop_pipe_sequential_init
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/fir_filter_mac_muladd_16s_16s_32ns_32_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fir_filter_mac_muladd_16s_16s_32ns_32_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module fir_filter_mac_muladd_16s_16s_32ns_32_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/fir_filter_mac_muladd_16s_16s_32s_32_4_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fir_filter_mac_muladd_16s_16s_32s_32_4_1_DSP48_0
+INFO: [VRFC 10-311] analyzing module fir_filter_mac_muladd_16s_16s_32s_32_4_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/fir_filter_mul_16s_16s_32_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fir_filter_mul_16s_16s_32_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/fir_filter_regslice_both.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fir_filter_regslice_both
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.fir_filter_mul_16s_16s_32_1_1(NU...
+Compiling module xil_defaultlib.fir_filter_mac_muladd_16s_16s_32...
+Compiling module xil_defaultlib.fir_filter_mac_muladd_16s_16s_32...
+Compiling module xil_defaultlib.fir_filter_mac_muladd_16s_16s_32...
+Compiling module xil_defaultlib.fir_filter_mac_muladd_16s_16s_32...
+Compiling module xil_defaultlib.fir_filter_flow_control_loop_pip...
+Compiling module xil_defaultlib.fir_filter_fir_filter_Pipeline_s...
+Compiling module xil_defaultlib.fir_filter_CTRL_s_axi
+Compiling module xil_defaultlib.fir_filter_regslice_both(DataWid...
+Compiling module xil_defaultlib.fir_filter_regslice_both(DataWid...
+Compiling module xil_defaultlib.fir_filter_regslice_both(DataWid...
+Compiling module xil_defaultlib.fir_filter
+Compiling module xil_defaultlib.fifo(DEPTH=128,WIDTH=32)
+Compiling module xil_defaultlib.fifo(DEPTH=128,WIDTH=4)
+Compiling module xil_defaultlib.fifo(DEPTH=128,WIDTH=1)
+Compiling module xil_defaultlib.AESL_axi_s_in_stream
+Compiling module xil_defaultlib.AESL_axi_s_out_stream
+Compiling module xil_defaultlib.AESL_axi_slave_CTRL
+Compiling module xil_defaultlib.AESL_deadlock_idx1_monitor
+Compiling module xil_defaultlib.AESL_deadlock_idx0_monitor
+Compiling module xil_defaultlib.AESL_deadlock_kernel_monitor_top...
+Compiling module xil_defaultlib.nodf_module_intf_default
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=1)
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_fir_filter_top
+Compiling module work.glbl
+Built simulation snapshot fir_filter
+
+****** xsim v2024.1 (64-bit)
+  **** SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Tue May 12 01:04:43 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/fir_filter/xsim_script.tcl
+# xsim {fir_filter} -autoloadwcfg -tclbatch {fir_filter.tcl}
+Time resolution is 1 ps
+source fir_filter.tcl
+## run all
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 3 [0.00%] @ "125000"
+// RTL Simulation : 1 / 3 [0.00%] @ "3085000"
+// RTL Simulation : 2 / 3 [0.00%] @ "4985000"
+// RTL Simulation : 3 / 3 [100.00%] @ "6775000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 6835 ns : File "C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/sim/verilog/fir_filter.autotb.v" Line 572
+## quit
+INFO: [Common 17-206] Exiting xsim at Tue May 12 01:04:52 2026...
+INFO: [COSIM 212-316] Starting C post checking ...
+========================================
+  FIR Filter - HLS vs Golden Behavior
+  32 taps, low-pass, cutoff ~0.1*Fs
+========================================
+
+=== Test 1: Impulse Response ===
+  n=0 | hls=-0.000518815 | golden=-0.000507 | err=1.18146e-05 PASS
+  n=1 | hls=0.00061037 | golden=0.000606 | err=4.37017e-06 PASS
+  n=2 | hls=0.00222785 | golden=0.002235 | err=7.14883e-06 PASS
+  n=3 | hls=0.00412 | golden=0.004132 | err=1.2001e-05 PASS
+  n=4 | hls=0.00500504 | golden=0.00499 | err=1.50357e-05 PASS
+  n=5 | hls=0.00277718 | golden=0.002776 | err=1.18441e-06 PASS
+  n=6 | hls=-0.00393689 | golden=-0.003933 | err=3.88781e-06 PASS
+  n=7 | hls=-0.0142216 | golden=-0.014234 | err=1.23745e-05 PASS
+  n=8 | hls=-0.0238655 | golden=-0.02388 | err=1.45249e-05 PASS
+  n=9 | hls=-0.0259407 | golden=-0.025932 | err=8.73394e-06 PASS
+  n=10 | hls=-0.0132756 | golden=-0.013265 | err=1.05519e-05 PASS
+  n=11 | hls=0.0179449 | golden=0.017938 | err=6.88434e-06 PASS
+  n=12 | hls=0.0653401 | golden=0.065338 | err=2.12342e-06 PASS
+  n=13 | hls=0.119816 | golden=0.119829 | err=1.33291e-05 PASS
+  n=14 | hls=0.167852 | golden=0.167867 | err=1.51992e-05 PASS
+  n=15 | hls=0.196051 | golden=0.196041 | err=9.89437e-06 PASS
+  n=16 | hls=0.196051 | golden=0.196041 | err=9.89437e-06 PASS
+  n=17 | hls=0.167852 | golden=0.167867 | err=1.51992e-05 PASS
+  n=18 | hls=0.119816 | golden=0.119829 | err=1.33291e-05 PASS
+  n=19 | hls=0.0653401 | golden=0.065338 | err=2.12342e-06 PASS
+  n=20 | hls=0.0179449 | golden=0.017938 | err=6.88434e-06 PASS
+  n=21 | hls=-0.0132756 | golden=-0.013265 | err=1.05519e-05 PASS
+  n=22 | hls=-0.0259407 | golden=-0.025932 | err=8.73394e-06 PASS
+  n=23 | hls=-0.0238655 | golden=-0.02388 | err=1.45249e-05 PASS
+  n=24 | hls=-0.0142216 | golden=-0.014234 | err=1.23745e-05 PASS
+  n=25 | hls=-0.00393689 | golden=-0.003933 | err=3.88781e-06 PASS
+  n=26 | hls=0.00277718 | golden=0.002776 | err=1.18441e-06 PASS
+  n=27 | hls=0.00500504 | golden=0.00499 | err=1.50357e-05 PASS
+  n=28 | hls=0.00412 | golden=0.004132 | err=1.2001e-05 PASS
+  n=29 | hls=0.00222785 | golden=0.002235 | err=7.14883e-06 PASS
+  n=30 | hls=0.00061037 | golden=0.000606 | err=4.37017e-06 PASS
+  n=31 | hls=-0.000518815 | golden=-0.000507 | err=1.18146e-05 PASS
+  n=32 | hls=0 | golden=0 | err=0 PASS
+  n=33 | hls=0 | golden=0 | err=0 PASS
+  n=34 | hls=0 | golden=0 | err=0 PASS
+  n=35 | hls=0 | golden=0 | err=0 PASS
+  n=36 | hls=0 | golden=0 | err=0 PASS
+  n=37 | hls=0 | golden=0 | err=0 PASS
+  n=38 | hls=0 | golden=0 | err=0 PASS
+  n=39 | hls=0 | golden=0 | err=0 PASS
+  n=40 | hls=0 | golden=0 | err=0 PASS
+  n=41 | hls=0 | golden=0 | err=0 PASS
+  n=42 | hls=0 | golden=0 | err=0 PASS
+  n=43 | hls=0 | golden=0 | err=0 PASS
+  n=44 | hls=0 | golden=0 | err=0 PASS
+  n=45 | hls=0 | golden=0 | err=0 PASS
+  n=46 | hls=0 | golden=0 | err=0 PASS
+  n=47 | hls=0 | golden=0 | err=0 PASS
+  n=48 | hls=0 | golden=0 | err=0 PASS
+  n=49 | hls=0 | golden=0 | err=0 PASS
+  n=50 | hls=0 | golden=0 | err=0 PASS
+  n=51 | hls=0 | golden=0 | err=0 PASS
+  n=52 | hls=0 | golden=0 | err=0 PASS
+  n=53 | hls=0 | golden=0 | err=0 PASS
+  n=54 | hls=0 | golden=0 | err=0 PASS
+  n=55 | hls=0 | golden=0 | err=0 PASS
+  n=56 | hls=0 | golden=0 | err=0 PASS
+  n=57 | hls=0 | golden=0 | err=0 PASS
+  n=58 | hls=0 | golden=0 | err=0 PASS
+  n=59 | hls=0 | golden=0 | err=0 PASS
+  n=60 | hls=0 | golden=0 | err=0 PASS
+  n=61 | hls=0 | golden=0 | err=0 PASS
+  n=62 | hls=0 | golden=0 | err=0 PASS
+  n=63 | hls=0 | golden=0 | err=0 PASS
+  Impulse Response: PASSED
+
+=== Test 2: Passband Sine (freq = 0.05 * Fs) ===
+  n=28 | x=0.587785 | hls=-0.701349 | golden=-0.701381 | err=3.22461e-05
+  n=29 | x=0.309017 | hls=-0.884658 | golden=-0.884704 | err=4.6432e-05
+  n=30 | x=-2.38498e-08 | hls=-0.980682 | golden=-0.980736 | err=5.41806e-05
+  n=31 | x=-0.309017 | hls=-0.980522 | golden=-0.980579 | err=5.76973e-05
+  n=32 | x=-0.587785 | hls=-0.884541 | golden=-0.884593 | err=5.19156e-05
+  n=33 | x=-0.809017 | hls=-0.701976 | golden=-0.702017 | err=4.11272e-05
+  n=34 | x=-0.951057 | hls=-0.450696 | golden=-0.450723 | err=2.63453e-05
+  n=35 | x=-1 | hls=-0.155299 | golden=-0.155308 | err=8.9556e-06
+  n=36 | x=-0.951056 | hls=0.155299 | golden=0.155309 | err=9.28342e-06
+  n=37 | x=-0.809017 | hls=0.450696 | golden=0.450723 | err=2.66135e-05
+  n=38 | x=-0.587785 | hls=0.701976 | golden=0.702017 | err=4.14252e-05
+  n=39 | x=-0.309017 | hls=0.884541 | golden=0.884593 | err=5.19753e-05
+  n=40 | x=3.49691e-07 | hls=0.980522 | golden=0.980579 | err=5.78165e-05
+  n=41 | x=0.309017 | hls=0.980522 | golden=0.980579 | err=5.76973e-05
+  n=42 | x=0.587786 | hls=0.884541 | golden=0.884593 | err=5.20349e-05
+  n=43 | x=0.809017 | hls=0.701976 | golden=0.702017 | err=4.1306e-05
+  n=44 | x=0.951056 | hls=0.450696 | golden=0.450723 | err=2.64645e-05
+  n=45 | x=1 | hls=0.155299 | golden=0.155308 | err=9.0301e-06
+  n=46 | x=0.951056 | hls=-0.155299 | golden=-0.155309 | err=9.23872e-06
+  n=47 | x=0.809017 | hls=-0.450696 | golden=-0.450723 | err=2.66135e-05
+  n=48 | x=0.587785 | hls=-0.701976 | golden=-0.702018 | err=4.14848e-05
+  n=49 | x=0.309016 | hls=-0.884541 | golden=-0.884594 | err=5.22137e-05
+  n=50 | x=-6.75532e-07 | hls=-0.980522 | golden=-0.980579 | err=5.78761e-05
+  n=51 | x=-0.309018 | hls=-0.980522 | golden=-0.980579 | err=5.77569e-05
+  n=52 | x=-0.587786 | hls=-0.884541 | golden=-0.884593 | err=5.20349e-05
+  n=53 | x=-0.809018 | hls=-0.701976 | golden=-0.702017 | err=4.11272e-05
+  n=54 | x=-0.951057 | hls=-0.450696 | golden=-0.450723 | err=2.61962e-05
+  n=55 | x=-1 | hls=-0.155299 | golden=-0.155308 | err=8.83639e-06
+  n=56 | x=-0.951057 | hls=0.155299 | golden=0.155309 | err=9.47714e-06
+  n=57 | x=-0.809017 | hls=0.450696 | golden=0.450723 | err=2.69115e-05
+  n=58 | x=-0.587785 | hls=0.701976 | golden=0.702018 | err=4.1604e-05
+  n=59 | x=-0.309017 | hls=0.884541 | golden=0.884594 | err=5.22733e-05
+  n=60 | x=4.76995e-08 | hls=0.980522 | golden=0.98058 | err=5.80549e-05
+  n=61 | x=0.309017 | hls=0.980522 | golden=0.980579 | err=5.77569e-05
+  n=62 | x=0.587785 | hls=0.884541 | golden=0.884593 | err=5.19156e-05
+  n=63 | x=0.809017 | hls=0.701976 | golden=0.702017 | err=4.09484e-05
+  n=64 | x=0.951057 | hls=0.450696 | golden=0.450722 | err=2.60472e-05
+  n=65 | x=1 | hls=0.155299 | golden=0.155308 | err=8.52346e-06
+  n=66 | x=0.951056 | hls=-0.155299 | golden=-0.155309 | err=9.76026e-06
+  n=67 | x=0.809016 | hls=-0.450696 | golden=-0.450724 | err=2.71499e-05
+  n=68 | x=0.587784 | hls=-0.701976 | golden=-0.702018 | err=4.17829e-05
+  n=69 | x=0.309016 | hls=-0.884541 | golden=-0.884594 | err=5.25713e-05
+  n=70 | x=-1.32722e-06 | hls=-0.980522 | golden=-0.98058 | err=5.81145e-05
+  n=71 | x=-0.309018 | hls=-0.980522 | golden=-0.98058 | err=5.79953e-05
+  n=72 | x=-0.587787 | hls=-0.884541 | golden=-0.884594 | err=5.22733e-05
+  n=73 | x=-0.809017 | hls=-0.701976 | golden=-0.702017 | err=4.14252e-05
+  n=74 | x=-0.951056 | hls=-0.450696 | golden=-0.450723 | err=2.65837e-05
+  n=75 | x=-1 | hls=-0.155299 | golden=-0.155308 | err=9.05991e-06
+  n=76 | x=-0.951056 | hls=0.155299 | golden=0.155309 | err=9.28342e-06
+  n=77 | x=-0.809017 | hls=0.450696 | golden=0.450723 | err=2.67625e-05
+  n=78 | x=-0.587785 | hls=0.701976 | golden=0.702018 | err=4.15444e-05
+  n=79 | x=-0.309016 | hls=0.884541 | golden=0.884594 | err=5.22137e-05
+  n=80 | x=6.99382e-07 | hls=0.980522 | golden=0.980579 | err=5.78165e-05
+  n=81 | x=0.309018 | hls=0.980522 | golden=0.980579 | err=5.75185e-05
+  n=82 | x=0.587786 | hls=0.884541 | golden=0.884593 | err=5.16176e-05
+  n=83 | x=0.809018 | hls=0.701976 | golden=0.702017 | err=4.05312e-05
+  n=84 | x=0.951057 | hls=0.450696 | golden=0.450722 | err=2.5481e-05
+  n=85 | x=1 | hls=0.155299 | golden=0.155307 | err=8.03173e-06
+  n=86 | x=0.951056 | hls=-0.155299 | golden=-0.15531 | err=1.0252e-05
+  n=87 | x=0.809016 | hls=-0.450696 | golden=-0.450724 | err=2.75373e-05
+  n=88 | x=0.587785 | hls=-0.701976 | golden=-0.702018 | err=4.20213e-05
+  n=89 | x=0.309017 | hls=-0.884541 | golden=-0.884594 | err=5.25117e-05
+  n=90 | x=-7.15493e-08 | hls=-0.980522 | golden=-0.980579 | err=5.78761e-05
+  n=91 | x=-0.309017 | hls=-0.980522 | golden=-0.980579 | err=5.77569e-05
+  n=92 | x=-0.587786 | hls=-0.884541 | golden=-0.884593 | err=5.17964e-05
+  n=93 | x=-0.809017 | hls=-0.701976 | golden=-0.702017 | err=4.07696e-05
+  n=94 | x=-0.951057 | hls=-0.450696 | golden=-0.450722 | err=2.58982e-05
+  n=95 | x=-1 | hls=-0.155299 | golden=-0.155308 | err=8.46386e-06
+  n=96 | x=-0.951056 | hls=0.155299 | golden=0.155309 | err=9.84967e-06
+  n=97 | x=-0.809016 | hls=0.450696 | golden=0.450724 | err=2.72095e-05
+  n=98 | x=-0.587784 | hls=0.701976 | golden=0.702018 | err=4.17829e-05
+  n=99 | x=-0.309016 | hls=0.884541 | golden=0.884594 | err=5.23925e-05
+  n=100 | x=1.35106e-06 | hls=0.980522 | golden=0.980579 | err=5.78761e-05
+  n=101 | x=0.309018 | hls=0.980522 | golden=0.980579 | err=5.78165e-05
+  n=102 | x=0.587787 | hls=0.884541 | golden=0.884593 | err=5.19753e-05
+  n=103 | x=0.809018 | hls=0.701976 | golden=0.702017 | err=4.11272e-05
+  n=104 | x=0.951057 | hls=0.450696 | golden=0.450723 | err=2.62856e-05
+  n=105 | x=1 | hls=0.155299 | golden=0.155308 | err=8.88109e-06
+  n=106 | x=0.951056 | hls=-0.155299 | golden=-0.155309 | err=9.35793e-06
+  n=107 | x=0.809016 | hls=-0.450696 | golden=-0.450723 | err=2.67625e-05
+  n=108 | x=0.587783 | hls=-0.701976 | golden=-0.702018 | err=4.15444e-05
+  n=109 | x=0.309015 | hls=-0.884541 | golden=-0.884594 | err=5.22137e-05
+  n=110 | x=-2.63058e-06 | hls=-0.980522 | golden=-0.980579 | err=5.77569e-05
+  n=111 | x=-0.30902 | hls=-0.980522 | golden=-0.980579 | err=5.75185e-05
+  n=112 | x=-0.587785 | hls=-0.884542 | golden=-0.884593 | err=5.1558e-05
+  n=113 | x=-0.809017 | hls=-0.701976 | golden=-0.702017 | err=4.04119e-05
+  n=114 | x=-0.951056 | hls=-0.450696 | golden=-0.450722 | err=2.5332e-05
+  n=115 | x=-1 | hls=-0.155299 | golden=-0.155307 | err=7.94232e-06
+  n=116 | x=-0.951057 | hls=0.1553 | golden=0.15531 | err=1.01179e-05
+  n=117 | x=-0.809017 | hls=0.450697 | golden=0.450724 | err=2.72095e-05
+  n=118 | x=-0.587785 | hls=0.701977 | golden=0.702018 | err=4.1604e-05
+  n=119 | x=-0.309017 | hls=0.884542 | golden=0.884594 | err=5.23329e-05
+  n=120 | x=9.5399e-08 | hls=0.980521 | golden=0.980579 | err=5.84126e-05
+  n=121 | x=0.309017 | hls=0.98052 | golden=0.980579 | err=5.9247e-05
+  n=122 | x=0.587786 | hls=0.884538 | golden=0.884592 | err=5.44786e-05
+  n=123 | x=0.809017 | hls=0.701971 | golden=0.702016 | err=4.47631e-05
+  n=124 | x=0.951057 | hls=0.45069 | golden=0.450721 | err=3.05772e-05
+  n=125 | x=1 | hls=0.155293 | golden=0.155307 | err=1.32471e-05
+  n=126 | x=0.951056 | hls=-0.155305 | golden=-0.15531 | err=5.61774e-06
+  n=127 | x=0.809016 | hls=-0.4507 | golden=-0.450724 | err=2.40505e-05
+  Max output amplitude (settled): 0.980522
+  Max HLS vs golden error: 5.9247e-05
+  Passband Sine: PASSED
+
+=== Test 3: Stopband Sine (freq = 0.40 * Fs) ===
+  n=28 | x=0.951056 | hls=0.000235591 | golden=0.000255444 | err=1.98526e-05
+  n=29 | x=-0.587785 | hls=0.000558708 | golden=0.000557887 | err=8.20844e-07
+  n=30 | x=1.90798e-07 | hls=0.000169913 | golden=0.000156746 | err=1.31676e-05
+  n=31 | x=0.587784 | hls=-0.000474866 | golden=-0.000454053 | err=2.08131e-05
+  n=32 | x=-0.951056 | hls=0.000293478 | golden=0.000281134 | err=1.23438e-05
+  n=33 | x=0.951058 | hls=0 | golden=2.28494e-07 | err=2.28494e-07
+  n=34 | x=-0.587789 | hls=-0.000293478 | golden=-0.000280701 | err=1.27767e-05
+  n=35 | x=5.30886e-06 | hls=0.000474866 | golden=0.000454406 | err=2.04601e-05
+  n=36 | x=0.58778 | hls=-0.000474866 | golden=-0.000454466 | err=2.04002e-05
+  n=37 | x=-0.951057 | hls=0.000293478 | golden=0.000280649 | err=1.28287e-05
+  n=38 | x=0.951057 | hls=0 | golden=-2.31434e-07 | err=2.31434e-07
+  n=39 | x=-0.587787 | hls=-0.000293478 | golden=-0.000281057 | err=1.24208e-05
+  n=40 | x=2.79753e-06 | hls=0.000474866 | golden=0.000454176 | err=2.06899e-05
+  n=41 | x=0.587782 | hls=-0.000474866 | golden=-0.000454504 | err=2.03621e-05
+  n=42 | x=-0.951055 | hls=0.000293478 | golden=0.000280773 | err=1.2705e-05
+  n=43 | x=0.951058 | hls=0 | golden=2.89001e-08 | err=2.89001e-08
+  n=44 | x=-0.587785 | hls=-0.000293478 | golden=-0.000280713 | err=1.27649e-05
+  n=45 | x=2.86197e-07 | hls=0.000474866 | golden=0.000454523 | err=2.03431e-05
+  n=46 | x=0.587784 | hls=-0.000474866 | golden=-0.00045426 | err=2.06055e-05
+  n=47 | x=-0.951056 | hls=0.000293478 | golden=0.000280921 | err=1.25563e-05
+  n=48 | x=0.951058 | hls=0 | golden=-1.49303e-08 | err=1.49303e-08
+  n=49 | x=-0.587789 | hls=-0.000293478 | golden=-0.000281005 | err=1.24729e-05
+  n=50 | x=5.40426e-06 | hls=0.000474866 | golden=0.000454043 | err=2.08231e-05
+  n=51 | x=0.58778 | hls=-0.000474866 | golden=-0.000454873 | err=1.99926e-05
+  n=52 | x=-0.951054 | hls=0.000293478 | golden=0.000280263 | err=1.32143e-05
+  n=53 | x=0.951059 | hls=0 | golden=-5.18747e-07 | err=5.18747e-07
+  n=54 | x=-0.587793 | hls=-0.000293478 | golden=-0.000281201 | err=1.22765e-05
+  n=55 | x=1.05223e-05 | hls=0.000474866 | golden=0.000454246 | err=2.06198e-05
+  n=56 | x=0.587788 | hls=-0.000474866 | golden=-0.000454271 | err=2.0595e-05
+  n=57 | x=-0.951057 | hls=0.000293478 | golden=0.000281199 | err=1.22787e-05
+  n=58 | x=0.951056 | hls=0 | golden=5.44242e-07 | err=5.44242e-07
+  n=59 | x=-0.587785 | hls=-0.000293478 | golden=-0.000280245 | err=1.32326e-05
+  n=60 | x=3.81596e-07 | hls=0.000474866 | golden=0.000454902 | err=1.99636e-05
+  n=61 | x=0.587784 | hls=-0.000474866 | golden=-0.000454034 | err=2.08313e-05
+  n=62 | x=-0.951056 | hls=0.000293478 | golden=0.000280953 | err=1.25243e-05
+  n=63 | x=0.951058 | hls=0 | golden=-1.11904e-07 | err=1.11904e-07
+  n=64 | x=-0.587789 | hls=-0.000293478 | golden=-0.000281089 | err=1.23886e-05
+  n=65 | x=5.49966e-06 | hls=0.000474866 | golden=0.000454131 | err=2.07344e-05
+  n=66 | x=0.58778 | hls=-0.000474866 | golden=-0.000454487 | err=2.03787e-05
+  n=67 | x=-0.951054 | hls=0.000293478 | golden=0.000281077 | err=1.24009e-05
+  n=68 | x=0.951059 | hls=0 | golden=6.70057e-07 | err=6.70057e-07
+  n=69 | x=-0.587793 | hls=-0.000293478 | golden=-0.000279705 | err=1.37725e-05
+  n=70 | x=1.06177e-05 | hls=0.000474866 | golden=0.000455854 | err=1.90118e-05
+  n=71 | x=0.587776 | hls=-0.000474866 | golden=-0.000452814 | err=2.20513e-05
+  n=72 | x=-0.951053 | hls=0.000293478 | golden=0.000282303 | err=1.11744e-05
+  n=73 | x=0.951056 | hls=0 | golden=1.16034e-06 | err=1.16034e-06
+  n=74 | x=-0.587785 | hls=-0.000293478 | golden=-0.000280125 | err=1.33522e-05
+  n=75 | x=4.76995e-07 | hls=0.000474866 | golden=0.000454707 | err=2.01591e-05
+  n=76 | x=0.587784 | hls=-0.000474866 | golden=-0.000454397 | err=2.04687e-05
+  n=77 | x=-0.951056 | hls=0.000293478 | golden=0.000280649 | err=1.2829e-05
+  n=78 | x=0.951058 | hls=0 | golden=-1.86177e-07 | err=1.86177e-07
+  n=79 | x=-0.587789 | hls=-0.000293478 | golden=-0.000280951 | err=1.25264e-05
+  n=80 | x=5.59506e-06 | hls=0.000474866 | golden=0.000454341 | err=2.05242e-05
+  n=81 | x=0.58778 | hls=-0.000474866 | golden=-0.000454364 | err=2.05013e-05
+  n=82 | x=-0.951054 | hls=0.000293478 | golden=0.000280878 | err=1.25997e-05
+  n=83 | x=0.951059 | hls=0 | golden=5.61704e-09 | err=5.61704e-09
+  n=84 | x=-0.587793 | hls=-0.000293478 | golden=-0.000280853 | err=1.2625e-05
+  n=85 | x=1.07131e-05 | hls=0.000474866 | golden=0.000454334 | err=2.05321e-05
+  n=86 | x=0.587776 | hls=-0.000474866 | golden=-0.000454453 | err=2.04124e-05
+  n=87 | x=-0.951053 | hls=0.000293478 | golden=0.000280774 | err=1.27034e-05
+  n=88 | x=0.951056 | hls=0 | golden=-1.75205e-08 | err=1.75205e-08
+  n=89 | x=-0.587785 | hls=-0.000293478 | golden=-0.000280814 | err=1.26635e-05
+  n=90 | x=5.72394e-07 | hls=0.000474866 | golden=0.000454451 | err=2.04143e-05
+  n=91 | x=0.587784 | hls=-0.000474866 | golden=-0.000454314 | err=2.05517e-05
+  n=92 | x=-0.951056 | hls=0.000293478 | golden=0.000280893 | err=1.25848e-05
+  n=93 | x=0.951058 | hls=0 | golden=5.4366e-08 | err=5.4366e-08
+  n=94 | x=-0.587789 | hls=-0.000293478 | golden=-0.000280789 | err=1.26885e-05
+  n=95 | x=5.69046e-06 | hls=0.000474866 | golden=0.000454403 | err=2.04626e-05
+  n=96 | x=0.58778 | hls=-0.000474866 | golden=-0.000454404 | err=2.04619e-05
+  n=97 | x=-0.951054 | hls=0.000293478 | golden=0.000280804 | err=1.26734e-05
+  n=98 | x=0.951059 | hls=0 | golden=-4.85452e-08 | err=4.85452e-08
+  n=99 | x=-0.587793 | hls=-0.000293478 | golden=-0.000280882 | err=1.25957e-05
+  n=100 | x=1.08085e-05 | hls=0.000474866 | golden=0.000454324 | err=2.05419e-05
+  n=101 | x=0.587776 | hls=-0.000474866 | golden=-0.000454445 | err=2.04209e-05
+  n=102 | x=-0.951053 | hls=0.000293478 | golden=0.000280802 | err=1.26758e-05
+  n=103 | x=0.951061 | hls=0 | golden=-3.63798e-09 | err=3.63798e-09
+  n=104 | x=-0.587797 | hls=-0.000293478 | golden=-0.000280786 | err=1.2692e-05
+  n=105 | x=1.59266e-05 | hls=0.00047485 | golden=0.000454456 | err=2.03937e-05
+  n=106 | x=0.587772 | hls=-0.000474847 | golden=-0.000454319 | err=2.05277e-05
+  n=107 | x=-0.951051 | hls=0.000293546 | golden=0.000280871 | err=1.26744e-05
+  n=108 | x=0.951062 | hls=1.25736e-07 | golden=2.61934e-08 | err=9.95428e-08
+  n=109 | x=-0.587801 | hls=-0.000293325 | golden=-0.000280815 | err=1.25104e-05
+  n=110 | x=2.10446e-05 | hls=0.000474935 | golden=0.000454372 | err=2.05622e-05
+  n=111 | x=0.587767 | hls=-0.000474951 | golden=-0.00045441 | err=2.05412e-05
+  n=112 | x=-0.951059 | hls=0.000293093 | golden=0.000280828 | err=1.22648e-05
+  n=113 | x=0.951055 | hls=-6.70593e-07 | golden=-3.66708e-09 | err=6.66926e-07
+  n=114 | x=-0.587781 | hls=-0.000294242 | golden=-0.000280863 | err=1.33793e-05
+  n=115 | x=-4.35487e-06 | hls=0.000474393 | golden=0.000454367 | err=2.0026e-05
+  n=116 | x=0.587788 | hls=-0.000474523 | golden=-0.000454426 | err=2.00969e-05
+  n=117 | x=-0.951057 | hls=0.000295158 | golden=0.000280821 | err=1.43372e-05
+  n=118 | x=0.951056 | hls=3.36228e-06 | golden=6.2515e-08 | err=3.29976e-06
+  n=119 | x=-0.587785 | hls=-0.000288418 | golden=-0.000280656 | err=7.7626e-06
+  n=120 | x=7.63192e-07 | hls=0.000481235 | golden=0.000454647 | err=2.6588e-05
+  n=121 | x=0.587784 | hls=-0.00046793 | golden=-0.000454126 | err=1.38034e-05
+  n=122 | x=-0.951056 | hls=0.000300047 | golden=0.000280928 | err=1.91186e-05
+  n=123 | x=0.951058 | hls=5.31911e-06 | golden=-2.53349e-07 | err=5.57246e-06
+  n=124 | x=-0.587789 | hls=-0.000290018 | golden=-0.00028158 | err=8.43764e-06
+  n=125 | x=5.88126e-06 | hls=0.000476274 | golden=0.000453103 | err=2.3171e-05
+  n=126 | x=0.58778 | hls=-0.000475271 | golden=-0.000456117 | err=1.91539e-05
+  n=127 | x=-0.951054 | hls=0.000291825 | golden=0.0002789 | err=1.2925e-05
+  Max output amplitude (settled): 0.000481235
+  Max HLS vs golden error: 2.6588e-05
+  Stopband Sine: PASSED
+
+========================================
+  SUMMARY
+  Impulse Response : PASS
+  Passband Sine    : PASS
+  Stopband Sine    : PASS
+  Overall          : ALL PASS
+========================================
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 128
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [HLS 200-2161] Finished Command cosim_design Elapsed time: 00:01:23; Allocated memory: 10.641 MB.
+INFO: [HLS 200-1510] Running: export_design -format ip_catalog 
+INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
+
+****** Vivado v2024.1 (64-bit)
+  **** SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+  **** IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+  **** SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+  **** Start of session at: Tue May 12 01:05:04 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source run_ippack.tcl -notrace
+INFO: calling package_hls_ip ip_types=vitis sysgen json_file=C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/solution1_data.json outdir=C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/impl/ip srcdir=C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1 sort_interfaces_ports=false
+INFO: Copied 1 ipmisc file(s) to C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/impl/ip/misc
+INFO: Copied 11 verilog file(s) to C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/impl/ip/hdl/verilog
+INFO: Copied 8 vhdl file(s) to C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/impl/ip/hdl/vhdl
+INFO: Copied 10 swdriver file(s) to C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/impl/ip/drivers
+ipx::create_core: Time (s): cpu = 00:00:16 ; elapsed = 00:00:28 . Memory (MB): peak = 523.105 ; gain = 194.086
+INFO: Import ports from HDL: C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/impl/ip/hdl/vhdl/fir_filter.vhd (fir_filter)
+INFO: Add axi4lite interface s_axi_CTRL
+INFO: Add clock interface ap_clk
+INFO: Add reset interface ap_rst_n
+INFO: Add interrupt interface interrupt
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.1/data/ip'.
+INFO: Add axi4stream interface in_stream
+INFO: Add axi4stream interface out_stream
+INFO: Calling post_process_vitis to specialize IP
+INFO: Calling post_process_sysgen to specialize IP
+Generating sysgen info xml from json file
+INFO: Created IP C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/impl/ip/component.xml
+INFO: Created IP archive C:/Users/forbe/CLionProjects/FIR_Filter/fir_filter_hls/solution1/impl/ip/xilinx_com_hls_fir_filter_1_0.zip
+INFO: [Common 17-206] Exiting Vivado at Tue May 12 01:05:55 2026...
+INFO: [HLS 200-802] Generated output file fir_filter_hls/solution1/impl/export.zip
+INFO: [HLS 200-2161] Finished Command export_design Elapsed time: 00:01:02; Allocated memory: 0.000 MB.
+INFO: [HLS 200-112] Total CPU user time: 20 seconds. Total CPU system time: 11 seconds. Total elapsed time: 203.011 seconds; peak allocated memory: 280.898 MB.
