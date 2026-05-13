@@ -42,21 +42,6 @@ void fir_filter(
 - `num_samples`: AXI4-Lite number of samples to process
 - `return`: AXI4-Lite control/status register bundle
 
-| Metric                 | Result        |
-|------------------------|---------------|
-| Target clock period    | 10 ns         |
-| Estimated Clock period | 6.808 ns      |
-| Latency                | 3-1061 cycles |
-| BRAM                   | 0             |
-| DSP                    | 32            |
-| Flip-Flops             | 4748          |
-| LUTs                   | 3572          |
-
-The estimated clock period of 6.808 ns is below the 10.00 ns target, so the design meets timing. Since a 10 ns clock 
-corresponds to 100 MHz, this means the accelerator should be able to operate at the required clock speed.
-
-The latency range of 3-1061 cycles depends on the value of num_samples. For small inputs, the fixed pipeline and control
-overhead dominate. For larger inputs, the latency increases as more samples are streamed through the FIR filter.
 
 ## Run in Vitis HLS
 
