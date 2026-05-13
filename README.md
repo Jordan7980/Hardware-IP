@@ -33,6 +33,46 @@ void fir_filter(
 );
 ```
 
+## Interfaces
+
+- `in_stream`: AXI4-Stream input samples
+- `out_stream`: AXI4-Stream output samples
+- `coeffs`: AXI4-Lite coefficient array
+- `num_taps`: AXI4-Lite runtime filter length
+- `num_samples`: AXI4-Lite number of samples to process
+- `return`: AXI4-Lite control/status register bundle
+
+| Metric                 | Result        |
+|------------------------|---------------|
+| Target clock period    | 10 ns         |
+| Estimated Clock period | 6.808 ns      |
+| Latency                | 3-1061 cycles |
+| BRAM                   | 0             |
+| DSP                    | 32            |
+| Flip-Flops             | 4748          |
+| LUTs                   | 3572          |
+
+The estimated clock period of 6.808 ns is below the 10.00 ns target, so the design meets timing. Since a 10 ns clock 
+corresponds to 100 MHz, this means the accelerator should be able to operate at the required clock speed.
+
+The latency range of 3-1061 cycles depends on the value of num_samples. For small inputs, the fixed pipeline and control
+overhead dominate. For larger inputs, the latency increases as more samples are streamed through the FIR filter.
+
+## Run in Vitis HLS
+
+From this project folder:
+
+```bash
+vitis_hls -f run_hls.tcl
+```
+
+This runs:
+
+1. C simulation
+2. C synthesis
+3. C/RTL co-simulation
+4. IP export
+
 ## Testbench Definition
 
 The testbench verifies the FIR filter by comparing the HLS output against a C++ golden model.
@@ -53,30 +93,6 @@ is within the expected tolerance, the test passes.
 
 Performance is evaluated using the Vitis HLS synthesis and co-simulation reports. The main metrics are clock period,
 initiation interval, latency, and resource usage.
-
-## Interfaces
-
-- `in_stream`: AXI4-Stream input samples
-- `out_stream`: AXI4-Stream output samples
-- `coeffs`: AXI4-Lite coefficient array
-- `num_taps`: AXI4-Lite runtime filter length
-- `num_samples`: AXI4-Lite number of samples to process
-- `return`: AXI4-Lite control/status register bundle
-
-## Run in Vitis HLS
-
-From this project folder:
-
-```bash
-vitis_hls -f run_hls.tcl
-```
-
-This runs:
-
-1. C simulation
-2. C synthesis
-3. C/RTL co-simulation
-4. IP export
 
 ## Development Steps
 
@@ -104,14 +120,6 @@ This runs:
 8. Run synthesis  
    Check timing, latency, initiation interval, and resource usage.
 
-
-
-## Important Notes
-
-- You do not manually write the FIR in SystemVerilog for this HLS flow.
-- Vitis HLS converts `fir_filter.cpp` into RTL.
-- The generated IP can then be imported into Vivado and connected to the PS through AXI interfaces.
-- Update `set_part` in `run_hls.tcl` to match your actual FPGA board.
 
 ## Current Defaults
 
