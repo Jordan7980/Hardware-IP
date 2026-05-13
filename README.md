@@ -105,6 +105,38 @@ initiation interval, latency, and resource usage.
 8. Run synthesis  
    Check timing, latency, initiation interval, and resource usage.
 
+## Performance and Resource Verification
+
+The FIR accelerator was evaluated using the Vitis HLS synthesis report located under:
+
+```text
+fir_filter_hls/solution1/syn/report/
+```
+
+| Metric                 |        Result | Meaning                                                               |
+| ---------------------- | ------------: | --------------------------------------------------------------------- |
+| Target clock period    |      10.00 ns | The design goal was to run at a 100 MHz clock frequency               |
+| Estimated clock period |      6.808 ns | The design is faster than the required 10 ns target                   |
+| Latency                | 3-1061 cycles | The total number of cycles depends on the number of samples processed |
+| BRAM                   |             0 | The design does not require block RAM                                 |
+| DSP                    |            32 | DSP blocks are used for parallel multiplications                      |
+| Flip-Flops             |          4748 | Registers used for pipelining, control, and data storage              |
+| LUTs                   |          3572 | Logic used for control, arithmetic support, and stream handling       |
+
+The estimated clock period of 6.808 ns is below the 10.00 ns target, so the design meets timing. Since a 10 ns clock
+corresponds to 100 MHz, this means the accelerator should be able to operate at the required clock speed.
+
+The latency range of 3-1061 cycles depends on the value of num_samples. For small inputs, the fixed pipeline and control
+overhead dominate. For larger inputs, the latency increases as more samples are streamed through the FIR filter.
+
+The design uses 32 DSP blocks because the FIR filter supports up to 32 taps. Each tap requires a multiplication between 
+a delayed input sample and a coefficient. Using many DSPs allows these multiplications to happen in parallel, 
+which improves throughput.
+
+This design therefore prioritizes speed and throughput over minimum resource usage. A lower-resource design could use
+fewer DSPs by reusing one multiplier across multiple taps, but that would increase latency and reduce throughput. Since 
+this project is focused on building a streaming FIR accelerator, the higher DSP usage is acceptable because it allows 
+the filter to process samples efficiently.
 
 ## Current Defaults
 
